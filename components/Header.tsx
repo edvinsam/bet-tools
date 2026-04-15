@@ -1,85 +1,96 @@
-import React from "react";
+"use client";
+
+import { useState } from "react";
+import Link from "next/link";
 
 export default function Header() {
+  const [menuOpen, setMenuOpen] = useState(false);
+
   return (
-    <header style={styles.header}>
-      <div style={styles.container}>
-        <a href="/" style={styles.logoLink}>
-          <h1 style={styles.logo}>Betting Tools</h1>
-        </a>
+    <header className="bg-[#e8e8e8] text-[#111827] border-b-[8px] border-b-[#2563eb]">
+      <div className="mx-auto flex w-full max-w-5xl items-center justify-between gap-4 px-4 py-4">
+        <Link
+          href="/"
+          className="text-xl font-bold leading-none text-[#111827] no-underline"
+        >
+          Bet Tools
+        </Link>
 
-        <nav style={styles.nav} aria-label="Main navigation">
-          <a href="/" style={styles.link}>
+        <button
+          type="button"
+          aria-label="Toggle menu"
+          aria-expanded={menuOpen}
+          onClick={() => setMenuOpen((prev) => !prev)}
+          className="flex h-10 w-10 items-center justify-center rounded border border-gray-300 bg-white text-[#111827] md:hidden"
+        >
+          <span className="text-xl leading-none">☰</span>
+        </button>
+
+        <nav className="hidden md:flex md:flex-wrap md:items-center md:justify-end md:gap-4">
+          <Link href="/" className="text-[#111827] no-underline hover:underline">
             Home
-          </a>
+          </Link>
 
-          <a href="/calculators/odds-converter" style={styles.link}>
+          <Link
+            href="/calculators/odds-converter"
+            className="text-[#111827] no-underline hover:underline"
+          >
             Odds Converter
-          </a>
+          </Link>
 
-          <a href="/calculators/fair-probability" style={styles.link}>
+          <Link
+            href="/calculators/fair-probability"
+            className="text-[#111827] no-underline hover:underline"
+          >
             Fair Probability
-          </a>
+          </Link>
 
-          <a href="/calculators/arbitrage-calculator" style={styles.link}>
+          <Link
+            href="/calculators/arbitrage-calculator"
+            className="text-[#111827] no-underline hover:underline"
+          >
             Arbitrage Calculator
-          </a>
+          </Link>
         </nav>
       </div>
+
+      {menuOpen && (
+        <nav className="border-t border-gray-300 px-4 pb-4 md:hidden">
+          <div className="mx-auto flex max-w-5xl flex-col gap-3 pt-4">
+            <Link
+              href="/"
+              onClick={() => setMenuOpen(false)}
+              className="text-[#111827] no-underline hover:underline"
+            >
+              Home
+            </Link>
+
+            <Link
+              href="/calculators/odds-converter"
+              onClick={() => setMenuOpen(false)}
+              className="text-[#111827] no-underline hover:underline"
+            >
+              Odds Converter
+            </Link>
+
+            <Link
+              href="/calculators/fair-probability"
+              onClick={() => setMenuOpen(false)}
+              className="text-[#111827] no-underline hover:underline"
+            >
+              Fair Probability
+            </Link>
+
+            <Link
+              href="/calculators/arbitrage-calculator"
+              onClick={() => setMenuOpen(false)}
+              className="text-[#111827] no-underline hover:underline"
+            >
+              Arbitrage Calculator
+            </Link>
+          </div>
+        </nav>
+      )}
     </header>
   );
 }
-
-const styles: Record<string, React.CSSProperties> = {
-  header: {
-    backgroundColor: "#e8e8e8",
-    color: "#111827",
-    padding: "0.9rem 0",
-    borderBottom: "0.5rem solid #2563eb",
-  },
-
-  container: {
-    width: "min(100%, 70rem)",
-    margin: "0 auto",
-    padding: "0 1rem",
-    display: "flex",
-    flexWrap: "wrap",
-    justifyContent: "space-between",
-    alignItems: "center",
-    gap: "0.75rem 1rem",
-    boxSizing: "border-box",
-  },
-
-  logoLink: {
-    textDecoration: "none",
-    color: "inherit",
-    flex: "0 1 auto",
-    minWidth: 0,
-  },
-
-  logo: {
-    margin: 0,
-    fontSize: "1.25rem",
-    lineHeight: 1.2,
-    whiteSpace: "nowrap",
-    color: "#111827",
-  },
-
-  nav: {
-    display: "flex",
-    flexWrap: "wrap",
-    gap: "0.5rem 0.875rem",
-    alignItems: "center",
-    justifyContent: "flex-end",
-    flex: "1 1 24rem",
-    minWidth: 0,
-  },
-
-  link: {
-    color: "#111827",
-    textDecoration: "none",
-    whiteSpace: "nowrap",
-    fontSize: "0.95rem",
-    lineHeight: 1.2,
-  },
-};

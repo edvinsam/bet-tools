@@ -7,7 +7,7 @@ export default function Footer() {
 
           <div className="text-center md:text-left">
             <div className="font-semibold text-gray-900">
-              Odds Tools
+              Bet Tools
             </div>
 
             <p className="mt-1">
@@ -32,7 +32,7 @@ export default function Footer() {
         </div>
 
         <div className="mt-6 text-center text-gray-500">
-          © {new Date().getFullYear()} Odds Tools
+          © {new Date().getFullYear()} Bet Tools
         </div>
 
       </div>

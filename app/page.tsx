@@ -138,7 +138,7 @@ export default function HomePage() {
                   boxSizing: "border-box",
                 }}
               >
-                <h3 style={{ marginBottom: "0.625rem" }}>{calculator.title}</h3>
+                <h3 style={{ marginBottom: "0.625rem", marginTop: "0rem" }}>{calculator.title}</h3>
                 <p style={{ marginBottom: 0 }}>{calculator.description}</p>
               </Link>
             ))}
@@ -151,14 +151,14 @@ export default function HomePage() {
           </h2>
 
           <ul style={{ paddingLeft: "1.25rem", margin: 0 }}>
-            <li>Fast and easy calculations for common sports betting scenarios</li>
-            <li>Clear formulas and transparent outputs</li>
+            <li>• Fast and easy calculations for common sports betting scenarios</li>
+            <li>• Clear formulas and transparent outputs</li>
             <li>
-              Useful for odds comparison, value betting, arbitrage, and bankroll
+              • Useful for odds comparison, value betting, arbitrage, and bankroll
               management
             </li>
             <li>
-              No signup required — just enter your numbers and get the result
+              • No signup required — just enter your numbers and get the result
               instantly
             </li>
           </ul>

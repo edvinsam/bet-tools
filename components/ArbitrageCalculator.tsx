@@ -150,7 +150,7 @@ export default function ArbitrageCalculator({
   const [outcomeCount, setOutcomeCount] = useState<number>(safeDefaultCount);
   const [rows, setRows] = useState<OutcomeRow[]>(makeEmptyRows(safeDefaultCount));
   const [totalStake, setTotalStake] = useState<string>(defaultStake);
-  const [showCommissions, setShowCommissions] = useState<boolean>(true);
+  const [showCommissions, setShowCommissions] = useState<boolean>(false);
 
   useEffect(() => {
     setRows((prev) => {
