@@ -3,6 +3,7 @@ import { oddsTypes, makeSlug, parseSlug } from "@/lib/oddsRoutes";
 import { oddsContent, type ConversionContent } from "@/lib/oddsContent";
 import { notFound } from "next/navigation";
 import "../../globals.css";
+import { Suspense } from "react";
 
 type PageProps = {
   params: {
@@ -83,8 +84,9 @@ export default async function CalculatorPage({ params }: PageProps) {
         <h1 style={{ textAlign: "center", marginBottom: "20px" }}>
           {content.title}
         </h1>
-
-        <OddsConverter defaultFrom={parsed.from} defaultTo={parsed.to} />
+        <Suspense fallback={null}>
+          <OddsConverter defaultFrom={parsed.from} defaultTo={parsed.to} />
+        </Suspense>
 
         <section style={{ maxWidth: "600px", margin: "30px auto" }}>
           <h2 style={{ textAlign: "center" }}>How to convert {parsed.from.charAt(0).toUpperCase() + parsed.from.slice(1)} odds to {parsed.to.charAt(0).toUpperCase() + parsed.to.slice(1)} odds</h2>

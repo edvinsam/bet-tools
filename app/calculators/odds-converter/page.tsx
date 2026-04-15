@@ -1,4 +1,5 @@
 import OddsConverter from "@/components/OddsConverter";
+import { Suspense } from "react";
 
 export const metadata = {
   title: "Odds Converter",
@@ -21,8 +22,9 @@ export default function OddsConverterPage() {
         >
           Odds Converter
         </h1>
-
-        <OddsConverter defaultFrom="decimal" defaultTo="american" />
+        <Suspense fallback={null}>
+          <OddsConverter defaultFrom="decimal" defaultTo="american" />
+        </Suspense>
 
         <section style={{ maxWidth: "600px", margin: "30px auto" }}>
           <h2
