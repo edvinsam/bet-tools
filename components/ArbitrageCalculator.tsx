@@ -293,17 +293,18 @@ export default function ArbitrageCalculator({
   }, [rows, totalStake, showCommissions]);
 
   return (
-    <div style={{ textAlign: "center" }}>
+    <div style={{ width: "100%" }}>
       <div
         style={{
-          display: "inline-block",
+          display: "block",
+          width: "100%",
           textAlign: "left",
           border: "2px solid #c2c0c0",
           background: "#f9fafb",
           borderRadius: "8px",
-          padding: "20px",
-          minWidth: "760px",
+          padding: "16px",
           maxWidth: "100%",
+          boxSizing: "border-box",
         }}
       >
         <div
@@ -311,20 +312,32 @@ export default function ArbitrageCalculator({
             display: "flex",
             justifyContent: "space-between",
             alignItems: "flex-start",
-            gap: "20px",
+            gap: "16px",
             flexWrap: "wrap",
             marginBottom: "18px",
           }}
         >
-          <div style={{ display: "flex", gap: "20px", flexWrap: "wrap" }}>
-            <div>
+          <div
+            style={{
+              display: "flex",
+              gap: "12px",
+              flexWrap: "wrap",
+              flex: 1,
+            }}
+          >
+            <div style={{ flex: "1 1 140px", minWidth: 0 }}>
               <div style={{ marginBottom: "6px", color: "#111827" }}>
                 Number of outcomes
               </div>
               <select
                 value={outcomeCount}
                 onChange={(e) => setOutcomeCount(parseInt(e.target.value, 10))}
-                style={{ color: "#111827", padding: "6px" }}
+                style={{
+                  color: "#111827",
+                  padding: "6px",
+                  width: "100%",
+                  boxSizing: "border-box",
+                }}
               >
                 <option value={2}>2-way</option>
                 <option value={3}>3-way</option>
@@ -334,7 +347,7 @@ export default function ArbitrageCalculator({
               </select>
             </div>
 
-            <div>
+            <div style={{ flex: "1 1 140px", minWidth: 0 }}>
               <div style={{ marginBottom: "6px", color: "#111827" }}>
                 Total stake ({currency})
               </div>
@@ -344,35 +357,30 @@ export default function ArbitrageCalculator({
                 inputMode="decimal"
                 style={{
                   padding: "6px",
-                  width: "120px",
+                  width: "100%",
                   border: "2px solid #d2d2d3",
                   borderRadius: "4px",
                   color: "#111827",
+                  boxSizing: "border-box",
                 }}
               />
             </div>
-            <div style={{ width: "260px" }}>
-            <div
-                style={{
-                marginBottom: "6px",
-                color: "#111827",
-                }}
-            >
-                Currency
-            </div>
 
-            <Select
+            <div style={{ flex: "1 1 220px", minWidth: 0 }}>
+              <div style={{ marginBottom: "6px", color: "#111827" }}>
+                Currency
+              </div>
+
+              <Select
                 options={currencyOptions}
-                value={currencyOptions.find(
-                (c) => c.value === currency
-                )}
+                value={currencyOptions.find((c) => c.value === currency)}
                 onChange={(option) =>
-                setCurrency(option?.value as CurrencyCode)
+                  setCurrency(option?.value as CurrencyCode)
                 }
                 isSearchable
                 placeholder="Search currency..."
                 styles={selectStyles}
-            />
+              />
             </div>
           </div>
 
@@ -410,10 +418,11 @@ export default function ArbitrageCalculator({
           Show commissions
         </label>
 
-        <div style={{ overflowX: "auto" }}>
+        <div style={{ width: "100%", overflowX: "auto" }}>
           <table
             style={{
               width: "100%",
+              minWidth: showCommissions ? "720px" : "620px",
               borderCollapse: "collapse",
               color: "#111827",
               marginBottom: "18px",

@@ -4,13 +4,20 @@ import { useState } from "react";
 import ArbitrageCalculator from "@/components/ArbitrageCalculator";
 import type { CurrencyCode } from "@/lib/currency";
 import { formatMoney } from "@/lib/currency";
-import "@/app/globals.css"
+import "@/app/globals.css";
 
 export default function ArbitrageCalculatorPageContent() {
   const [currency, setCurrency] = useState<CurrencyCode>("USD");
 
   return (
-    <main style={{ padding: "20px", textAlign: "center" }}>
+    <main
+      style={{
+        padding: "16px",
+        width: "100%",
+        maxWidth: "1100px",
+        margin: "0 auto",
+      }}
+    >
       <h1 style={{ marginBottom: "16px", textAlign: "center" }}>
         Arbitrage Calculator
       </h1>
@@ -20,7 +27,14 @@ export default function ArbitrageCalculatorPageContent() {
         setCurrency={setCurrency}
       />
 
-      <section style={{ maxWidth: "900px", margin: "32px auto 0 auto" }}>
+      <section
+        style={{
+          maxWidth: "900px",
+          width: "100%",
+          margin: "32px auto 0",
+          textAlign: "left",
+        }}
+      >
         <h2>What This Arbitrage Calculator Does</h2>
 
         <p>
