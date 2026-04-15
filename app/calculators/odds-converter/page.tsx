@@ -6,7 +6,7 @@ export const metadata = {
   description:
     "Convert between decimal, fractional, American, Hong Kong, Malay, Indonesian, and implied probability betting odds formats.",
   alternates: {
-    canonical: "https://yourdomain.com/calculators/odds-converter",
+    canonical: "https://bet-tools.com/calculators/odds-converter",
   },
 };
 

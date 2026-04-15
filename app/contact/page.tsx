@@ -3,7 +3,7 @@ export const metadata = {
   description:
     "Contact the site owner with questions, feedback, or technical issues related to the calculators.",
   alternates: {
-    canonical: "https://yourdomain.com/contact",
+    canonical: "https://bet-tools.com/contact",
   },
 };
 

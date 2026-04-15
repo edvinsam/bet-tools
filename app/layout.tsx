@@ -20,7 +20,7 @@ const openSans = Open_Sans({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://yourdomain.com"),
+  metadataBase: new URL("https://bet-tools.com"),
   title: {
     default: "Betting Calculators and Odds Tools",
     template: "%s | Betting Calculators and Odds Tools",
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     title: "Betting Calculators and Odds Tools",
     description:
       "Free betting calculators for odds conversion, fair probability, arbitrage, expected value, and bankroll strategy.",
-    url: "https://yourdomain.com",
+    url: "https://bet-tools.com",
     siteName: "Betting Calculators and Odds Tools",
     locale: "en_US",
     type: "website",
@@ -52,7 +52,7 @@ export const metadata: Metadata = {
       "Free betting calculators for odds conversion, fair probability, arbitrage, expected value, and bankroll strategy.",
   },
   alternates: {
-    canonical: "https://yourdomain.com",
+    canonical: "https://bet-tools.com",
   },
 };
 

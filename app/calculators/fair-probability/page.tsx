@@ -6,7 +6,7 @@ export const metadata = {
   description:
     "Remove bookmaker margin to calculate no-vig probabilities, fair odds, and bookmaker overround for 2-way and 3-way markets.",
   alternates: {
-    canonical: "https://yourdomain.com/calculators/fair-probability",
+    canonical: "https://bet-tools.com/calculators/fair-probability",
   },
 };
 

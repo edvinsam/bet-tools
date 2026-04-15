@@ -48,7 +48,7 @@ export async function generateMetadata({ params }: PageProps) {
       title: "Odds Converter",
       description: "Convert between betting odds formats.",
       alternates: {
-        canonical: "https://yourdomain.com/calculators/odds-converter",
+        canonical: "https://bet-tools.com/calculators/odds-converter",
       },
     };
   }
@@ -61,7 +61,7 @@ export async function generateMetadata({ params }: PageProps) {
     title: content.title,
     description: content.intro,
     alternates: {
-      canonical: `https://yourdomain.com/calculators/${slug}`,
+      canonical: `https://bet-tools.com/calculators/${slug}`,
     },
   };
 }

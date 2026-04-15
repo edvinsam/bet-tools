@@ -3,7 +3,7 @@ export const metadata = {
   description:
     "Read how this website handles data, cookies, analytics, and advertising-related information.",
   alternates: {
-    canonical: "https://yourdomain.com/privacy",
+    canonical: "https://bet-tools.com/privacy",
   },
 };
 

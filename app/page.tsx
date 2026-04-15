@@ -38,7 +38,7 @@ export const metadata = {
   description:
     "Free betting calculators for odds conversion, fair probability, arbitrage, expected value, and bankroll strategy.",
   alternates: {
-    canonical: "https://yourdomain.com",
+    canonical: "https://bet-tools.com",
   },
 };
 
