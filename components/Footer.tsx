@@ -1,0 +1,43 @@
+export default function Footer() {
+  return (
+    <footer className="border-t border-gray-200 mt-12">
+      <div className="max-w-5xl mx-auto px-4 py-6 text-sm text-gray-600">
+
+        <div className="flex flex-col md:flex-row justify-between gap-4">
+
+          <div>
+            <div className="font-semibold text-gray-900">
+              Odds Tools
+            </div>
+
+            <p className="mt-1">
+              Free betting calculators and odds conversion tools.
+            </p>
+          </div>
+
+          <div className="flex gap-6">
+
+            <a href="/about" className="hover:underline">
+              About
+            </a>
+
+            <a href="/privacy" className="hover:underline">
+              Privacy
+            </a>
+
+            <a href="/contact" className="hover:underline">
+              Contact
+            </a>
+
+          </div>
+
+        </div>
+
+        <div className="mt-6 text-center text-gray-500">
+          © {new Date().getFullYear()} Odds Tools
+        </div>
+
+      </div>
+    </footer>
+  );
+}

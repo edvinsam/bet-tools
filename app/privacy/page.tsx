@@ -1,0 +1,53 @@
+export const metadata = {
+  title: "Privacy Policy",
+  description:
+    "Read how this website handles data, cookies, analytics, and advertising-related information.",
+  alternates: {
+    canonical: "https://yourdomain.com/privacy",
+  },
+};
+
+export default function PrivacyPage() {
+  return (
+    <main style={{ padding: "20px" }}>
+      <div style={{ maxWidth: "700px", margin: "0 auto" }}>
+        <h1>Privacy Policy</h1>
+
+        <p>
+          This website respects your privacy. We do not collect personal
+          information unless you choose to provide it voluntarily.
+        </p>
+
+        <h2 style={{marginTop: "15px"}}>Analytics</h2>
+
+        <p>
+          We may use analytics tools to understand how visitors use the site.
+          These tools collect anonymous usage data such as pages visited,
+          browser type, and device information.
+        </p>
+
+        <h2 style={{marginTop: "15px"}}>Cookies</h2>
+
+        <p>
+          This website may use cookies to improve functionality and user
+          experience. Cookies are small text files stored on your device.
+        </p>
+
+        <h2 style={{marginTop: "15px"}}>Advertising</h2>
+
+        <p>
+          In the future, this site may display advertisements from third-party
+          advertising networks. These networks may use cookies to personalize
+          advertising content.
+        </p>
+
+        <h2 style={{marginTop: "15px"}}>Contact</h2>
+
+        <p>
+          If you have questions about this privacy policy, please contact us
+          using the contact page.
+        </p>
+      </div>
+    </main>
+  );
+}
