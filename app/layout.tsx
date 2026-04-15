@@ -66,18 +66,23 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className={`${openSans.className} min-h-screen flex flex-col`}
-            style={{ background: "#ffffff" }}>
-        <Header>
-        </Header>
+      <body
+        className={`${openSans.className} min-h-screen flex flex-col`}
+        style={{ background: "#ffffff", margin: 0 }}
+      >
+        <Header />
 
-        <main className="grow"
-              style={{ padding: "20px" }}>
+        <main
+          className="grow"
+          style={{
+            width: "100%",
+            boxSizing: "border-box",
+          }}
+        >
           {children}
         </main>
 
-        <Footer>
-        </Footer>
+        <Footer />
 
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-W0XWE1RWZ3"

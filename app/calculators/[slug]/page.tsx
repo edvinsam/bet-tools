@@ -10,6 +10,7 @@ type PageProps = {
     slug: string;
   };
 };
+
 function getDefaultContent(from: string, to: string): ConversionContent {
   return {
     title: `${from} to ${to} Odds Converter`,
@@ -19,7 +20,7 @@ function getDefaultContent(from: string, to: string): ConversionContent {
     formulaText:
       "This converter first converts the value to decimal odds, then converts it into the target format.",
     fromDescription: "sample description",
-    toDescription: "sample description"
+    toDescription: "sample description",
   };
 }
 
@@ -78,40 +79,78 @@ export default async function CalculatorPage({ params }: PageProps) {
   const content =
     oddsContent[key] ?? getDefaultContent(parsed.from, parsed.to);
 
+  const fromLabel =
+    parsed.from.charAt(0).toUpperCase() + parsed.from.slice(1);
+  const toLabel =
+    parsed.to.charAt(0).toUpperCase() + parsed.to.slice(1);
+
   return (
-    <main style={{ padding: "20px" }}>
-      <div>
-        <h1 style={{ textAlign: "center", marginBottom: "20px" }}>
+    <main
+      style={{
+        width: "100%",
+        boxSizing: "border-box",
+        padding: "1.25rem 1rem 2.5rem",
+      }}
+    >
+      <div
+        style={{
+          width: "min(100%, 70rem)",
+          margin: "0 auto",
+        }}
+      >
+        <h1
+          style={{
+            textAlign: "center",
+            marginBottom: "1.25rem",
+          }}
+        >
           {content.title}
         </h1>
+
         <Suspense fallback={null}>
           <OddsConverter defaultFrom={parsed.from} defaultTo={parsed.to} />
         </Suspense>
 
-        <section style={{ maxWidth: "600px", margin: "30px auto" }}>
-          <h2 style={{ textAlign: "center" }}>How to convert {parsed.from.charAt(0).toUpperCase() + parsed.from.slice(1)} odds to {parsed.to.charAt(0).toUpperCase() + parsed.to.slice(1)} odds</h2>
+        <section
+          style={{
+            width: "min(100%, 48rem)",
+            margin: "2rem auto 0",
+            textAlign: "left",
+          }}
+        >
+          <h2 style={{ textAlign: "center", marginBottom: "0.75rem" }}>
+            How to convert {fromLabel} odds to {toLabel} odds
+          </h2>
 
-          <p style={{ textAlign: "center" }}>{content.intro}</p>
-          <h3 style={{ textAlign: "center", paddingTop: "10px" }}>Formula used for converting {parsed.from} odds to {parsed.to} odds</h3>
-          <p style={{ textAlign: "center" }}>{content.formulaText}</p>
-          <p style={{ textAlign: "center" }}>{content.example}</p>
+          <p>{content.intro}</p>
 
-          <h2 style={{ textAlign: "center", paddingTop: "10px" }}>{parsed.from.charAt(0).toUpperCase() + parsed.from.slice(1)} odds explained</h2>
-          <p style={{ textAlign: "center" }}>{content.fromDescription}</p>
+          <h3 style={{ textAlign: "center", paddingTop: "0.5rem" }}>
+            Formula used for converting {parsed.from} odds to {parsed.to} odds
+          </h3>
 
-          <h2 style={{ textAlign: "center", paddingTop: "10px" }}>{parsed.to.charAt(0).toUpperCase() + parsed.to.slice(1)} odds explained</h2>
-          <p style={{ textAlign: "center" }}>{content.toDescription}</p>
+          <p>{content.formulaText}</p>
+          <p>{content.example}</p>
+
+          <h2 style={{ textAlign: "center", paddingTop: "0.5rem" }}>
+            {fromLabel} odds explained
+          </h2>
+          <p>{content.fromDescription}</p>
+
+          <h2 style={{ textAlign: "center", paddingTop: "0.5rem" }}>
+            {toLabel} odds explained
+          </h2>
+          <p>{content.toDescription}</p>
 
           <h2
             style={{
               textAlign: "center",
-              paddingTop: "10px",
+              paddingTop: "0.5rem",
             }}
           >
             Supported odds formats
           </h2>
 
-          <p style={{ textAlign: "center" }}>
+          <p>
             This converter supports decimal odds, fractional odds, American
             odds, Hong Kong odds, Malay odds, Indonesian odds, and implied
             probability percentage.
@@ -120,23 +159,24 @@ export default async function CalculatorPage({ params }: PageProps) {
           <h2
             style={{
               textAlign: "center",
-              paddingTop: "10px",
+              paddingTop: "0.5rem",
             }}
           >
             Why use an odds converter?
           </h2>
 
-          <p style={{ textAlign: "center" }}>
+          <p>
             Bookmakers and betting exchanges use different odds formats
             depending on region and market. An odds converter makes it easier to
             compare prices, understand implied probability, and analyze bets
             more accurately across different sportsbooks.
           </p>
         </section>
+
         <section
           style={{
-            maxWidth: "600px",
-            margin: "30px auto",
+            width: "min(100%, 48rem)",
+            margin: "2rem auto 0",
             textAlign: "center",
           }}
         >
@@ -150,44 +190,50 @@ export default async function CalculatorPage({ params }: PageProps) {
             style={{
               display: "flex",
               flexWrap: "wrap",
-              gap: "10px",
+              gap: "0.625rem 1rem",
               justifyContent: "center",
-              marginTop: "10px",
+              marginTop: "0.75rem",
             }}
           >
             <a
               href="/calculators/decimal-to-american-odds-converter"
-              style={{ color: "#2563eb" }}>
+              style={{ color: "#2563eb", whiteSpace: "nowrap" }}
+            >
               Decimal to American
             </a>
 
             <a
               href="/calculators/american-to-decimal-odds-converter"
-              style={{ color: "#2563eb" }}>
+              style={{ color: "#2563eb", whiteSpace: "nowrap" }}
+            >
               American to Decimal
             </a>
 
             <a
               href="/calculators/decimal-to-fractional-odds-converter"
-              style={{ color: "#2563eb" }}>
+              style={{ color: "#2563eb", whiteSpace: "nowrap" }}
+            >
               Decimal to Fractional
             </a>
 
             <a
               href="/calculators/fractional-to-decimal-odds-converter"
-              style={{ color: "#2563eb" }}>
+              style={{ color: "#2563eb", whiteSpace: "nowrap" }}
+            >
               Fractional to Decimal
             </a>
 
             <a
               href="/calculators/decimal-to-probability-odds-converter"
-              style={{ color: "#2563eb" }}>
+              style={{ color: "#2563eb", whiteSpace: "nowrap" }}
+            >
               Decimal to Probability
             </a>
 
             <a
               href="/calculators/probability-to-decimal-odds-converter"
-              style={{ color: "#2563eb" }}>
+              style={{ color: "#2563eb", whiteSpace: "nowrap" }}
+            >
               Probability to Decimal
             </a>
           </div>

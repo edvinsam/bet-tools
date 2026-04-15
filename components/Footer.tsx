@@ -3,9 +3,9 @@ export default function Footer() {
     <footer className="border-t border-gray-200 mt-12">
       <div className="max-w-5xl mx-auto px-4 py-6 text-sm text-gray-600">
 
-        <div className="flex flex-col md:flex-row justify-between gap-4">
+        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
 
-          <div>
+          <div className="text-center md:text-left">
             <div className="font-semibold text-gray-900">
               Odds Tools
             </div>
@@ -15,8 +15,7 @@ export default function Footer() {
             </p>
           </div>
 
-          <div className="flex gap-6">
-
+          <nav className="flex flex-wrap justify-center md:justify-end gap-6">
             <a href="/about" className="hover:underline">
               About
             </a>
@@ -28,8 +27,7 @@ export default function Footer() {
             <a href="/contact" className="hover:underline">
               Contact
             </a>
-
-          </div>
+          </nav>
 
         </div>
 

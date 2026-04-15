@@ -3,7 +3,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { formatMoney, currencyOptions, type CurrencyCode } from "@/lib/currency";
 import type { StylesConfig } from "react-select";
-
 import Select from "react-select";
 
 type OutcomeRow = {
@@ -11,23 +10,23 @@ type OutcomeRow = {
   commission: string;
 };
 
-function normalizeNumberInput(value: string): string {
-  return value.trim().replace(",", ".");
-}
-
 type CurrencyOption = {
   value: CurrencyCode;
   label: string;
 };
 
+function normalizeNumberInput(value: string): string {
+  return value.trim().replace(",", ".");
+}
+
 const selectStyles: StylesConfig<CurrencyOption, false> = {
   control: (base, state) => ({
     ...base,
-    minHeight: "38px",
+    minHeight: "2.375rem",
     border: state.isFocused
-    ? "2px solid #000000"   // focus color
-    : "2px solid #d2d2d3",  // normal color
-    borderRadius: "4px",
+      ? "2px solid #000000"
+      : "2px solid #d2d2d3",
+    borderRadius: "0.375rem",
     boxShadow: "none",
     backgroundColor: "#f9fafb",
     color: "#111827",
@@ -38,7 +37,7 @@ const selectStyles: StylesConfig<CurrencyOption, false> = {
 
   valueContainer: (base) => ({
     ...base,
-    padding: "0 8px",
+    padding: "0 0.5rem",
   }),
 
   input: (base) => ({
@@ -60,7 +59,7 @@ const selectStyles: StylesConfig<CurrencyOption, false> = {
 
   menu: (base) => ({
     ...base,
-    borderRadius: "6px",
+    borderRadius: "0.375rem",
     overflow: "hidden",
     zIndex: 20,
   }),
@@ -202,8 +201,6 @@ export default function ArbitrageCalculator({
         };
       }
 
-      // Exchange-style commission on profit only:
-      // adjusted odds = 1 + (odds - 1) * (1 - commission)
       const adjustedOdds =
         1 + (odds - 1) * (1 - commissionPercent / 100);
 
@@ -301,8 +298,8 @@ export default function ArbitrageCalculator({
           textAlign: "left",
           border: "2px solid #c2c0c0",
           background: "#f9fafb",
-          borderRadius: "8px",
-          padding: "16px",
+          borderRadius: "0.5rem",
+          padding: "1rem",
           maxWidth: "100%",
           boxSizing: "border-box",
         }}
@@ -312,21 +309,22 @@ export default function ArbitrageCalculator({
             display: "flex",
             justifyContent: "space-between",
             alignItems: "flex-start",
-            gap: "16px",
+            gap: "1rem",
             flexWrap: "wrap",
-            marginBottom: "18px",
+            marginBottom: "1.125rem",
           }}
         >
           <div
             style={{
               display: "flex",
-              gap: "12px",
+              gap: "0.75rem",
               flexWrap: "wrap",
-              flex: 1,
+              flex: "1 1 28rem",
+              minWidth: 0,
             }}
           >
-            <div style={{ flex: "1 1 140px", minWidth: 0 }}>
-              <div style={{ marginBottom: "6px", color: "#111827" }}>
+            <div style={{ flex: "1 1 10rem", minWidth: 0 }}>
+              <div style={{ marginBottom: "0.375rem", color: "#111827" }}>
                 Number of outcomes
               </div>
               <select
@@ -334,9 +332,12 @@ export default function ArbitrageCalculator({
                 onChange={(e) => setOutcomeCount(parseInt(e.target.value, 10))}
                 style={{
                   color: "#111827",
-                  padding: "6px",
+                  padding: "0.375rem",
                   width: "100%",
                   boxSizing: "border-box",
+                  border: "2px solid #d2d2d3",
+                  borderRadius: "0.375rem",
+                  background: "white",
                 }}
               >
                 <option value={2}>2-way</option>
@@ -347,8 +348,8 @@ export default function ArbitrageCalculator({
               </select>
             </div>
 
-            <div style={{ flex: "1 1 140px", minWidth: 0 }}>
-              <div style={{ marginBottom: "6px", color: "#111827" }}>
+            <div style={{ flex: "1 1 10rem", minWidth: 0 }}>
+              <div style={{ marginBottom: "0.375rem", color: "#111827" }}>
                 Total stake ({currency})
               </div>
               <input
@@ -356,18 +357,19 @@ export default function ArbitrageCalculator({
                 onChange={(e) => setTotalStake(e.target.value)}
                 inputMode="decimal"
                 style={{
-                  padding: "6px",
+                  padding: "0.375rem",
                   width: "100%",
                   border: "2px solid #d2d2d3",
-                  borderRadius: "4px",
+                  borderRadius: "0.375rem",
                   color: "#111827",
                   boxSizing: "border-box",
+                  background: "white",
                 }}
               />
             </div>
 
-            <div style={{ flex: "1 1 220px", minWidth: 0 }}>
-              <div style={{ marginBottom: "6px", color: "#111827" }}>
+            <div style={{ flex: "1 1 14rem", minWidth: 0 }}>
+              <div style={{ marginBottom: "0.375rem", color: "#111827" }}>
                 Currency
               </div>
 
@@ -387,13 +389,15 @@ export default function ArbitrageCalculator({
           <button
             onClick={resetCalculator}
             style={{
-              padding: "6px 12px",
+              padding: "0.375rem 0.75rem",
               border: "1px solid #d2d2d3",
-              borderRadius: "4px",
+              borderRadius: "0.375rem",
               background: "white",
               cursor: "pointer",
               color: "#111827",
-              height: "36px",
+              minHeight: "2.25rem",
+              alignSelf: "flex-end",
+              flex: "0 0 auto",
             }}
           >
             Reset
@@ -404,10 +408,11 @@ export default function ArbitrageCalculator({
           style={{
             display: "inline-flex",
             alignItems: "center",
-            gap: "8px",
+            gap: "0.5rem",
             color: "#111827",
-            marginBottom: "16px",
+            marginBottom: "1rem",
             cursor: "pointer",
+            flexWrap: "wrap",
           }}
         >
           <input
@@ -422,27 +427,27 @@ export default function ArbitrageCalculator({
           <table
             style={{
               width: "100%",
-              minWidth: showCommissions ? "720px" : "620px",
+              minWidth: showCommissions ? "45rem" : "39rem",
               borderCollapse: "collapse",
               color: "#111827",
-              marginBottom: "18px",
+              marginBottom: "1.125rem",
             }}
           >
             <thead>
               <tr style={{ borderBottom: "1px solid #d2d2d3" }}>
-                <th style={{ textAlign: "left", padding: "8px" }}>Outcome</th>
-                <th style={{ textAlign: "left", padding: "8px" }}>Odds</th>
+                <th style={{ textAlign: "left", padding: "0.5rem" }}>Outcome</th>
+                <th style={{ textAlign: "left", padding: "0.5rem" }}>Odds</th>
                 {showCommissions && (
-                  <th style={{ textAlign: "left", padding: "8px" }}>
+                  <th style={{ textAlign: "left", padding: "0.5rem" }}>
                     Commission %
                   </th>
                 )}
-                <th style={{ textAlign: "left", padding: "8px" }}>
+                <th style={{ textAlign: "left", padding: "0.5rem" }}>
                   Adjusted odds
                 </th>
-                <th style={{ textAlign: "left", padding: "8px" }}>Stake</th>
-                <th style={{ textAlign: "left", padding: "8px" }}>Payout</th>
-                <th style={{ textAlign: "left", padding: "8px" }}>Profit</th>
+                <th style={{ textAlign: "left", padding: "0.5rem" }}>Stake</th>
+                <th style={{ textAlign: "left", padding: "0.5rem" }}>Payout</th>
+                <th style={{ textAlign: "left", padding: "0.5rem" }}>Profit</th>
               </tr>
             </thead>
 
@@ -455,9 +460,9 @@ export default function ArbitrageCalculator({
                     key={index}
                     style={{ borderBottom: "1px solid #e5e7eb" }}
                   >
-                    <td style={{ padding: "8px" }}>{index + 1}</td>
+                    <td style={{ padding: "0.5rem" }}>{index + 1}</td>
 
-                    <td style={{ padding: "8px" }}>
+                    <td style={{ padding: "0.5rem" }}>
                       <input
                         value={row.odds}
                         onChange={(e) =>
@@ -465,17 +470,20 @@ export default function ArbitrageCalculator({
                         }
                         inputMode="decimal"
                         style={{
-                          padding: "6px",
-                          width: "100px",
+                          padding: "0.375rem",
+                          width: "100%",
+                          minWidth: "5.5rem",
                           border: "2px solid #d2d2d3",
-                          borderRadius: "4px",
+                          borderRadius: "0.375rem",
                           color: "#111827",
+                          boxSizing: "border-box",
+                          background: "white",
                         }}
                       />
                     </td>
 
                     {showCommissions && (
-                      <td style={{ padding: "8px" }}>
+                      <td style={{ padding: "0.5rem" }}>
                         <input
                           value={row.commission}
                           onChange={(e) =>
@@ -483,36 +491,39 @@ export default function ArbitrageCalculator({
                           }
                           inputMode="decimal"
                           style={{
-                            padding: "6px",
-                            width: "100px",
+                            padding: "0.375rem",
+                            width: "100%",
+                            minWidth: "5.5rem",
                             border: "2px solid #d2d2d3",
-                            borderRadius: "4px",
+                            borderRadius: "0.375rem",
                             color: "#111827",
+                            boxSizing: "border-box",
+                            background: "white",
                           }}
                         />
                       </td>
                     )}
 
-                    <td style={{ padding: "8px" }}>
+                    <td style={{ padding: "0.5rem" }}>
                       {calcRow?.adjustedOdds !== null &&
                       calcRow?.adjustedOdds !== undefined
                         ? formatNumber(calcRow.adjustedOdds, 2)
                         : "—"}
                     </td>
 
-                    <td style={{ padding: "8px" }}>
+                    <td style={{ padding: "0.5rem" }}>
                       {calculation.isValid
                         ? formatMoney(calculation.stakes[index], currency)
                         : "—"}
                     </td>
 
-                    <td style={{ padding: "8px" }}>
+                    <td style={{ padding: "0.5rem" }}>
                       {calculation.isValid
                         ? formatMoney(calculation.payouts[index], currency)
                         : "—"}
                     </td>
 
-                    <td style={{ padding: "8px" }}>
+                    <td style={{ padding: "0.5rem" }}>
                       {calculation.isValid
                         ? formatMoney(calculation.profits[index], currency)
                         : "—"}
@@ -532,13 +543,13 @@ export default function ArbitrageCalculator({
         )}
 
         {calculation.isValid && (
-          <div style={{ display: "grid", gap: "14px" }}>
+          <div style={{ display: "grid", gap: "0.875rem" }}>
             <div
               style={{
-                padding: "12px",
+                padding: "0.75rem",
                 background: "#eef2ff",
                 border: "1px solid #c7d2fe",
-                borderRadius: "6px",
+                borderRadius: "0.375rem",
                 color: "#111827",
               }}
             >
@@ -548,10 +559,10 @@ export default function ArbitrageCalculator({
 
             <div
               style={{
-                padding: "12px",
+                padding: "0.75rem",
                 background: "#eef2ff",
                 border: "1px solid #c7d2fe",
-                borderRadius: "6px",
+                borderRadius: "0.375rem",
                 color: "#111827",
               }}
             >
@@ -561,10 +572,10 @@ export default function ArbitrageCalculator({
 
             <div
               style={{
-                padding: "12px",
+                padding: "0.75rem",
                 background: "#eef2ff",
                 border: "1px solid #c7d2fe",
-                borderRadius: "6px",
+                borderRadius: "0.375rem",
                 color: "#111827",
               }}
             >
@@ -574,26 +585,23 @@ export default function ArbitrageCalculator({
 
             <div
               style={{
-                padding: "12px",
+                padding: "0.75rem",
                 background: "#eef2ff",
                 border: "1px solid #c7d2fe",
-                borderRadius: "6px",
+                borderRadius: "0.375rem",
                 color: "#111827",
               }}
             >
               <strong>Guaranteed profit:</strong>{" "}
-                {formatMoney(
-                    calculation.guaranteedProfit as number,
-                    currency
-                )}
+              {formatMoney(calculation.guaranteedProfit as number, currency)}
             </div>
 
             <div
               style={{
-                padding: "12px",
+                padding: "0.75rem",
                 background: "#eef2ff",
                 border: "1px solid #c7d2fe",
-                borderRadius: "6px",
+                borderRadius: "0.375rem",
                 color: "#111827",
               }}
             >

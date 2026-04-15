@@ -9,16 +9,27 @@ export const metadata = {
 
 export default function ContactPage() {
   return (
-    <main style={{ padding: "20px" }}>
-      <div style={{ maxWidth: "700px", margin: "0 auto" }}>
-        <h1>Contact</h1>
+    <main
+      style={{
+        width: "100%",
+        boxSizing: "border-box",
+        padding: "1.25rem 1rem 2.5rem",
+      }}
+    >
+      <div
+        style={{
+          width: "min(100%, 44rem)",
+          margin: "0 auto",
+        }}
+      >
+        <h1 style={{ marginBottom: "1rem" }}>Contact</h1>
 
         <p>
           If you have questions, suggestions, or feedback about the calculators
           on this site, feel free to get in touch.
         </p>
 
-        <h2 style={{marginTop: "15px"}}>Email</h2>
+        <h2 style={{ marginTop: "1rem" }}>Email</h2>
 
         <p>
           You can contact us at:

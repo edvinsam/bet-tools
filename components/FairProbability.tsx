@@ -81,127 +81,145 @@ export default function FairProbabilityCalc({
       (prob) => prob / totalImpliedProbability
     );
 
-    fairOdds = fairProbabilities.map(
-        (prob) => 1 / prob
-    );
-
+    fairOdds = fairProbabilities.map((prob) => 1 / prob);
   }
 
   return (
-    <div style={{ textAlign: "center" }}>
+    <div style={{ width: "100%" }}>
       <div
         style={{
-          display: "inline-block",
+          display: "block",
+          width: "100%",
           textAlign: "left",
           border: "2px solid #c2c0c0",
           background: "#f9fafb",
-          borderRadius: "8px",
-          padding: "20px",
-          minWidth: "420px",
+          borderRadius: "0.5rem",
+          padding: "1rem",
+          maxWidth: "100%",
+          boxSizing: "border-box",
         }}
       >
         <div
-            style={{
-                marginBottom: "15px",
-                display: "flex",
-                justifyContent: "space-between",
-                alignItems: "flex-start",
-            }}
-            >
-            <div>
-                <div style={{ marginBottom: "6px", color: "#111827" }}>
-                Outcomes
-                </div>
-
-                <select
-                value={outcomes}
-                onChange={(e) =>
-                    handleOutcomeChange(
-                    e.target.value as outcomeType
-                    )
-                }
-                style={{
-                    marginBottom: "6px",
-                    color: "#111827",
-                }}
-                >
-                <option value="2">2-way</option>
-                <option value="3">3-way</option>
-                </select>
+          style={{
+            marginBottom: "1rem",
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "flex-start",
+            gap: "1rem",
+            flexWrap: "wrap",
+          }}
+        >
+          <div style={{ flex: "1 1 10rem", minWidth: 0 }}>
+            <div style={{ marginBottom: "0.375rem", color: "#111827" }}>
+              Outcomes
             </div>
 
-            <button
-                onClick={() => {
-                setOdds1("");
-                setOdds2("");
-                setOdds3("");
-                }}
-                style={{
-                padding: "6px 12px",
-                border: "1px solid #d2d2d3",
-                borderRadius: "4px",
-                background: "white",
-                cursor: "pointer",
+            <select
+              value={outcomes}
+              onChange={(e) =>
+                handleOutcomeChange(e.target.value as outcomeType)
+              }
+              style={{
                 color: "#111827",
-                height: "36px",
-                }}
+                width: "100%",
+                padding: "0.375rem",
+                border: "2px solid #d2d2d3",
+                borderRadius: "0.375rem",
+                background: "white",
+                boxSizing: "border-box",
+              }}
             >
-                Reset
-            </button>
+              <option value="2">2-way</option>
+              <option value="3">3-way</option>
+            </select>
+          </div>
+
+          <button
+            onClick={() => {
+              setOdds1("");
+              setOdds2("");
+              setOdds3("");
+            }}
+            style={{
+              padding: "0.375rem 0.75rem",
+              border: "1px solid #d2d2d3",
+              borderRadius: "0.375rem",
+              background: "white",
+              cursor: "pointer",
+              color: "#111827",
+              minHeight: "2.25rem",
+              alignSelf: "flex-end",
+              flex: "0 0 auto",
+            }}
+          >
+            Reset
+          </button>
         </div>
 
         <div
           style={{
             display: "flex",
-            gap: "15px",
-            justifyContent: "space-evenly",
-            marginBottom: "20px",
+            gap: "0.75rem",
+            flexWrap: "wrap",
+            marginBottom: "1.25rem",
           }}
         >
-          <div>
-            <div style={{ marginBottom: "6px", color: "#111827" }}>Odds 1</div>
+          <div style={{ flex: "1 1 10rem", minWidth: 0 }}>
+            <div style={{ marginBottom: "0.375rem", color: "#111827" }}>
+              Odds 1
+            </div>
             <input
               value={odds1}
               onChange={(e) => setOdds1(e.target.value)}
               style={{
-                padding: "6px",
-                width: "115px",
+                padding: "0.375rem",
+                width: "100%",
                 border: "2px solid #d2d2d3",
-                borderRadius: "4px",
+                borderRadius: "0.375rem",
                 color: "#111827",
+                boxSizing: "border-box",
+                background: "white",
               }}
               inputMode="decimal"
             />
           </div>
 
-          <div>
-            <div style={{ marginBottom: "6px", color: "#111827" }}>Odds 2</div>
+          <div style={{ flex: "1 1 10rem", minWidth: 0 }}>
+            <div style={{ marginBottom: "0.375rem", color: "#111827" }}>
+              Odds 2
+            </div>
             <input
               value={odds2}
               onChange={(e) => setOdds2(e.target.value)}
               style={{
-                padding: "6px",
-                width: "115px",
+                padding: "0.375rem",
+                width: "100%",
                 border: "2px solid #d2d2d3",
-                borderRadius: "4px",
+                borderRadius: "0.375rem",
                 color: "#111827",
+                boxSizing: "border-box",
+                background: "white",
               }}
               inputMode="decimal"
             />
           </div>
 
           {outcomes === "3" && (
-            <div>
-              <div style={{ marginBottom: "6px", color: "#111827" }}>Odds 3</div>
+            <div style={{ flex: "1 1 10rem", minWidth: 0 }}>
+              <div style={{ marginBottom: "0.375rem", color: "#111827" }}>
+                Odds 3
+              </div>
               <input
                 value={odds3}
                 onChange={(e) => setOdds3(e.target.value)}
                 style={{
-                  padding: "6px",
-                  width: "115px",
+                  padding: "0.375rem",
+                  width: "100%",
                   border: "2px solid #d2d2d3",
-                  borderRadius: "4px",
+                  borderRadius: "0.375rem",
                   color: "#111827",
+                  boxSizing: "border-box",
+                  background: "white",
                 }}
                 inputMode="decimal"
               />
@@ -216,81 +234,80 @@ export default function FairProbabilityCalc({
         )}
 
         {isValid && (
-          <div style={{ color: "#111827" }}>
+          <div style={{ color: "#111827", display: "grid", gap: "0.875rem" }}>
             <div
-                style={{
-                    marginTop: "15px",
-                    padding: "12px",
-                    background: "#eef2ff",
-                    border: "1px solid #c7d2fe",
-                    borderRadius: "6px",
-                }}
+              style={{
+                padding: "0.75rem",
+                background: "#eef2ff",
+                border: "1px solid #c7d2fe",
+                borderRadius: "0.375rem",
+              }}
             >
               <strong>Total implied probability:</strong>{" "}
               {formatPercent(totalImpliedProbability)}
             </div>
 
-            <div style={{
-                    marginTop: "15px",
-                    padding: "12px",
-                    background: "#eef2ff",
-                    border: "1px solid #c7d2fe",
-                    borderRadius: "6px",
-                }}>
+            <div
+              style={{
+                padding: "0.75rem",
+                background: "#eef2ff",
+                border: "1px solid #c7d2fe",
+                borderRadius: "0.375rem",
+              }}
+            >
               <strong>Bookmaker margin:</strong> {formatPercent(margin)}
             </div>
-            
-            <div style={{
-                    marginTop: "15px",
-                    padding: "12px",
-                    background: "#eef2ff",
-                    border: "1px solid #c7d2fe",
-                    borderRadius: "6px",
-                }}>
-                <div style={{ marginBottom: "10px" }}>
-                    <strong>Regular implied probabilities</strong>
-                </div>
-                <div>
-                    <div>Outcome 1: {formatPercent(regularProbabilities[0])}</div>
-                    <div>Outcome 2: {formatPercent(regularProbabilities[1])}</div>
-                    {outcomes === "3" && (
-                        <div>Outcome 3: {formatPercent(regularProbabilities[2])}</div>
-                    )}
-                </div>
+
+            <div
+              style={{
+                padding: "0.75rem",
+                background: "#eef2ff",
+                border: "1px solid #c7d2fe",
+                borderRadius: "0.375rem",
+              }}
+            >
+              <div style={{ marginBottom: "0.625rem" }}>
+                <strong>Regular implied probabilities</strong>
+              </div>
+              <div style={{ display: "grid", gap: "0.25rem" }}>
+                <div>Outcome 1: {formatPercent(regularProbabilities[0])}</div>
+                <div>Outcome 2: {formatPercent(regularProbabilities[1])}</div>
+                {outcomes === "3" && (
+                  <div>Outcome 3: {formatPercent(regularProbabilities[2])}</div>
+                )}
+              </div>
             </div>
-            
-            <div style={{
-                    marginTop: "15px",
-                    padding: "12px",
-                    background: "#eef2ff",
-                    border: "1px solid #c7d2fe",
-                    borderRadius: "6px",
-                }}>
-                <div style={{ marginBottom: "10px" }}>
-                    <strong>No-vig probabilities</strong>
+
+            <div
+              style={{
+                padding: "0.75rem",
+                background: "#eef2ff",
+                border: "1px solid #c7d2fe",
+                borderRadius: "0.375rem",
+              }}
+            >
+              <div style={{ marginBottom: "0.625rem" }}>
+                <strong>No-vig probabilities</strong>
+              </div>
+
+              <div style={{ display: "grid", gap: "0.25rem" }}>
+                <div>
+                  Outcome 1: {formatPercent(fairProbabilities[0])} → fair odds:{" "}
+                  {formatOdds(fairOdds[0])}
                 </div>
 
                 <div>
-                <div>
-                    Outcome 1: {formatPercent(fairProbabilities[0])}
-                    {" "}
-                    → fair odds: {formatOdds(fairOdds[0])}
-                </div>
-
-                <div>
-                    Outcome 2: {formatPercent(fairProbabilities[1])}
-                    {" "}
-                    → fair odds: {formatOdds(fairOdds[1])}
+                  Outcome 2: {formatPercent(fairProbabilities[1])} → fair odds:{" "}
+                  {formatOdds(fairOdds[1])}
                 </div>
 
                 {outcomes === "3" && (
-                    <div>
-                    Outcome 3: {formatPercent(fairProbabilities[2])}
-                    {" "}
-                    → fair odds: {formatOdds(fairOdds[2])}
-                    </div>
+                  <div>
+                    Outcome 3: {formatPercent(fairProbabilities[2])} → fair
+                    odds: {formatOdds(fairOdds[2])}
+                  </div>
                 )}
-                </div>
+              </div>
             </div>
           </div>
         )}

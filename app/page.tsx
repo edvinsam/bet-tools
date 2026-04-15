@@ -44,22 +44,28 @@ export const metadata = {
 
 export default function HomePage() {
   return (
-    <main style={{ padding: "28px 20px 40px 20px" }}>
+    <main
+      style={{
+        width: "100%",
+        boxSizing: "border-box",
+        padding: "1.5rem 1rem 2.5rem",
+      }}
+    >
       <div
         style={{
-          maxWidth: "1000px",
+          width: "min(100%, 70rem)",
           margin: "0 auto",
         }}
       >
-        <section style={{ marginBottom: "36px" }}>
-          <h1 style={{ marginBottom: "12px" }}>
+        <section style={{ marginBottom: "2.25rem" }}>
+          <h1 style={{ marginBottom: "0.75rem" }}>
             Free Betting Calculators and Odds Tools
           </h1>
 
           <p
             style={{
-              maxWidth: "760px",
-              marginBottom: "18px",
+              maxWidth: "48rem",
+              marginBottom: "1.125rem",
             }}
           >
             Use simple, reliable tools to convert odds, calculate implied and
@@ -70,7 +76,7 @@ export default function HomePage() {
           <div
             style={{
               display: "flex",
-              gap: "12px",
+              gap: "0.75rem",
               flexWrap: "wrap",
             }}
           >
@@ -78,8 +84,8 @@ export default function HomePage() {
               href="/calculators/odds-converter"
               style={{
                 display: "inline-block",
-                padding: "10px 14px",
-                borderRadius: "6px",
+                padding: "0.7rem 1rem",
+                borderRadius: "0.5rem",
                 background: "#2563eb",
                 color: "white",
                 textDecoration: "none",
@@ -93,8 +99,8 @@ export default function HomePage() {
               href="/calculators/arbitrage-calculator"
               style={{
                 display: "inline-block",
-                padding: "10px 14px",
-                borderRadius: "6px",
+                padding: "0.7rem 1rem",
+                borderRadius: "0.5rem",
                 border: "2px solid #d2d2d3",
                 background: "white",
                 color: "#111827",
@@ -107,14 +113,14 @@ export default function HomePage() {
           </div>
         </section>
 
-        <section style={{ marginBottom: "40px" }}>
-          <h2 style={{ marginBottom: "14px" }}>Featured Calculators</h2>
+        <section style={{ marginBottom: "2.5rem" }}>
+          <h2 style={{ marginBottom: "0.875rem" }}>Featured Calculators</h2>
 
           <div
             style={{
               display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
-              gap: "16px",
+              gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 16rem), 1fr))",
+              gap: "1rem",
             }}
           >
             {calculators.map((calculator) => (
@@ -124,35 +130,44 @@ export default function HomePage() {
                 style={{
                   display: "block",
                   border: "2px solid #d2d2d3",
-                  borderRadius: "8px",
-                  padding: "18px",
+                  borderRadius: "0.5rem",
+                  padding: "1rem",
                   background: "#f9fafb",
                   textDecoration: "none",
                   color: "#111827",
+                  boxSizing: "border-box",
                 }}
               >
-                <h3 style={{ marginBottom: "10px" }}>{calculator.title}</h3>
+                <h3 style={{ marginBottom: "0.625rem" }}>{calculator.title}</h3>
                 <p style={{ marginBottom: 0 }}>{calculator.description}</p>
               </Link>
             ))}
           </div>
         </section>
 
-        <section style={{ marginBottom: "36px" }}>
-          <h2 style={{ marginBottom: "12px" }}>
+        <section style={{ marginBottom: "2.25rem" }}>
+          <h2 style={{ marginBottom: "0.75rem" }}>
             Why Use These Betting Calculators?
           </h2>
 
-          <ul>
+          <ul style={{ paddingLeft: "1.25rem", margin: 0 }}>
             <li>Fast and easy calculations for common sports betting scenarios</li>
             <li>Clear formulas and transparent outputs</li>
-            <li>Useful for odds comparison, value betting, arbitrage, and bankroll management</li>
-            <li>No signup required — just enter your numbers and get the result instantly</li>
+            <li>
+              Useful for odds comparison, value betting, arbitrage, and bankroll
+              management
+            </li>
+            <li>
+              No signup required — just enter your numbers and get the result
+              instantly
+            </li>
           </ul>
         </section>
 
-        <section style={{ marginBottom: "36px" }}>
-          <h2 style={{ marginBottom: "12px" }}>What Are Betting Calculators?</h2>
+        <section style={{ marginBottom: "2.25rem" }}>
+          <h2 style={{ marginBottom: "0.75rem" }}>
+            What Are Betting Calculators?
+          </h2>
 
           <p>
             Betting calculators help bettors analyze odds, estimate probability,
@@ -170,7 +185,7 @@ export default function HomePage() {
         </section>
 
         <section>
-          <h2 style={{ marginBottom: "12px" }}>Start With the Basics</h2>
+          <h2 style={{ marginBottom: "0.75rem" }}>Start With the Basics</h2>
 
           <p>
             New users usually start with the{" "}

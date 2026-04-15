@@ -29,18 +29,15 @@ export default function OddsConverter({
   const [result, setResult] = useState("");
   const [error, setError] = useState("");
 
-  // Keep local state in sync if the route changes underneath the component
   useEffect(() => {
     setFromOddsType(defaultFrom);
     setToOddsType(defaultTo);
   }, [defaultFrom, defaultTo]);
 
-  // If user lands on a URL with ?value=...
   useEffect(() => {
     setInputValue(searchParams.get("value") ?? "");
   }, [searchParams]);
 
-  // Auto-convert whenever input or selected formats change
   useEffect(() => {
     if (inputValue.trim() === "") {
       setResult("");
@@ -60,7 +57,11 @@ export default function OddsConverter({
     setError("");
   }, [inputValue, fromOddsType, toOddsType]);
 
-  function navigateWithState(nextFrom: OddsType, nextTo: OddsType, nextValue: string) {
+  function navigateWithState(
+    nextFrom: OddsType,
+    nextTo: OddsType,
+    nextValue: string
+  ) {
     const slug = makeSlug(nextFrom, nextTo);
     const params = new URLSearchParams();
 
@@ -78,12 +79,11 @@ export default function OddsConverter({
 
   function handleFromChange(nextFrom: OddsType) {
     if (nextFrom === toOddsType) {
-        // swap
-        setFromOddsType(nextFrom);
-        setToOddsType(fromOddsType);
+      setFromOddsType(nextFrom);
+      setToOddsType(fromOddsType);
 
-        navigateWithState(nextFrom, fromOddsType, inputValue);
-        return;
+      navigateWithState(nextFrom, fromOddsType, inputValue);
+      return;
     }
 
     setFromOddsType(nextFrom);
@@ -92,12 +92,11 @@ export default function OddsConverter({
 
   function handleToChange(nextTo: OddsType) {
     if (nextTo === fromOddsType) {
-        // swap
-        setToOddsType(nextTo);
-        setFromOddsType(toOddsType);
+      setToOddsType(nextTo);
+      setFromOddsType(toOddsType);
 
-        navigateWithState(toOddsType, nextTo, inputValue);
-        return;
+      navigateWithState(toOddsType, nextTo, inputValue);
+      return;
     }
 
     setToOddsType(nextTo);
@@ -118,36 +117,53 @@ export default function OddsConverter({
     const query = params.toString();
     const slug = makeSlug(fromOddsType, toOddsType);
 
-    router.replace(query ? `/calculators/${slug}?${query}` : `/calculators/${slug}`);
+    router.replace(
+      query ? `/calculators/${slug}?${query}` : `/calculators/${slug}`
+    );
   }
 
   return (
-    <div style={{ textAlign: "center" }}>
+    <div style={{ width: "100%" }}>
       <div
         style={{
-          display: "inline-block",
+          display: "block",
+          width: "100%",
           textAlign: "left",
           border: "2px solid #c2c0c0",
           background: "#f9fafb",
-          borderRadius: "8px",
-          padding: "20px",
-          minWidth: "420px",
+          borderRadius: "0.5rem",
+          padding: "1rem",
+          maxWidth: "100%",
+          boxSizing: "border-box",
         }}
       >
         <div
           style={{
             display: "flex",
-            gap: "20px",
+            gap: "1rem",
             alignItems: "flex-start",
             flexWrap: "wrap",
           }}
         >
-          <div>
-            <div style={{ marginBottom: "6px", color: "#111827" }}>Convert from</div>
+          <div style={{ flex: "1 1 16rem", minWidth: 0 }}>
+            <div style={{ marginBottom: "0.375rem", color: "#111827" }}>
+              Convert from
+            </div>
+
             <select
               value={fromOddsType}
               onChange={(e) => handleFromChange(e.target.value as OddsType)}
-              style={{ display: "block", marginBottom: "10px", padding: "6px", color: "#111827" }}
+              style={{
+                display: "block",
+                width: "100%",
+                marginBottom: "0.625rem",
+                padding: "0.375rem",
+                color: "#111827",
+                border: "2px solid #d2d2d3",
+                borderRadius: "0.375rem",
+                background: "white",
+                boxSizing: "border-box",
+              }}
             >
               <option value="decimal">Decimal Odds</option>
               <option value="fractional">Fractional Odds</option>
@@ -163,16 +179,37 @@ export default function OddsConverter({
               placeholder={getPlaceholder(fromOddsType)}
               value={inputValue}
               onChange={(e) => handleInputChange(e.target.value)}
-              style={{ padding: "8px", width: "180px", border: "2px solid #d2d2d3", borderRadius: "4px", color: "#111827" }}
+              style={{
+                padding: "0.5rem",
+                width: "100%",
+                border: "2px solid #d2d2d3",
+                borderRadius: "0.375rem",
+                color: "#111827",
+                background: "white",
+                boxSizing: "border-box",
+              }}
             />
           </div>
 
-          <div>
-            <div style={{ marginBottom: "6px", color: "#111827" }}>To</div>
+          <div style={{ flex: "1 1 16rem", minWidth: 0 }}>
+            <div style={{ marginBottom: "0.375rem", color: "#111827" }}>
+              To
+            </div>
+
             <select
               value={toOddsType}
               onChange={(e) => handleToChange(e.target.value as OddsType)}
-              style={{ display: "block", marginBottom: "10px", padding: "6px", color: "#111827" }}
+              style={{
+                display: "block",
+                width: "100%",
+                marginBottom: "0.625rem",
+                padding: "0.375rem",
+                color: "#111827",
+                border: "2px solid #d2d2d3",
+                borderRadius: "0.375rem",
+                background: "white",
+                boxSizing: "border-box",
+              }}
             >
               <option value="decimal">Decimal Odds</option>
               <option value="fractional">Fractional Odds</option>
@@ -185,7 +222,13 @@ export default function OddsConverter({
           </div>
         </div>
 
-        <div style={{ marginTop: "18px", color: "#545455" }}>
+        <div
+          style={{
+            marginTop: "1rem",
+            color: "#545455",
+            wordBreak: "break-word",
+          }}
+        >
           <strong>
             {labelForOddsType(fromOddsType)} → {labelForOddsType(toOddsType)}:
           </strong>{" "}
@@ -193,7 +236,7 @@ export default function OddsConverter({
         </div>
 
         {error && (
-          <div style={{ marginTop: "10px", color: "red" }}>
+          <div style={{ marginTop: "0.625rem", color: "red" }}>
             {error}
           </div>
         )}
