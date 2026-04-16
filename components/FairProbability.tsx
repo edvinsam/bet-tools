@@ -1,25 +1,9 @@
 "use client";
 
 import { useState } from "react";
+import { convertToDecimal, getPlaceholder, type OddsType } from "@/lib/oddsConverter";
 
 export type outcomeType = "2" | "3";
-
-function normalizeNumberInput(value: string): string {
-  return value.trim().replace(",", ".");
-}
-
-function parseDecimalOdds(value: string): number | null {
-  const normalized = normalizeNumberInput(value);
-  if (normalized === "") return null;
-
-  const num = parseFloat(normalized);
-
-  if (isNaN(num) || num <= 1) {
-    return null;
-  }
-
-  return num;
-}
 
 function formatPercent(value: number): string {
   return `${(value * 100).toFixed(2)}%`;
@@ -29,12 +13,34 @@ function formatOdds(value: number): string {
   return value.toFixed(2).replace(/\.?0+$/, "");
 }
 
+function formatOddsTypeLabel(type: OddsType): string {
+  switch (type) {
+    case "decimal":
+      return "Decimal";
+    case "fractional":
+      return "Fractional";
+    case "american":
+      return "American";
+    case "hongkong":
+      return "Hong Kong";
+    case "malay":
+      return "Malay";
+    case "indonesian":
+      return "Indonesian";
+    case "probability":
+      return "Probability";
+    default:
+      return "Decimal";
+  }
+}
+
 export default function FairProbabilityCalc({
   defaultOutcomes = "2",
 }: {
   defaultOutcomes?: outcomeType;
 }) {
   const [outcomes, setOutcomes] = useState<outcomeType>(defaultOutcomes);
+  const [inputType, setInputType] = useState<OddsType>("decimal");
 
   const [odds1, setOdds1] = useState("");
   const [odds2, setOdds2] = useState("");
@@ -48,9 +54,9 @@ export default function FairProbabilityCalc({
     }
   }
 
-  const parsedOdds1 = parseDecimalOdds(odds1);
-  const parsedOdds2 = parseDecimalOdds(odds2);
-  const parsedOdds3 = outcomes === "3" ? parseDecimalOdds(odds3) : null;
+  const parsedOdds1 = convertToDecimal(odds1, inputType);
+  const parsedOdds2 = convertToDecimal(odds2, inputType);
+  const parsedOdds3 = outcomes === "3" ? convertToDecimal(odds3, inputType) : null;
 
   const validTwoWay = parsedOdds1 !== null && parsedOdds2 !== null;
   const validThreeWay =
@@ -83,6 +89,8 @@ export default function FairProbabilityCalc({
 
     fairOdds = fairProbabilities.map((prob) => 1 / prob);
   }
+
+  const placeholder = getPlaceholder(inputType);
 
   return (
     <div style={{ width: "100%" }}>
@@ -134,6 +142,34 @@ export default function FairProbabilityCalc({
             </select>
           </div>
 
+          <div style={{ flex: "1 1 12rem", minWidth: 0 }}>
+            <div style={{ marginBottom: "0.375rem", color: "#111827" }}>
+              Input odds format
+            </div>
+
+            <select
+              value={inputType}
+              onChange={(e) => setInputType(e.target.value as OddsType)}
+              style={{
+                color: "#111827",
+                width: "100%",
+                padding: "0.375rem",
+                border: "2px solid #d2d2d3",
+                borderRadius: "0.375rem",
+                background: "white",
+                boxSizing: "border-box",
+              }}
+            >
+              <option value="decimal">Decimal</option>
+              <option value="fractional">Fractional</option>
+              <option value="american">American</option>
+              <option value="hongkong">Hong Kong</option>
+              <option value="malay">Malay</option>
+              <option value="indonesian">Indonesian</option>
+              <option value="probability">Probability</option>
+            </select>
+          </div>
+
           <button
             onClick={() => {
               setOdds1("");
@@ -171,6 +207,7 @@ export default function FairProbabilityCalc({
             <input
               value={odds1}
               onChange={(e) => setOdds1(e.target.value)}
+              placeholder={placeholder}
               style={{
                 padding: "0.375rem",
                 width: "100%",
@@ -191,6 +228,7 @@ export default function FairProbabilityCalc({
             <input
               value={odds2}
               onChange={(e) => setOdds2(e.target.value)}
+              placeholder={placeholder}
               style={{
                 padding: "0.375rem",
                 width: "100%",
@@ -212,6 +250,7 @@ export default function FairProbabilityCalc({
               <input
                 value={odds3}
                 onChange={(e) => setOdds3(e.target.value)}
+                placeholder={placeholder}
                 style={{
                   padding: "0.375rem",
                   width: "100%",
@@ -229,7 +268,7 @@ export default function FairProbabilityCalc({
 
         {!isValid && (
           <div style={{ color: "#6b7280", textAlign: "center" }}>
-            Enter valid decimal odds for all outcomes.
+            Enter valid {formatOddsTypeLabel(inputType).toLowerCase()} odds for all outcomes.
           </div>
         )}
 
@@ -287,7 +326,7 @@ export default function FairProbabilityCalc({
               }}
             >
               <div style={{ marginBottom: "0.625rem" }}>
-                <strong>No-vig probabilities</strong>
+                <strong>No-vig probabilities and fair decimal odds</strong>
               </div>
 
               <div style={{ display: "grid", gap: "0.25rem" }}>
