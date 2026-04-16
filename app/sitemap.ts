@@ -1,63 +1,59 @@
 import type { MetadataRoute } from "next";
 import { oddsTypes, makeSlug } from "@/lib/oddsRoutes";
 
-const baseUrl = "https://yourdomain.com";
+const baseUrl = "https://bet-tools.com";
 
 export default function sitemap(): MetadataRoute.Sitemap {
+  const now = new Date();
+
   const staticPages: MetadataRoute.Sitemap = [
     {
-      url: `${baseUrl}`,
-      lastModified: new Date(),
+      url: baseUrl,
+      lastModified: now,
       changeFrequency: "weekly",
       priority: 1,
     },
     {
       url: `${baseUrl}/about`,
-      lastModified: new Date(),
+      lastModified: now,
       changeFrequency: "monthly",
       priority: 0.5,
     },
     {
-      url: `${baseUrl}/privacy`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.3,
-    },
-    {
       url: `${baseUrl}/contact`,
-      lastModified: new Date(),
+      lastModified: now,
       changeFrequency: "monthly",
       priority: 0.4,
     },
     {
+      url: `${baseUrl}/privacy`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.3,
+    },
+    {
       url: `${baseUrl}/calculators/odds-converter`,
-      lastModified: new Date(),
+      lastModified: now,
       changeFrequency: "weekly",
       priority: 0.9,
     },
     {
       url: `${baseUrl}/calculators/fair-probability`,
-      lastModified: new Date(),
+      lastModified: now,
       changeFrequency: "weekly",
       priority: 0.8,
     },
     {
       url: `${baseUrl}/calculators/arbitrage-calculator`,
-      lastModified: new Date(),
+      lastModified: now,
       changeFrequency: "weekly",
       priority: 0.8,
     },
     {
-      url: `${baseUrl}/calculators/ev-calculator`,
-      lastModified: new Date(),
+      url: `${baseUrl}/compare-bookmakers`,
+      lastModified: now,
       changeFrequency: "weekly",
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/calculators/kelly-calculator`,
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 0.7,
+      priority: 0.8,
     },
   ];
 
@@ -69,7 +65,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
       converterPages.push({
         url: `${baseUrl}/calculators/${makeSlug(from, to)}`,
-        lastModified: new Date(),
+        lastModified: now,
         changeFrequency: "monthly",
         priority: 0.6,
       });

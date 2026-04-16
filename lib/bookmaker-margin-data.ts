@@ -101,6 +101,21 @@ export const bookmakerMarginData: RegionalBookmakerRow[] = [
   { bookmaker_id: "thescore_bet", bookmaker_key: "thescorebet", bookmaker_title: "theScore Bet", region: "us", samples: 6, average_margin_percent: 6.896 },
 
   /*
+  { bookmaker_id: "betano", bookmaker_key: "betano", bookmaker_title: "Betano", region: "latam", samples: 5, average_margin_percent: 5.64 },
+  { bookmaker_id: "betano", bookmaker_key: "betano", bookmaker_title: "Betano", region: "canada", samples: 5, average_margin_percent: 5.64 },
+  { bookmaker_id: "betano", bookmaker_key: "betano", bookmaker_title: "Betano", region: "germany", samples: 5, average_margin_percent: 5.64 },
+  { bookmaker_id: "betano", bookmaker_key: "betano", bookmaker_title: "Betano", region: "brazil", samples: 5, average_margin_percent: 5.64 },
+  { bookmaker_id: "betano", bookmaker_key: "betano", bookmaker_title: "Betano", region: "portugal", samples: 5, average_margin_percent: 5.64 },
+  { bookmaker_id: "betano", bookmaker_key: "betano", bookmaker_title: "Betano", region: "chile", samples: 5, average_margin_percent: 5.64 },
+  { bookmaker_id: "betano", bookmaker_key: "betano", bookmaker_title: "Betano", region: "czech republic", samples: 5, average_margin_percent: 5.64 },
+  { bookmaker_id: "betano", bookmaker_key: "betano", bookmaker_title: "Betano", region: "peru", samples: 5, average_margin_percent: 5.64 },
+  { bookmaker_id: "betano", bookmaker_key: "betano", bookmaker_title: "Betano", region: "ecuador", samples: 5, average_margin_percent: 5.64 },
+  { bookmaker_id: "betano", bookmaker_key: "betano", bookmaker_title: "Betano", region: "nigeria", samples: 5, average_margin_percent: 5.64 },
+  { bookmaker_id: "betano", bookmaker_key: "betano", bookmaker_title: "Betano", region: "romania", samples: 5, average_margin_percent: 5.64 },
+  { bookmaker_id: "betano", bookmaker_key: "betano", bookmaker_title: "Betano", region: "bulgaria", samples: 5, average_margin_percent: 5.64 },
+  { bookmaker_id: "betano", bookmaker_key: "betano", bookmaker_title: "Betano", region: "uk", samples: 5, average_margin_percent: 5.64 }
+  */
+  /*
     LATAM
     Betano
     Betano Brazil
