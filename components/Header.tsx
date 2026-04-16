@@ -32,24 +32,17 @@ export default function Header() {
           </Link>
 
           <Link
-            href="/calculators/odds-converter"
+            href="/calculators"
             className="text-[#111827] no-underline hover:underline"
           >
-            Odds Converter
+            Calculators
           </Link>
 
           <Link
-            href="/calculators/fair-probability"
+            href="/compare-bookmakers"
             className="text-[#111827] no-underline hover:underline"
           >
-            Fair Probability
-          </Link>
-
-          <Link
-            href="/calculators/arbitrage-calculator"
-            className="text-[#111827] no-underline hover:underline"
-          >
-            Arbitrage Calculator
+            Compare Bookmakers
           </Link>
         </nav>
       </div>

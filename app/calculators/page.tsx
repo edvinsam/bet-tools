@@ -20,12 +20,6 @@ const calculators = [
     description:
       "Check whether a set of odds creates a surebet opportunity and calculate the optimal stake split.",
   },
-  {
-    title: "Kelly Calculator",
-    href: "/calculators/kelly-calculator",
-    description:
-      "Calculate optimal stake sizing using the Kelly Criterion based on your edge and bankroll.",
-  },
 ];
 
 export const metadata = {
@@ -163,14 +157,7 @@ export default function CalculatorsPage() {
               >
                 Arbitrage Calculator
               </Link>{" "}
-              and{" "}
-              <Link
-                href="/calculators/kelly-calculator"
-                className="font-medium text-slate-900 underline underline-offset-2"
-              >
-                Kelly Calculator
-              </Link>{" "}
-              are more useful once you are comparing opportunities and thinking
+              is more useful once you are comparing opportunities and thinking
               about execution.
             </p>
           </div>
