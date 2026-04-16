@@ -235,8 +235,7 @@ export default function BookmakerComparisonPage({ data = bookmakerMarginData }: 
               <div>
                 <h2 className="text-xl font-semibold text-slate-900">Rankings</h2>
                 <p className="mt-1 text-sm text-slate-600">
-                  Select a region to see local rankings, or choose all regions to merge the same
-                  bookmaker across markets like Betfair.
+                  Select a region to see local rankings, or choose all regions to view the top bookmakers internationally.
                 </p>
               </div>
 
@@ -322,11 +321,6 @@ export default function BookmakerComparisonPage({ data = bookmakerMarginData }: 
 
                         <td className="border-b border-slate-100 px-4 py-4 sm:px-6">
                           <div className="font-medium text-slate-900">{row.bookmaker_title}</div>
-                          <div className="mt-1 text-xs text-slate-500">
-                            {selectedRegion === "all"
-                              ? row.bookmaker_keys.join(", ")
-                              : row.bookmaker_keys[0]}
-                          </div>
                         </td>
 
                         <td className="border-b border-slate-100 px-4 py-4 sm:px-6">

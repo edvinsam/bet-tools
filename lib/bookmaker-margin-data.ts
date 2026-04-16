@@ -99,4 +99,140 @@ export const bookmakerMarginData: RegionalBookmakerRow[] = [
   { bookmaker_id: "bally_bet", bookmaker_key: "ballybet", bookmaker_title: "Bally Bet", region: "us", samples: 6, average_margin_percent: 5.346 },
   { bookmaker_id: "betparx", bookmaker_key: "betparx", bookmaker_title: "betPARX", region: "us", samples: 6, average_margin_percent: 5.346 },
   { bookmaker_id: "thescore_bet", bookmaker_key: "thescorebet", bookmaker_title: "theScore Bet", region: "us", samples: 6, average_margin_percent: 6.896 },
+
+  /*
+    LATAM
+    Betano
+    Betano Brazil
+    Betano Mexico
+    Betano Peru
+    Betano Argentina
+    Betano Colombia
+
+    Betsson Brazil
+    Betsson Argentina
+    Betsson Peru
+    Betsson Colombia
+    Betsson Chile
+
+    Codere Mexico
+    Codere Spain
+    Codere Argentina
+
+    Betplay
+    RushBet
+    Caliente
+    Betcris
+    Betwarrior
+
+    Betmotion
+    Estelarbet
+    Doradobet
+    Betfair Brazil
+    Betfair Mexico
+    Betfair Argentina
+    Sportium
+    Inkabet
+    Apuesta Total
+  */
+
+  /*
+    ASIA
+    SBOBET
+    188BET
+    12BET
+    Dafabet
+    M88
+    W88
+    Fun88
+    BK8
+    Maxbet
+
+    JBO
+    Cmd368
+    Sbobet88
+    Betway Asia
+    Bet365 Asia
+    Betfair Asia
+    1xBet Asia
+    Betwinner
+    Melbet
+    Parimatch Asia
+  */
+
+  /*
+    AFRICA
+    SportyBet
+    Bet9ja
+    BetKing
+    Betika
+    Mozzart Bet
+    Betway Nigeria
+    Betway Kenya
+    Betway Ghana
+
+    1xBet Nigeria
+    1xBet Kenya
+    BangBet
+    NairaBet
+    22Bet Africa
+    Premier Bet
+    Hollywoodbets
+  */
+
+  /*
+    EUROPE
+    Bet365
+    Bwin
+    Interwetten
+    Bet-at-home
+    Superbet
+    Betano Romania
+    Betano Greece
+    Betano Portugal
+
+    ComeOn
+    Betinia
+    Paf
+    SpeedyBet
+    Snabbare
+    NoAccountBet
+    Sportium
+  */
+
+  /*
+    UNITED KINGDOM
+    SBK
+    QuinnBet
+    Midnite
+    Planet Sport Bet
+    BetUK
+    Spreadex
+    Sporting Index
+    Betdaq
+  */
+
+  /*
+    UNITED STATES
+    ESPN BET
+    Fanatics Sportsbook
+    WynnBET
+    SuperBook
+    SI Sportsbook
+    TwinSpires
+    Betfred US
+    PointsBet US
+    Unibet US
+  */
+
+  /*
+    GLOBAL
+    AsianConnect
+    Orbit Exchange
+    BetInAsia
+    Sportmarket
+    Premium Tradings
+    Sharpbook
+    ISN
+  */
 ];
