@@ -1,6 +1,8 @@
 import OddsConverter from "@/components/OddsConverter";
 import { Suspense } from "react";
 import Breadcrumbs from "@/components/Breadcrumbs";
+import Link from "next/link";
+import AllOddsConversions from "@/components/AllOddsConversions";
 
 export const metadata = {
   title: "Odds Converter",
@@ -139,49 +141,50 @@ export default function OddsConverterPage() {
               marginTop: "0.75rem",
             }}
           >
-            <a
+            <Link
               href="/calculators/decimal-to-american-odds-converter"
               style={{ color: "#2563eb", whiteSpace: "nowrap" }}
             >
               Decimal to American
-            </a>
+            </Link>
 
-            <a
+            <Link
               href="/calculators/american-to-decimal-odds-converter"
               style={{ color: "#2563eb", whiteSpace: "nowrap" }}
             >
               American to Decimal
-            </a>
+            </Link>
 
-            <a
+            <Link
               href="/calculators/decimal-to-fractional-odds-converter"
               style={{ color: "#2563eb", whiteSpace: "nowrap" }}
             >
               Decimal to Fractional
-            </a>
+            </Link>
 
-            <a
+            <Link
               href="/calculators/fractional-to-decimal-odds-converter"
               style={{ color: "#2563eb", whiteSpace: "nowrap" }}
             >
               Fractional to Decimal
-            </a>
+            </Link>
 
-            <a
+            <Link
               href="/calculators/decimal-to-probability-odds-converter"
               style={{ color: "#2563eb", whiteSpace: "nowrap" }}
             >
               Decimal to Probability
-            </a>
+            </Link>
 
-            <a
+            <Link
               href="/calculators/probability-to-decimal-odds-converter"
               style={{ color: "#2563eb", whiteSpace: "nowrap" }}
             >
               Probability to Decimal
-            </a>
+            </Link>
           </div>
         </section>
+        <AllOddsConversions />
       </div>
     </main>
   );

@@ -5,7 +5,7 @@ export const metadata = {
   description:
     "Learn more about this betting calculator site and the tools it provides for odds conversion, probability, arbitrage, and value betting.",
   alternates: {
-    canonical: "https://yourdomain.com/about",
+    canonical: "https://bet-tools.com/about",
   },
 };
 
