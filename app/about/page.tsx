@@ -1,3 +1,5 @@
+import Breadcrumbs from "@/components/Breadcrumbs";
+
 export const metadata = {
   title: "About",
   description:
@@ -11,6 +13,12 @@ export default function AboutPage() {
   return (
     <main style={{ padding: "20px" }}>
       <div style={{ maxWidth: "700px", margin: "0 auto" }}>
+        <Breadcrumbs
+          items={[
+            { label: "Home", href: "/" },
+            { label: "About" }
+          ]}
+        />
         <h1>About This Site</h1>
 
         <p>

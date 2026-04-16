@@ -1,5 +1,6 @@
 import FairProbabilityCalc from "@/components/FairProbability";
 import "../../globals.css";
+import Breadcrumbs from "@/components/Breadcrumbs";
 
 export const metadata = {
   title: "Fair Probability Calculator",
@@ -25,6 +26,13 @@ export default function FairProbability() {
           margin: "0 auto",
         }}
       >
+        <Breadcrumbs
+          items={[
+            { label: "Home", href: "/" },
+            { label: "Calculators", href: "/calculators" },
+            { label: "Fair Probability" }
+          ]}
+        />
         <h1
           style={{
             textAlign: "center",

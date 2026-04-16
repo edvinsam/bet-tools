@@ -1,3 +1,5 @@
+import Breadcrumbs from "@/components/Breadcrumbs";
+
 export const metadata = {
   title: "Privacy Policy",
   description:
@@ -22,6 +24,12 @@ export default function PrivacyPage() {
           margin: "0 auto",
         }}
       >
+        <Breadcrumbs
+          items={[
+            { label: "Home", href: "/" },
+            { label: "Privacy" }
+          ]}
+        />
         <h1 style={{ marginBottom: "1rem" }}>
           Privacy Policy
         </h1>

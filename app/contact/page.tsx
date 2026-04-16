@@ -1,3 +1,5 @@
+import Breadcrumbs from "@/components/Breadcrumbs";
+
 export const metadata = {
   title: "Contact",
   description:
@@ -22,6 +24,12 @@ export default function ContactPage() {
           margin: "0 auto",
         }}
       >
+        <Breadcrumbs
+          items={[
+            { label: "Home", href: "/" },
+            { label: "Contact" }
+          ]}
+        />
         <h1 style={{ marginBottom: "1rem" }}>Contact</h1>
 
         <p>
@@ -36,8 +44,8 @@ export default function ContactPage() {
         </p>
 
         <p>
-          <a href="mailto:contact@yoursite.com">
-            contact@yoursite.com
+          <a href="mailto:contact@bet-tools.com">
+            contact@bet-tools.com
           </a>
         </p>
 

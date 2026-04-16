@@ -4,6 +4,7 @@ import { oddsContent, type ConversionContent } from "@/lib/oddsContent";
 import { notFound } from "next/navigation";
 import "../../globals.css";
 import { Suspense } from "react";
+import Breadcrumbs from "@/components/Breadcrumbs";
 
 type PageProps = {
   params: {
@@ -98,6 +99,13 @@ export default async function CalculatorPage({ params }: PageProps) {
           margin: "0 auto",
         }}
       >
+        <Breadcrumbs
+          items={[
+            { label: "Home", href: "/" },
+            { label: "Calculators", href: "/calculators" },
+            { label: "Odds Converter" }
+          ]}
+        />
         <h1
           style={{
             textAlign: "center",

@@ -1,5 +1,6 @@
 import OddsConverter from "@/components/OddsConverter";
 import { Suspense } from "react";
+import Breadcrumbs from "@/components/Breadcrumbs";
 
 export const metadata = {
   title: "Odds Converter",
@@ -25,6 +26,13 @@ export default function OddsConverterPage() {
           margin: "0 auto",
         }}
       >
+        <Breadcrumbs
+                  items={[
+                    { label: "Home", href: "/" },
+                    { label: "Calculators", href: "/calculators" },
+                    { label: "Odds Converter" }
+                  ]}
+                />
         <h1
           style={{
             textAlign: "center",

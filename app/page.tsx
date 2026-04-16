@@ -114,6 +114,72 @@ export default function HomePage() {
         </section>
 
         <section style={{ marginBottom: "2.5rem" }}>
+          <div
+            style={{
+              border: "2px solid #d2d2d3",
+              borderRadius: "0.75rem",
+              padding: "1.25rem",
+              background: "#f9fafb",
+              boxSizing: "border-box",
+            }}
+          >
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                gap: "1rem",
+              }}
+            >
+              <div style={{ maxWidth: "48rem" }}>
+                <h2 style={{ marginBottom: "0.625rem" }}>Compare Bookmaker Margins</h2>
+                <p style={{ margin: 0 }}>
+                  See which bookmakers offer the lowest average margins across major football
+                  markets. Lower margins generally mean better prices and less expected value
+                  lost to the house over time.
+                </p>
+              </div>
+
+              <div
+                style={{
+                  display: "flex",
+                  gap: "0.75rem",
+                  flexWrap: "wrap",
+                  alignItems: "center",
+                  justifyContent: "space-between",
+                }}
+              >
+                <p
+                  style={{
+                    margin: 0,
+                    color: "#4b5563",
+                    maxWidth: "40rem",
+                  }}
+                >
+                  View region-specific rankings and compare which betting sites are actually
+                  cheapest to bet on.
+                </p>
+
+                <Link
+                  href="/compare-bookmakers"
+                  style={{
+                    display: "inline-block",
+                    padding: "0.7rem 1rem",
+                    borderRadius: "0.5rem",
+                    background: "#2563eb",
+                    color: "white",
+                    textDecoration: "none",
+                    fontWeight: 600,
+                    whiteSpace: "nowrap",
+                  }}
+                >
+                  Compare bookmakers
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section style={{ marginBottom: "2.5rem" }}>
           <h2 style={{ marginBottom: "0.875rem" }}>Featured Calculators</h2>
 
           <div

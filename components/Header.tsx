@@ -7,7 +7,7 @@ export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <header className="bg-[#e8e8e8] text-[#111827] border-b-[8px] border-b-[#2563eb]">
+    <header className="bg-[#e8e8e8] text-[#111827] border-b-8 border-b-[#2563eb]">
       <div className="mx-auto flex w-full max-w-5xl items-center justify-between gap-4 px-4 py-4">
         <Link
           href="/"

@@ -5,6 +5,7 @@ import ArbitrageCalculator from "@/components/ArbitrageCalculator";
 import type { CurrencyCode } from "@/lib/currency";
 import { formatMoney } from "@/lib/currency";
 import "@/app/globals.css";
+import Breadcrumbs from "./Breadcrumbs";
 
 export default function ArbitrageCalculatorPageContent() {
   const [currency, setCurrency] = useState<CurrencyCode>("USD");
@@ -23,6 +24,13 @@ export default function ArbitrageCalculatorPageContent() {
           margin: "0 auto",
         }}
       >
+        <Breadcrumbs
+          items={[
+            { label: "Home", href: "/" },
+            { label: "Calculators", href: "/calculators" },
+            { label: "Arbitrage Calculator" }
+          ]}
+        />
         <h1
           style={{
             marginBottom: "1rem",
