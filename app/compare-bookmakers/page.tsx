@@ -284,9 +284,6 @@ export default function BookmakerComparisonPage({ data = bookmakerMarginData }: 
                     Regions
                   </th>
                   <th className="border-b border-slate-200 bg-slate-50 px-4 py-3 text-right text-xs font-semibold uppercase tracking-wide text-slate-500 sm:px-6">
-                    Samples
-                  </th>
-                  <th className="border-b border-slate-200 bg-slate-50 px-4 py-3 text-right text-xs font-semibold uppercase tracking-wide text-slate-500 sm:px-6">
                     Avg margin
                   </th>
                 </tr>
@@ -336,10 +333,6 @@ export default function BookmakerComparisonPage({ data = bookmakerMarginData }: 
                               </span>
                             ))}
                           </div>
-                        </td>
-
-                        <td className="border-b border-slate-100 px-4 py-4 text-right text-sm text-slate-600 sm:px-6">
-                          {row.samples}
                         </td>
 
                         <td className="border-b border-slate-100 px-4 py-4 text-right sm:px-6">
