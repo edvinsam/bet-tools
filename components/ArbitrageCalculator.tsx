@@ -4,6 +4,12 @@ import { useEffect, useMemo, useState } from "react";
 import { formatMoney, currencyOptions, type CurrencyCode } from "@/lib/currency";
 import type { StylesConfig } from "react-select";
 import Select from "react-select";
+import {
+  convertToDecimal,
+  convertFromDecimal,
+  getPlaceholder,
+  type OddsType,
+} from "@/lib/oddsConverter";
 
 type OutcomeRow = {
   odds: string;
@@ -17,6 +23,10 @@ type CurrencyOption = {
 
 function normalizeNumberInput(value: string): string {
   return value.trim().replace(",", ".");
+}
+
+function formatAdjustedOddsForDisplay(decimalOdds: number, type: OddsType): string {
+  return convertFromDecimal(decimalOdds, type);
 }
 
 const selectStyles: StylesConfig<CurrencyOption, false> = {
@@ -103,12 +113,6 @@ function parsePositiveNumber(value: string): number | null {
   return num;
 }
 
-function parseDecimalOdds(value: string): number | null {
-  const num = parsePositiveNumber(value);
-  if (num === null || num <= 1) return null;
-  return num;
-}
-
 function parseCommissionPercent(value: string): number | null {
   const normalized = normalizeNumberInput(value);
   if (normalized === "") return 0;
@@ -134,6 +138,27 @@ function makeEmptyRows(count: number): OutcomeRow[] {
   }));
 }
 
+function formatOddsTypeLabel(type: OddsType): string {
+  switch (type) {
+    case "decimal":
+      return "Decimal";
+    case "fractional":
+      return "Fractional";
+    case "american":
+      return "American";
+    case "hongkong":
+      return "Hong Kong";
+    case "malay":
+      return "Malay";
+    case "indonesian":
+      return "Indonesian";
+    case "probability":
+      return "Probability";
+    default:
+      return "Decimal";
+  }
+}
+
 export default function ArbitrageCalculator({
   defaultOutcomeCount = 2,
   defaultStake = "100",
@@ -151,6 +176,7 @@ export default function ArbitrageCalculator({
   const [rows, setRows] = useState<OutcomeRow[]>(makeEmptyRows(safeDefaultCount));
   const [totalStake, setTotalStake] = useState<string>(defaultStake);
   const [showCommissions, setShowCommissions] = useState<boolean>(false);
+  const [inputType, setInputType] = useState<OddsType>("decimal");
 
   useEffect(() => {
     setRows((prev) => {
@@ -180,21 +206,24 @@ export default function ArbitrageCalculator({
     setOutcomeCount(2);
     setRows(makeEmptyRows(2));
     setTotalStake("100");
-    setShowCommissions(true);
+    setShowCommissions(false);
+    setInputType("decimal");
   }
+
+  const oddsPlaceholder = getPlaceholder(inputType);
 
   const calculation = useMemo(() => {
     const parsedStake = parsePositiveNumber(totalStake);
 
     const parsedRows = rows.map((row) => {
-      const odds = parseDecimalOdds(row.odds);
+      const rawOdds = convertToDecimal(row.odds, inputType);
       const commissionPercent = showCommissions
         ? parseCommissionPercent(row.commission)
         : 0;
 
-      if (odds === null || commissionPercent === null) {
+      if (rawOdds === null || commissionPercent === null) {
         return {
-          rawOdds: odds,
+          rawOdds,
           commissionPercent,
           adjustedOdds: null as number | null,
           impliedProbability: null as number | null,
@@ -202,11 +231,11 @@ export default function ArbitrageCalculator({
       }
 
       const adjustedOdds =
-        1 + (odds - 1) * (1 - commissionPercent / 100);
+        1 + (rawOdds - 1) * (1 - commissionPercent / 100);
 
       if (adjustedOdds <= 1) {
         return {
-          rawOdds: odds,
+          rawOdds,
           commissionPercent,
           adjustedOdds: null,
           impliedProbability: null,
@@ -214,7 +243,7 @@ export default function ArbitrageCalculator({
       }
 
       return {
-        rawOdds: odds,
+        rawOdds,
         commissionPercent,
         adjustedOdds,
         impliedProbability: 1 / adjustedOdds,
@@ -287,7 +316,7 @@ export default function ArbitrageCalculator({
       guaranteedProfit,
       roiPercent,
     };
-  }, [rows, totalStake, showCommissions]);
+  }, [rows, totalStake, showCommissions, inputType]);
 
   return (
     <div style={{ width: "100%" }}>
@@ -345,6 +374,33 @@ export default function ArbitrageCalculator({
                 <option value={4}>4-way</option>
                 <option value={5}>5-way</option>
                 <option value={6}>6-way</option>
+              </select>
+            </div>
+
+            <div style={{ flex: "1 1 12rem", minWidth: 0 }}>
+              <div style={{ marginBottom: "0.375rem", color: "#111827" }}>
+                Input odds format
+              </div>
+              <select
+                value={inputType}
+                onChange={(e) => setInputType(e.target.value as OddsType)}
+                style={{
+                  color: "#111827",
+                  padding: "0.375rem",
+                  width: "100%",
+                  boxSizing: "border-box",
+                  border: "2px solid #d2d2d3",
+                  borderRadius: "0.375rem",
+                  background: "white",
+                }}
+              >
+                <option value="decimal">Decimal</option>
+                <option value="fractional">Fractional</option>
+                <option value="american">American</option>
+                <option value="hongkong">Hong Kong</option>
+                <option value="malay">Malay</option>
+                <option value="indonesian">Indonesian</option>
+                <option value="probability">Probability</option>
               </select>
             </div>
 
@@ -436,15 +492,19 @@ export default function ArbitrageCalculator({
             <thead>
               <tr style={{ borderBottom: "1px solid #d2d2d3" }}>
                 <th style={{ textAlign: "left", padding: "0.5rem" }}>Outcome</th>
-                <th style={{ textAlign: "left", padding: "0.5rem" }}>Odds</th>
+                <th style={{ textAlign: "left", padding: "0.5rem" }}>
+                  Odds ({formatOddsTypeLabel(inputType)})
+                </th>
                 {showCommissions && (
                   <th style={{ textAlign: "left", padding: "0.5rem" }}>
                     Commission %
                   </th>
                 )}
-                <th style={{ textAlign: "left", padding: "0.5rem" }}>
-                  Adjusted odds
-                </th>
+                {showCommissions && (
+                  <th style={{ textAlign: "left", padding: "0.5rem" }}>
+                    Adjusted odds ({formatOddsTypeLabel(inputType)})
+                  </th>
+                )}
                 <th style={{ textAlign: "left", padding: "0.5rem" }}>Stake</th>
                 <th style={{ textAlign: "left", padding: "0.5rem" }}>Payout</th>
                 <th style={{ textAlign: "left", padding: "0.5rem" }}>Profit</th>
@@ -469,6 +529,7 @@ export default function ArbitrageCalculator({
                           updateRow(index, "odds", e.target.value)
                         }
                         inputMode="decimal"
+                        placeholder={oddsPlaceholder}
                         style={{
                           padding: "0.375rem",
                           width: "100%",
@@ -504,12 +565,14 @@ export default function ArbitrageCalculator({
                       </td>
                     )}
 
-                    <td style={{ padding: "0.5rem" }}>
-                      {calcRow?.adjustedOdds !== null &&
-                      calcRow?.adjustedOdds !== undefined
-                        ? formatNumber(calcRow.adjustedOdds, 2)
-                        : "—"}
-                    </td>
+                    {showCommissions && (
+                      <td style={{ padding: "0.5rem" }}>
+                        {calcRow?.adjustedOdds !== null &&
+                        calcRow?.adjustedOdds !== undefined
+                          ? formatAdjustedOddsForDisplay(calcRow.adjustedOdds, inputType)
+                          : "—"}
+                      </td>
+                    )}
 
                     <td style={{ padding: "0.5rem" }}>
                       {calculation.isValid
@@ -537,7 +600,7 @@ export default function ArbitrageCalculator({
 
         {!calculation.isValid && (
           <div style={{ color: "#6b7280" }}>
-            Enter valid decimal odds greater than 1 for all outcomes and a valid
+            Enter valid {formatOddsTypeLabel(inputType).toLowerCase()} odds for all outcomes and a valid
             total stake greater than 0.
           </div>
         )}
