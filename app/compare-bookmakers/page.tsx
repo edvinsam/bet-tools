@@ -3,14 +3,20 @@
 import { useMemo, useState } from "react";
 import Link from "next/link";
 import { ChevronRight, Search, Trophy, Filter, Globe, Info } from "lucide-react";
-import { bookmakerMarginData, type Region, type RegionalBookmakerRow } from "@/lib/bookmaker-margin-data";
+import { bookmakerMarginData, type Market, type RegionalBookmakerRow } from "@/lib/bookmaker-margin-data";
+import {
+  bookmakerRegions,
+  bookmakerRegionOptions,
+  type BookmakerRegion,
+} from "@/lib/bookmaker-regions";
 import Breadcrumbs from "@/components/Breadcrumbs";
 
 type ComparisonRow = {
   bookmaker_id: string;
   bookmaker_title: string;
   bookmaker_keys: string[];
-  regions: Exclude<Region, "all">[];
+  markets: Exclude<Market, "all">[];
+  bookmaker_regions: BookmakerRegion[];
   samples: number;
   average_margin_percent: number;
 };
@@ -19,22 +25,20 @@ type ComparisonPageProps = {
   data?: RegionalBookmakerRow[];
 };
 
-const regionOptions: { value: Region; label: string }[] = [
+const regionOptions: { value: "all" | BookmakerRegion; label: string }[] = [
   { value: "all", label: "All regions" },
-  { value: "us", label: "US" },
-  { value: "uk", label: "UK" },
-  { value: "eu", label: "EU" },
-  { value: "fr", label: "France" },
-  { value: "se", label: "Sweden" },
-  { value: "au", label: "Australia" },
+  ...bookmakerRegionOptions.map((region) => ({
+    value: region,
+    label: region,
+  })),
 ];
 
 function formatMargin(value: number) {
   return `${value.toFixed(2)}%`;
 }
 
-function formatRegion(region: Exclude<Region, "all">) {
-  const map: Record<Exclude<Region, "all">, string> = {
+function formatMarket(market: Exclude<Market, "all">) {
+  const map: Record<Exclude<Market, "all">, string> = {
     us: "US",
     uk: "UK",
     eu: "EU",
@@ -43,11 +47,11 @@ function formatRegion(region: Exclude<Region, "all">) {
     au: "Australia",
   };
 
-  return map[region];
+  return map[market];
 }
 
-function getRegionBadgeClasses(region: Exclude<Region, "all">) {
-  const styles: Record<Exclude<Region, "all">, string> = {
+function getMarketBadgeClasses(market: Exclude<Market, "all">) {
+  const styles: Record<Exclude<Market, "all">, string> = {
     us: "bg-blue-50 text-blue-700 ring-blue-600/20",
     uk: "bg-red-50 text-red-700 ring-red-600/20",
     eu: "bg-emerald-50 text-emerald-700 ring-emerald-600/20",
@@ -56,7 +60,7 @@ function getRegionBadgeClasses(region: Exclude<Region, "all">) {
     au: "bg-cyan-50 text-cyan-700 ring-cyan-600/20",
   };
 
-  return styles[region];
+  return styles[market];
 }
 
 function mergeRows(rows: RegionalBookmakerRow[]): ComparisonRow[] {
@@ -64,13 +68,15 @@ function mergeRows(rows: RegionalBookmakerRow[]): ComparisonRow[] {
 
   for (const row of rows) {
     const existing = map.get(row.bookmaker_id);
+    const mappedRegions = bookmakerRegions[row.bookmaker_id] ?? [];
 
     if (!existing) {
       map.set(row.bookmaker_id, {
         bookmaker_id: row.bookmaker_id,
         bookmaker_title: row.bookmaker_title,
         bookmaker_keys: [row.bookmaker_key],
-        regions: [row.region],
+        markets: [row.market],
+        bookmaker_regions: mappedRegions,
         samples: row.samples,
         average_margin_percent: row.average_margin_percent,
       });
@@ -90,39 +96,29 @@ function mergeRows(rows: RegionalBookmakerRow[]): ComparisonRow[] {
       existing.bookmaker_keys.push(row.bookmaker_key);
     }
 
-    if (!existing.regions.includes(row.region)) {
-      existing.regions.push(row.region);
+    if (!existing.markets.includes(row.market)) {
+      existing.markets.push(row.market);
     }
   }
 
   return Array.from(map.values()).map((row) => ({
     ...row,
-    regions: [...row.regions].sort(),
+    markets: [...row.markets].sort(),
   }));
 }
 
 export default function BookmakerComparisonPage({ data = bookmakerMarginData }: ComparisonPageProps) {
-  const [selectedRegion, setSelectedRegion] = useState<Region>("all");
-  const [search, setSearch] = useState("");
+  const [selectedRegion, setSelectedRegion] = useState<"all" | BookmakerRegion>("all");  const [search, setSearch] = useState("");
 
   const filteredRows = useMemo(() => {
     const normalizedSearch = search.trim().toLowerCase();
+    const mergedRows = mergeRows(data);
 
-    const baseRows: ComparisonRow[] =
-      selectedRegion === "all"
-        ? mergeRows(data)
-        : data
-            .filter((row) => row.region === selectedRegion)
-            .map((row) => ({
-              bookmaker_id: row.bookmaker_id,
-              bookmaker_title: row.bookmaker_title,
-              bookmaker_keys: [row.bookmaker_key],
-              regions: [row.region],
-              samples: row.samples,
-              average_margin_percent: row.average_margin_percent,
-            }));
-
-    return baseRows
+    return mergedRows
+      .filter((row) => {
+        if (selectedRegion === "all") return true;
+        return row.bookmaker_regions.includes(selectedRegion);
+      })
       .filter((row) => {
         if (!normalizedSearch) return true;
 
@@ -210,7 +206,7 @@ export default function BookmakerComparisonPage({ data = bookmakerMarginData }: 
               <p className="mt-2 text-sm leading-6 text-slate-600">
                 These rankings are based on the average margin from sampled Premier League 1X2 main
                 markets. For each bookmaker, the overround was calculated from the listed decimal
-                odds and then averaged across the available match samples in each region.
+                odds and then averaged across the available match samples from selected bookmaker markets.
                 </p>
                 <p className="mt-3 text-sm leading-6 text-slate-600">
                 For bettors, this is important because bookmaker margin is a direct cost built into
@@ -235,7 +231,7 @@ export default function BookmakerComparisonPage({ data = bookmakerMarginData }: 
               <div>
                 <h2 className="text-xl font-semibold text-slate-900">Rankings</h2>
                 <p className="mt-1 text-sm text-slate-600">
-                  Select a region to see local rankings, or choose all regions to view the top bookmakers internationally.
+                    Filter by bookmaker region to narrow the list, or choose all regions to view the top bookmakers internationally. Actual availability and pricing may vary by country.
                 </p>
               </div>
 
@@ -256,8 +252,7 @@ export default function BookmakerComparisonPage({ data = bookmakerMarginData }: 
                   <Filter className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
                   <select
                     value={selectedRegion}
-                    onChange={(e) => setSelectedRegion(e.target.value as Region)}
-                    className="w-full appearance-none rounded-2xl border border-slate-200 bg-white py-3 pl-10 pr-10 text-sm text-slate-900 outline-none transition focus:border-slate-400 sm:w-48"
+                      onChange={(e) => setSelectedRegion(e.target.value as "all" | BookmakerRegion)}                    className="w-full appearance-none rounded-2xl border border-slate-200 bg-white py-3 pl-10 pr-10 text-sm text-slate-900 outline-none transition focus:border-slate-400 sm:w-48"
                   >
                     {regionOptions.map((option) => (
                       <option key={option.value} value={option.value}>
@@ -280,9 +275,6 @@ export default function BookmakerComparisonPage({ data = bookmakerMarginData }: 
                   <th className="border-b border-slate-200 bg-slate-50 px-4 py-3 text-left text-xs font-semibold uppercase tracking-wide text-slate-500 sm:px-6">
                     Bookmaker
                   </th>
-                  <th className="border-b border-slate-200 bg-slate-50 px-4 py-3 text-left text-xs font-semibold uppercase tracking-wide text-slate-500 sm:px-6">
-                    Regions
-                  </th>
                   <th className="border-b border-slate-200 bg-slate-50 px-4 py-3 text-right text-xs font-semibold uppercase tracking-wide text-slate-500 sm:px-6">
                     Avg margin
                   </th>
@@ -291,7 +283,7 @@ export default function BookmakerComparisonPage({ data = bookmakerMarginData }: 
               <tbody>
                 {filteredRows.length === 0 ? (
                   <tr>
-                    <td colSpan={5} className="px-4 py-16 text-center text-sm text-slate-500 sm:px-6">
+                    <td colSpan={3} className="px-4 py-16 text-center text-sm text-slate-500 sm:px-6">
                       No bookmakers matched your filters.
                     </td>
                   </tr>
@@ -318,21 +310,6 @@ export default function BookmakerComparisonPage({ data = bookmakerMarginData }: 
 
                         <td className="border-b border-slate-100 px-4 py-4 sm:px-6">
                           <div className="font-medium text-slate-900">{row.bookmaker_title}</div>
-                        </td>
-
-                        <td className="border-b border-slate-100 px-4 py-4 sm:px-6">
-                          <div className="flex flex-wrap gap-2">
-                            {row.regions.map((region) => (
-                              <span
-                                key={`${row.bookmaker_id}-${region}`}
-                                className={`inline-flex rounded-full px-3 py-1 text-xs font-medium ring-1 ring-inset ${getRegionBadgeClasses(
-                                  region
-                                )}`}
-                              >
-                                {formatRegion(region)}
-                              </span>
-                            ))}
-                          </div>
                         </td>
 
                         <td className="border-b border-slate-100 px-4 py-4 text-right sm:px-6">
