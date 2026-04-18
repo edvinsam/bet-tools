@@ -115,6 +115,7 @@ export const bookmakerMarginData: RegionalBookmakerRow[] = [
   { bookmaker_id: "betano", bookmaker_key: "betano", bookmaker_title: "Betano", market: "bulgaria", samples: 5, average_margin_percent: 5.64 },
   { bookmaker_id: "betano", bookmaker_key: "betano", bookmaker_title: "Betano", market: "uk", samples: 5, average_margin_percent: 5.64 }
   */
+  
   /*
     LATAM
     Betano

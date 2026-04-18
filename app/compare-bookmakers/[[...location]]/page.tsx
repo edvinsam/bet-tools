@@ -1,66 +1,46 @@
-"use client";
-
-import { useMemo, useState } from "react";
 import Link from "next/link";
-import { ChevronRight, Search, Trophy, Filter, Globe, Info } from "lucide-react";
-import { bookmakerMarginData, type Market, type RegionalBookmakerRow } from "@/lib/bookmaker-margin-data";
-import {
-  bookmakerRegions,
-  bookmakerRegionOptions,
-  type BookmakerRegion,
-} from "@/lib/bookmaker-regions";
+import { notFound } from "next/navigation";
+import { Search, Trophy, Info } from "lucide-react";
 import Breadcrumbs from "@/components/Breadcrumbs";
+import LocationFilterSelect from "@/components/LocationFilterSelect";
+import {
+  bookmakerMarginData,
+  type Market,
+  type RegionalBookmakerRow,
+} from "@/lib/bookmaker-margin-data";
+import {
+  bookmakerLocations,
+  COUNTRY_LABELS,
+  COUNTRIES_BY_REGION,
+  REGION_LABELS,
+  getCountryRegion,
+  isCountrySlug,
+  isRegionSlug,
+  type CountrySlug,
+  type RegionSlug,
+} from "@/lib/bookmaker-locations";
 
 type ComparisonRow = {
   bookmaker_id: string;
   bookmaker_title: string;
   bookmaker_keys: string[];
   markets: Exclude<Market, "all">[];
-  bookmaker_regions: BookmakerRegion[];
+  regions: RegionSlug[];
+  availableCountries: CountrySlug[];
   samples: number;
   average_margin_percent: number;
+  rank?: number;
 };
 
 type ComparisonPageProps = {
   data?: RegionalBookmakerRow[];
+  params: Promise<{
+    location?: string[];
+  }>;
 };
-
-const regionOptions: { value: "all" | BookmakerRegion; label: string }[] = [
-  { value: "all", label: "All regions" },
-  ...bookmakerRegionOptions.map((region) => ({
-    value: region,
-    label: region,
-  })),
-];
 
 function formatMargin(value: number) {
   return `${value.toFixed(2)}%`;
-}
-
-function formatMarket(market: Exclude<Market, "all">) {
-  const map: Record<Exclude<Market, "all">, string> = {
-    us: "US",
-    uk: "UK",
-    eu: "EU",
-    fr: "France",
-    se: "Sweden",
-    au: "Australia",
-  };
-
-  return map[market];
-}
-
-function getMarketBadgeClasses(market: Exclude<Market, "all">) {
-  const styles: Record<Exclude<Market, "all">, string> = {
-    us: "bg-blue-50 text-blue-700 ring-blue-600/20",
-    uk: "bg-red-50 text-red-700 ring-red-600/20",
-    eu: "bg-emerald-50 text-emerald-700 ring-emerald-600/20",
-    fr: "bg-violet-50 text-violet-700 ring-violet-600/20",
-    se: "bg-amber-50 text-amber-700 ring-amber-600/20",
-    au: "bg-cyan-50 text-cyan-700 ring-cyan-600/20",
-  };
-
-  return styles[market];
 }
 
 function mergeRows(rows: RegionalBookmakerRow[]): ComparisonRow[] {
@@ -68,7 +48,10 @@ function mergeRows(rows: RegionalBookmakerRow[]): ComparisonRow[] {
 
   for (const row of rows) {
     const existing = map.get(row.bookmaker_id);
-    const mappedRegions = bookmakerRegions[row.bookmaker_id] ?? [];
+    const locationMeta = bookmakerLocations[row.bookmaker_id] ?? {
+      regions: [],
+      availableCountries: [],
+    };
 
     if (!existing) {
       map.set(row.bookmaker_id, {
@@ -76,7 +59,8 @@ function mergeRows(rows: RegionalBookmakerRow[]): ComparisonRow[] {
         bookmaker_title: row.bookmaker_title,
         bookmaker_keys: [row.bookmaker_key],
         markets: [row.market],
-        bookmaker_regions: mappedRegions,
+        regions: locationMeta.regions,
+        availableCountries: locationMeta.availableCountries,
         samples: row.samples,
         average_margin_percent: row.average_margin_percent,
       });
@@ -107,32 +91,81 @@ function mergeRows(rows: RegionalBookmakerRow[]): ComparisonRow[] {
   }));
 }
 
-export default function BookmakerComparisonPage({ data = bookmakerMarginData }: ComparisonPageProps) {
-  const [selectedRegion, setSelectedRegion] = useState<"all" | BookmakerRegion>("all");  const [search, setSearch] = useState("");
+function parseLocation(location?: string[]) {
+  if (!location || location.length === 0) {
+    return {
+      selectedRegion: undefined,
+      selectedCountry: undefined,
+    };
+  }
 
-  const filteredRows = useMemo(() => {
-    const normalizedSearch = search.trim().toLowerCase();
-    const mergedRows = mergeRows(data);
+  if (location.length === 1) {
+    const [region] = location;
+    if (!isRegionSlug(region)) notFound();
 
-    return mergedRows
-      .filter((row) => {
-        if (selectedRegion === "all") return true;
-        return row.bookmaker_regions.includes(selectedRegion);
-      })
-      .filter((row) => {
-        if (!normalizedSearch) return true;
+    return {
+      selectedRegion: region,
+      selectedCountry: undefined,
+    };
+  }
 
-        return (
-          row.bookmaker_title.toLowerCase().includes(normalizedSearch) ||
-          row.bookmaker_id.toLowerCase().includes(normalizedSearch) ||
-          row.bookmaker_keys.some((key) => key.toLowerCase().includes(normalizedSearch))
-        );
-      })
-      .sort((a, b) => a.average_margin_percent - b.average_margin_percent)
-      .map((row, index) => ({ ...row, rank: index + 1 }));
-  }, [data, search, selectedRegion]);
+  if (location.length === 2) {
+    const [region, country] = location;
 
-  const stats = useMemo(() => {
+    if (!isRegionSlug(region) || !isCountrySlug(country)) {
+      notFound();
+    }
+
+    const actualRegion = getCountryRegion(country);
+    if (actualRegion !== region) {
+      notFound();
+    }
+
+    return {
+      selectedRegion: region,
+      selectedCountry: country,
+    };
+  }
+
+  notFound();
+}
+
+export function generateStaticParams() {
+  const params: { location?: string[] }[] = [{ location: [] }];
+
+  for (const [region, countries] of Object.entries(COUNTRIES_BY_REGION)) {
+    params.push({ location: [region] });
+
+    for (const country of countries) {
+      params.push({ location: [region, country] });
+    }
+  }
+
+  return params;
+}
+
+export default async function BookmakerComparisonPage({
+  data = bookmakerMarginData,
+  params,
+}: ComparisonPageProps) {
+  const resolvedParams = await params;
+  const { selectedRegion, selectedCountry } = parseLocation(resolvedParams.location);
+
+  const mergedRows = mergeRows(data);
+
+  const filteredRows = mergedRows
+    .filter((row) => {
+      if (!selectedRegion) return true;
+      return row.regions.includes(selectedRegion);
+    })
+    .filter((row) => {
+      if (!selectedCountry) return true;
+      return row.availableCountries.includes(selectedCountry);
+    })
+    .sort((a, b) => a.average_margin_percent - b.average_margin_percent)
+    .map((row, index) => ({ ...row, rank: index + 1 }));
+
+  const stats = (() => {
     if (!filteredRows.length) {
       return {
         best: null,
@@ -142,14 +175,46 @@ export default function BookmakerComparisonPage({ data = bookmakerMarginData }: 
     }
 
     const average =
-      filteredRows.reduce((sum, row) => sum + row.average_margin_percent, 0) / filteredRows.length;
+      filteredRows.reduce((sum, row) => sum + row.average_margin_percent, 0) /
+      filteredRows.length;
 
     return {
       best: filteredRows[0],
       average,
       count: filteredRows.length,
     };
-  }, [filteredRows]);
+  })();
+
+  const heading = selectedCountry
+    ? `Bookmaker Margin Comparison in ${COUNTRY_LABELS[selectedCountry]}`
+    : selectedRegion
+      ? `Bookmaker Margin Comparison in ${REGION_LABELS[selectedRegion]}`
+      : "Bookmaker Margin Comparison";
+
+  const description = selectedCountry
+    ? `Compare average bookmaker margins for bookmakers available in ${COUNTRY_LABELS[selectedCountry]}. Lower margins usually mean more competitive odds.`
+    : selectedRegion
+      ? `Compare average bookmaker margins across ${REGION_LABELS[selectedRegion]} and rank operators from lowest to highest. Lower margins usually mean more competitive prices.`
+      : "Compare average bookmaker margins across regions and rank operators from lowest to highest. Lower margins usually mean more competitive prices.";
+
+  const breadcrumbs = [
+    { label: "Home", href: "/" },
+    { label: "Compare bookmakers", href: "/compare-bookmakers" },
+  ];
+
+  if (selectedRegion) {
+    breadcrumbs.push({
+      label: REGION_LABELS[selectedRegion],
+      href: `/compare-bookmakers/${selectedRegion}`,
+    });
+  }
+
+  if (selectedCountry && selectedRegion) {
+    breadcrumbs.push({
+      label: COUNTRY_LABELS[selectedCountry],
+      href: `/compare-bookmakers/${selectedRegion}/${selectedCountry}`,
+    });
+  }
 
   return (
     <main className="min-h-screen bg-slate-50 text-slate-900">
@@ -157,35 +222,29 @@ export default function BookmakerComparisonPage({ data = bookmakerMarginData }: 
         <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6 lg:px-8">
           <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
             <div className="max-w-3xl">
-              <Breadcrumbs
-                items={[
-                    { label: "Home", href: "/" },
-                    { label: "Compare bookmakers" }
-                ]}
-              />
+              <Breadcrumbs items={breadcrumbs} />
 
               <h1 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
-                Bookmaker Margin Comparison
+                {heading}
               </h1>
               <p className="mt-4 max-w-2xl text-base leading-7 text-slate-600 sm:text-lg">
-                Compare average bookmaker margins across regions and rank operators from lowest to
-                highest. Lower margins usually mean more competitive prices.
+                {description}
               </p>
             </div>
 
-            <div className="grid grid-cols-1 gap-3 sm:grid-cols-3 lg:w-105">
+            <div className="grid grid-cols-1 gap-3 sm:grid-cols-3 lg:w-[24rem] xl:w-104">
               <div className="rounded-2xl border border-slate-200 bg-slate-50 p-4">
-                <div className="text-sm text-slate-500">Shown</div>
+                <div className="text-sm whitespace-nowrap text-slate-500">Shown</div>
                 <div className="mt-1 text-2xl font-semibold text-slate-900">{stats.count}</div>
               </div>
               <div className="rounded-2xl border border-slate-200 bg-slate-50 p-4">
-                <div className="text-sm text-slate-500">Best margin</div>
+                <div className="text-sm whitespace-nowrap text-slate-500">Best margin</div>
                 <div className="mt-1 text-2xl font-semibold text-slate-900">
                   {stats.best ? formatMargin(stats.best.average_margin_percent) : "—"}
                 </div>
               </div>
               <div className="rounded-2xl border border-slate-200 bg-slate-50 p-4">
-                <div className="text-sm text-slate-500">Average</div>
+                <div className="text-sm whitespace-nowrap text-slate-500">Average</div>
                 <div className="mt-1 text-2xl font-semibold text-slate-900">
                   {typeof stats.average === "number" ? formatMargin(stats.average) : "—"}
                 </div>
@@ -207,18 +266,15 @@ export default function BookmakerComparisonPage({ data = bookmakerMarginData }: 
                 These rankings are based on the average margin from sampled Premier League 1X2 main
                 markets. For each bookmaker, the overround was calculated from the listed decimal
                 odds and then averaged across the available match samples from selected bookmaker markets.
-                </p>
-                <p className="mt-3 text-sm leading-6 text-slate-600">
+              </p>
+              <p className="mt-3 text-sm leading-6 text-slate-600">
                 For bettors, this is important because bookmaker margin is a direct cost built into
                 the odds. A lower margin generally means less expected value is lost to the house
-                and that the bookmaker is offering more competitive prices. In that sense, margin is
-                one of the clearest ways to compare how expensive different betting sites really are.
-                </p>
-                <p className="mt-3 text-sm leading-6 text-slate-600">
-                These numbers are most representative of major football mainlines. Margins will
-                usually be higher in more obscure leagues, lower-liquidity markets, player props,
-                and alternative lines.
-                </p>
+                and that the bookmaker is offering more competitive prices.
+              </p>
+              <p className="mt-3 text-sm leading-6 text-slate-600">
+                Actual bookmaker availability may vary by country and regulation can change over time.
+              </p>
             </div>
           </div>
         </div>
@@ -231,7 +287,7 @@ export default function BookmakerComparisonPage({ data = bookmakerMarginData }: 
               <div>
                 <h2 className="text-xl font-semibold text-slate-900">Rankings</h2>
                 <p className="mt-1 text-sm text-slate-600">
-                    Filter by bookmaker region to narrow the list, or choose all regions to view the top bookmakers internationally. Actual availability and pricing may vary by country.
+                  Filter by region or country to narrow the list and view bookmakers available in that location.
                 </p>
               </div>
 
@@ -240,27 +296,16 @@ export default function BookmakerComparisonPage({ data = bookmakerMarginData }: 
                   <span className="sr-only">Search bookmaker</span>
                   <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
                   <input
-                    value={search}
-                    onChange={(e) => setSearch(e.target.value)}
                     placeholder="Search bookmaker..."
                     className="w-full rounded-2xl border border-slate-200 bg-white py-3 pl-10 pr-4 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-slate-400 sm:w-64"
+                    disabled
                   />
                 </label>
 
-                <label className="relative block">
-                  <span className="sr-only">Filter region</span>
-                  <Filter className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
-                  <select
-                    value={selectedRegion}
-                      onChange={(e) => setSelectedRegion(e.target.value as "all" | BookmakerRegion)}                    className="w-full appearance-none rounded-2xl border border-slate-200 bg-white py-3 pl-10 pr-10 text-sm text-slate-900 outline-none transition focus:border-slate-400 sm:w-48"
-                  >
-                    {regionOptions.map((option) => (
-                      <option key={option.value} value={option.value}>
-                        {option.label}
-                      </option>
-                    ))}
-                  </select>
-                </label>
+                <LocationFilterSelect
+                  selectedRegion={selectedRegion}
+                  selectedCountry={selectedCountry}
+                />
               </div>
             </div>
           </div>
@@ -284,12 +329,12 @@ export default function BookmakerComparisonPage({ data = bookmakerMarginData }: 
                 {filteredRows.length === 0 ? (
                   <tr>
                     <td colSpan={3} className="px-4 py-16 text-center text-sm text-slate-500 sm:px-6">
-                      No bookmakers matched your filters.
+                      No bookmakers matched this location.
                     </td>
                   </tr>
                 ) : (
                   filteredRows.map((row) => {
-                    const isTopThree = row.rank <= 3;
+                    const isTopThree = (row.rank ?? 0) <= 3;
 
                     return (
                       <tr key={`${row.bookmaker_id}-${row.rank}`} className="group">
