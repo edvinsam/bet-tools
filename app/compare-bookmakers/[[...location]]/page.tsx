@@ -31,6 +31,7 @@ type ComparisonRow = {
   average_margin_percent: number;
   logo: string;
   url: string;
+  backgroundColor?: string;
   rank?: number;
 };
 
@@ -67,6 +68,7 @@ function mergeRows(rows: RegionalBookmakerRow[]): ComparisonRow[] {
         average_margin_percent: row.average_margin_percent,
         logo: row.logo,
         url: row.url,
+        backgroundColor: row.backgroundColor
       });
       continue;
     }

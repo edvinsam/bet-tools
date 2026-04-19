@@ -12,6 +12,7 @@ type ComparisonRow = {
   average_margin_percent: number;
   logo: string;
   url: string;
+  backgroundColor?: string;
   rank?: number;
 };
 
@@ -33,18 +34,18 @@ export default function BookmakerComparisonTable({
   const [search, setSearch] = useState("");
 
   const filteredRows = useMemo(() => {
-  const normalizedSearch = search.trim().toLowerCase();
+    const normalizedSearch = search.trim().toLowerCase();
 
-  return rows.filter((row) => {
-    if (!normalizedSearch) return true;
+    return rows.filter((row) => {
+      if (!normalizedSearch) return true;
 
-    return (
-      row.bookmaker_title.toLowerCase().includes(normalizedSearch) ||
-      row.bookmaker_id.toLowerCase().includes(normalizedSearch) ||
-      row.bookmaker_keys.some((key) => key.toLowerCase().includes(normalizedSearch))
-    );
-  });
-}, [rows, search]);
+      return (
+        row.bookmaker_title.toLowerCase().includes(normalizedSearch) ||
+        row.bookmaker_id.toLowerCase().includes(normalizedSearch) ||
+        row.bookmaker_keys.some((key) => key.toLowerCase().includes(normalizedSearch))
+      );
+    });
+  }, [rows, search]);
 
   return (
     <div className="rounded-3xl border border-slate-200 bg-white shadow-sm">
@@ -101,6 +102,7 @@ export default function BookmakerComparisonTable({
               </tr>
             ) : (
               filteredRows.map((row) => {
+                console.log(row.bookmaker_id, row.backgroundColor);
                 const isTopThree = (row.rank ?? 0) <= 3;
 
                 return (
@@ -123,29 +125,37 @@ export default function BookmakerComparisonTable({
                     <td className="border-b border-slate-100 px-4 py-4 sm:px-6">
                       <div className="flex items-center gap-3">
                         <a
-                        href={row.url}
-                        target="_blank"
-                        rel="nofollow sponsored noopener noreferrer"
-                        className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-slate-200 bg-white p-1.5 hover:border-slate-300"
-                        aria-label={`Visit ${row.bookmaker_title}`}
+                          href={row.url}
+                          target="_blank"
+                          rel="nofollow sponsored noopener noreferrer"
+                          className="shrink-0"
+                          aria-label={`Visit ${row.bookmaker_title}`}
                         >
-                        <img
+                          <img
                             src={row.logo}
                             alt={`${row.bookmaker_title} logo`}
-                            className="h-full w-full object-contain"
                             loading="lazy"
-                        />
+                            className="block h-8 w-auto max-w-[96px] rounded-md object-contain sm:h-9 sm:max-w-[120px]"
+                            style={
+                              row.backgroundColor
+                                ? {
+                                    backgroundColor: row.backgroundColor,
+                                    padding: "2px 6px",
+                                }
+                                : undefined
+                            }
+                          />
                         </a>
 
                         <div className="min-w-0">
-                        <a
+                          <a
                             href={row.url}
                             target="_blank"
                             rel="nofollow sponsored noopener noreferrer"
                             className="font-medium text-slate-900 hover:text-emerald-600 hover:underline"
-                        >
+                          >
                             {row.bookmaker_title}
-                        </a>
+                          </a>
                         </div>
                       </div>
                     </td>
