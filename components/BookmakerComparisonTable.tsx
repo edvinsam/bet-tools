@@ -31,23 +31,18 @@ export default function BookmakerComparisonTable({
   const [search, setSearch] = useState("");
 
   const filteredRows = useMemo(() => {
-    const normalizedSearch = search.trim().toLowerCase();
+  const normalizedSearch = search.trim().toLowerCase();
 
-    return rows
-      .filter((row) => {
-        if (!normalizedSearch) return true;
+  return rows.filter((row) => {
+    if (!normalizedSearch) return true;
 
-        return (
-          row.bookmaker_title.toLowerCase().includes(normalizedSearch) ||
-          row.bookmaker_id.toLowerCase().includes(normalizedSearch) ||
-          row.bookmaker_keys.some((key) => key.toLowerCase().includes(normalizedSearch))
-        );
-      })
-      .map((row, index) => ({
-        ...row,
-        rank: index + 1,
-      }));
-  }, [rows, search]);
+    return (
+      row.bookmaker_title.toLowerCase().includes(normalizedSearch) ||
+      row.bookmaker_id.toLowerCase().includes(normalizedSearch) ||
+      row.bookmaker_keys.some((key) => key.toLowerCase().includes(normalizedSearch))
+    );
+  });
+}, [rows, search]);
 
   return (
     <div className="rounded-3xl border border-slate-200 bg-white shadow-sm">
