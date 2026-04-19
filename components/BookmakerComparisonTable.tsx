@@ -10,6 +10,8 @@ type ComparisonRow = {
   bookmaker_title: string;
   bookmaker_keys: string[];
   average_margin_percent: number;
+  logo: string;
+  url: string;
   rank?: number;
 };
 
@@ -119,7 +121,33 @@ export default function BookmakerComparisonTable({
                     </td>
 
                     <td className="border-b border-slate-100 px-4 py-4 sm:px-6">
-                      <div className="font-medium text-slate-900">{row.bookmaker_title}</div>
+                      <div className="flex items-center gap-3">
+                        <a
+                        href={row.url}
+                        target="_blank"
+                        rel="nofollow sponsored noopener noreferrer"
+                        className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-slate-200 bg-white p-1.5 hover:border-slate-300"
+                        aria-label={`Visit ${row.bookmaker_title}`}
+                        >
+                        <img
+                            src={row.logo}
+                            alt={`${row.bookmaker_title} logo`}
+                            className="h-full w-full object-contain"
+                            loading="lazy"
+                        />
+                        </a>
+
+                        <div className="min-w-0">
+                        <a
+                            href={row.url}
+                            target="_blank"
+                            rel="nofollow sponsored noopener noreferrer"
+                            className="font-medium text-slate-900 hover:text-emerald-600 hover:underline"
+                        >
+                            {row.bookmaker_title}
+                        </a>
+                        </div>
+                      </div>
                     </td>
 
                     <td className="border-b border-slate-100 px-4 py-4 text-right sm:px-6">

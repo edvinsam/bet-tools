@@ -1,8 +1,6 @@
-import Link from "next/link";
 import { notFound } from "next/navigation";
-import { Search, Trophy, Info } from "lucide-react";
+import { Info } from "lucide-react";
 import Breadcrumbs from "@/components/Breadcrumbs";
-import LocationFilterSelect from "@/components/LocationFilterSelect";
 import {
   bookmakerMarginData,
   type Market,
@@ -31,6 +29,8 @@ type ComparisonRow = {
   availableCountries: CountrySlug[];
   samples: number;
   average_margin_percent: number;
+  logo: string;
+  url: string;
   rank?: number;
 };
 
@@ -65,6 +65,8 @@ function mergeRows(rows: RegionalBookmakerRow[]): ComparisonRow[] {
         availableCountries: locationMeta.availableCountries,
         samples: row.samples,
         average_margin_percent: row.average_margin_percent,
+        logo: row.logo,
+        url: row.url,
       });
       continue;
     }
@@ -84,6 +86,15 @@ function mergeRows(rows: RegionalBookmakerRow[]): ComparisonRow[] {
 
     if (!existing.markets.includes(row.market)) {
       existing.markets.push(row.market);
+    }
+
+    // Keep the first non-fallback-looking logo/url if possible
+    if (!existing.logo && row.logo) {
+      existing.logo = row.logo;
+    }
+
+    if ((!existing.url || existing.url === "#") && row.url) {
+      existing.url = row.url;
     }
   }
 
@@ -284,10 +295,10 @@ export default async function BookmakerComparisonPage({
 
       <section className="mx-auto max-w-6xl px-4 py-8 sm:px-6 lg:px-8">
         <BookmakerComparisonTable
-            rows={filteredRows}
-            selectedRegion={selectedRegion}
-            selectedCountry={selectedCountry}
-      />
+          rows={filteredRows}
+          selectedRegion={selectedRegion}
+          selectedCountry={selectedCountry}
+        />
       </section>
     </main>
   );

@@ -4,12 +4,106 @@ export type RegionalBookmakerRow = {
   bookmaker_id: string;
   bookmaker_key: string;
   bookmaker_title: string;
-  market: Exclude<Market, "all">;  
+  market: Exclude<Market, "all">;
   samples: number;
   average_margin_percent: number;
+  logo: string;
+  url: string;
 };
 
-export const bookmakerMarginData: RegionalBookmakerRow[] = [
+type RawRegionalBookmakerRow = Omit<RegionalBookmakerRow, "logo" | "url">;
+
+type BookmakerMeta = {
+  logo: string;
+  url: string;
+};
+
+const BOOKMAKER_META: Record<string, BookmakerMeta> = {
+  "1xbet": { logo: "/logos/1xbet.svg", url: "https://1xbet.com" },
+  "888sport": { logo: "/logos/888sport.svg", url: "https://www.888sport.com" },
+  atg: { logo: "/logos/atg.svg", url: "https://www.atg.se" },
+  ballybet: { logo: "/logos/ballybet.svg", url: "https://www.ballybet.com" },
+  betfair: { logo: "/logos/betfair.svg", url: "https://www.betfair.com" },
+  betfair_sportsbook: { logo: "/logos/betfair.svg", url: "https://www.betfair.com/sport" },
+  betfred: { logo: "/logos/betfred.svg", url: "https://www.betfred.com" },
+  betmgm: { logo: "/logos/betmgm.svg", url: "https://sports.betmgm.com" },
+  betonline: { logo: "/logos/betonline.svg", url: "https://www.betonline.ag" },
+  betparx: { logo: "/logos/betparx.svg", url: "https://www.betparx.com" },
+  betright: { logo: "/logos/betright.svg", url: "https://www.betright.com.au" },
+  betsson: { logo: "/logos/betsson.svg", url: "https://www.betsson.com" },
+  betus: { logo: "/logos/betus.svg", url: "https://www.betus.com.pa" },
+  betvictor: { logo: "/logos/betvictor.svg", url: "https://www.betvictor.com" },
+  betway: { logo: "/logos/betway.svg", url: "https://www.betway.com" },
+  betr: { logo: "/logos/betr.svg", url: "https://www.betr.com.au" },
+  betrivers: { logo: "/logos/betrivers.svg", url: "https://www.betrivers.com" },
+  betclic: { logo: "/logos/betclic.svg", url: "https://www.betclic.com" },
+  betfred_us: { logo: "/logos/betfred.svg", url: "https://www.betfredsports.com" },
+  betonlineag: { logo: "/logos/betonline.svg", url: "https://www.betonline.ag" },
+  betright_au: { logo: "/logos/betright.svg", url: "https://www.betright.com.au" },
+  betus_us: { logo: "/logos/betus.svg", url: "https://www.betus.com.pa" },
+  betvictor_uk: { logo: "/logos/betvictor.svg", url: "https://www.betvictor.com" },
+  betway_uk: { logo: "/logos/betway.svg", url: "https://www.betway.com" },
+  betsson_se: { logo: "/logos/betsson.svg", url: "https://www.betsson.com" },
+  betsson_eu: { logo: "/logos/betsson.svg", url: "https://www.betsson.com" },
+  betclic_fr: { logo: "/logos/betclic.svg", url: "https://www.betclic.fr" },
+  betclic_fr_eu: { logo: "/logos/betclic.svg", url: "https://www.betclic.fr" },
+  betonlineag_us: { logo: "/logos/betonline.svg", url: "https://www.betonline.ag" },
+  betonlineag_eu: { logo: "/logos/betonline.svg", url: "https://www.betonline.ag" },
+  betfair_ex_au: { logo: "/logos/betfair.svg", url: "https://www.betfair.com" },
+  betfair_ex_eu: { logo: "/logos/betfair.svg", url: "https://www.betfair.com" },
+  betfair_ex_uk: { logo: "/logos/betfair.svg", url: "https://www.betfair.com" },
+  betfair_sb_uk: { logo: "/logos/betfair.svg", url: "https://www.betfair.com/sport" },
+  bovada: { logo: "/logos/bovada.svg", url: "https://www.bovada.lv" },
+  boylesports: { logo: "/logos/boylesports.svg", url: "https://www.boylesports.com" },
+  campobet: { logo: "/logos/campobet.svg", url: "https://www.campobet.com" },
+  casumo: { logo: "/logos/casumo.svg", url: "https://www.casumo.com" },
+  codere: { logo: "/logos/codere.svg", url: "https://www.codere.com" },
+  coolbet: { logo: "/logos/coolbet.svg", url: "https://www.coolbet.com" },
+  coral: { logo: "/logos/coral.svg", url: "https://sports.coral.co.uk" },
+  draftkings: { logo: "/logos/draftkings.svg", url: "https://sportsbook.draftkings.com" },
+  everygame: { logo: "/logos/everygame.svg", url: "https://www.everygame.eu" },
+  fanduel: { logo: "/logos/fanduel.svg", url: "https://sportsbook.fanduel.com" },
+  grosvenor: { logo: "/logos/grosvenor.svg", url: "https://www.grosvenorcasinos.com" },
+  gtbets: { logo: "/logos/gtbets.svg", url: "https://www.gtbets.eu" },
+  hajper: { logo: "/logos/hajper.svg", url: "https://www.hajper.com" },
+  hardrockbet: { logo: "/logos/hardrockbet.svg", url: "https://app.hardrock.bet" },
+  ladbrokes: { logo: "/logos/ladbrokes.svg", url: "https://www.ladbrokes.com" },
+  leovegas: { logo: "/logos/leovegas.svg", url: "https://www.leovegas.com" },
+  livescorebet: { logo: "/logos/livescorebet.svg", url: "https://www.livescorebet.com" },
+  lowvig: { logo: "/logos/lowvig.svg", url: "https://www.lowvig.ag" },
+  marathonbet: { logo: "/logos/marathonbet.svg", url: "https://www.marathonbet.com" },
+  matchbook: { logo: "/logos/matchbook.svg", url: "https://www.matchbook.com" },
+  mrgreen: { logo: "/logos/mrgreen.svg", url: "https://www.mrgreen.com" },
+  mybookie: { logo: "/logos/mybookie.svg", url: "https://www.mybookie.ag" },
+  neds: { logo: "/logos/neds.svg", url: "https://www.neds.com.au" },
+  netbet: { logo: "/logos/netbet.svg", url: "https://www.netbet.fr" },
+  nordicbet: { logo: "/logos/nordicbet.svg", url: "https://www.nordicbet.com" },
+  paddypower: { logo: "/logos/paddypower.svg", url: "https://www.paddypower.com" },
+  pinnacle: { logo: "/logos/pinnacle.svg", url: "https://www.pinnacle.com" },
+  playup: { logo: "/logos/playup.svg", url: "https://www.playup.com.au" },
+  pmu: { logo: "/logos/pmu.svg", url: "https://paris-sportifs.pmu.fr" },
+  pointsbet: { logo: "/logos/pointsbet.svg", url: "https://pointsbet.com" },
+  skynet: { logo: "/logos/skybet.svg", url: "https://www.skybet.com" },
+  skybet: { logo: "/logos/skybet.svg", url: "https://www.skybet.com" },
+  smarkets: { logo: "/logos/smarkets.svg", url: "https://smarkets.com" },
+  sportsbet: { logo: "/logos/sportsbet.svg", url: "https://www.sportsbet.com.au" },
+  svenskaspel: { logo: "/logos/svenskaspel.svg", url: "https://www.svenskaspel.se" },
+  tab: { logo: "/logos/tab.svg", url: "https://www.tab.com.au" },
+  tabtouch: { logo: "/logos/tabtouch.svg", url: "https://www.tabtouch.com.au" },
+  thescorebet: { logo: "/logos/thescorebet.svg", url: "https://thescore.bet" },
+  tipico: { logo: "/logos/tipico.svg", url: "https://www.tipico.com" },
+  unibet: { logo: "/logos/unibet.svg", url: "https://www.unibet.com" },
+  virginbet: { logo: "/logos/virginbet.svg", url: "https://www.virginbet.com" },
+  williamhill: { logo: "/logos/williamhill.svg", url: "https://www.williamhill.com" },
+  winamax: { logo: "/logos/winamax.svg", url: "https://www.winamax.fr" },
+};
+
+const FALLBACK_META: BookmakerMeta = {
+  logo: "/logos/default-bookmaker.svg",
+  url: "#",
+};
+
+const rawBookmakerMarginData: RawRegionalBookmakerRow[] = [
   { bookmaker_id: "betfair", bookmaker_key: "betfair_ex_au", bookmaker_title: "Betfair (Exchange)", market: "au", samples: 6, average_margin_percent: 1.059 },
   { bookmaker_id: "unibet", bookmaker_key: "unibet_au", bookmaker_title: "Unibet", market: "au", samples: 6, average_margin_percent: 5.332 },
   { bookmaker_id: "tabtouch", bookmaker_key: "tabtouch", bookmaker_title: "TABtouch", market: "au", samples: 6, average_margin_percent: 5.332 },
@@ -98,156 +192,14 @@ export const bookmakerMarginData: RegionalBookmakerRow[] = [
   { bookmaker_id: "ballybet", bookmaker_key: "ballybet", bookmaker_title: "Bally Bet", market: "us", samples: 6, average_margin_percent: 5.346 },
   { bookmaker_id: "betparx", bookmaker_key: "betparx", bookmaker_title: "betPARX", market: "us", samples: 6, average_margin_percent: 5.346 },
   { bookmaker_id: "thescorebet", bookmaker_key: "thescorebet", bookmaker_title: "theScore Bet", market: "us", samples: 6, average_margin_percent: 6.896 },
-
-  /*
-  { bookmaker_id: "betano", bookmaker_key: "betano", bookmaker_title: "Betano", market: "latam", samples: 5, average_margin_percent: 5.64 },
-  { bookmaker_id: "betano", bookmaker_key: "betano", bookmaker_title: "Betano", market: "canada", samples: 5, average_margin_percent: 5.64 },
-  { bookmaker_id: "betano", bookmaker_key: "betano", bookmaker_title: "Betano", market: "germany", samples: 5, average_margin_percent: 5.64 },
-  { bookmaker_id: "betano", bookmaker_key: "betano", bookmaker_title: "Betano", market: "brazil", samples: 5, average_margin_percent: 5.64 },
-  { bookmaker_id: "betano", bookmaker_key: "betano", bookmaker_title: "Betano", market: "portugal", samples: 5, average_margin_percent: 5.64 },
-  { bookmaker_id: "betano", bookmaker_key: "betano", bookmaker_title: "Betano", market: "chile", samples: 5, average_margin_percent: 5.64 },
-  { bookmaker_id: "betano", bookmaker_key: "betano", bookmaker_title: "Betano", market: "czech republic", samples: 5, average_margin_percent: 5.64 },
-  { bookmaker_id: "betano", bookmaker_key: "betano", bookmaker_title: "Betano", market: "peru", samples: 5, average_margin_percent: 5.64 },
-  { bookmaker_id: "betano", bookmaker_key: "betano", bookmaker_title: "Betano", market: "ecuador", samples: 5, average_margin_percent: 5.64 },
-  { bookmaker_id: "betano", bookmaker_key: "betano", bookmaker_title: "Betano", market: "nigeria", samples: 5, average_margin_percent: 5.64 },
-  { bookmaker_id: "betano", bookmaker_key: "betano", bookmaker_title: "Betano", market: "romania", samples: 5, average_margin_percent: 5.64 },
-  { bookmaker_id: "betano", bookmaker_key: "betano", bookmaker_title: "Betano", market: "bulgaria", samples: 5, average_margin_percent: 5.64 },
-  { bookmaker_id: "betano", bookmaker_key: "betano", bookmaker_title: "Betano", market: "uk", samples: 5, average_margin_percent: 5.64 }
-  */
-  
-  /*
-    LATAM
-    Betano
-    Betano Brazil
-    Betano Mexico
-    Betano Peru
-    Betano Argentina
-    Betano Colombia
-
-    Betsson Brazil
-    Betsson Argentina
-    Betsson Peru
-    Betsson Colombia
-    Betsson Chile
-
-    Codere Mexico
-    Codere Spain
-    Codere Argentina
-
-    Betplay
-    RushBet
-    Caliente
-    Betcris
-    Betwarrior
-
-    Betmotion
-    Estelarbet
-    Doradobet
-    Betfair Brazil
-    Betfair Mexico
-    Betfair Argentina
-    Sportium
-    Inkabet
-    Apuesta Total
-  */
-
-  /*
-    ASIA
-    SBOBET
-    188BET
-    12BET
-    Dafabet
-    M88
-    W88
-    Fun88
-    BK8
-    Maxbet
-
-    JBO
-    Cmd368
-    Sbobet88
-    Betway Asia
-    Bet365 Asia
-    Betfair Asia
-    1xBet Asia
-    Betwinner
-    Melbet
-    Parimatch Asia
-  */
-
-  /*
-    AFRICA
-    SportyBet
-    Bet9ja
-    BetKing
-    Betika
-    Mozzart Bet
-    Betway Nigeria
-    Betway Kenya
-    Betway Ghana
-
-    1xBet Nigeria
-    1xBet Kenya
-    BangBet
-    NairaBet
-    22Bet Africa
-    Premier Bet
-    Hollywoodbets
-  */
-
-  /*
-    EUROPE
-    Bet365
-    Bwin
-    Interwetten
-    Bet-at-home
-    Superbet
-    Betano Romania
-    Betano Greece
-    Betano Portugal
-
-    ComeOn
-    Betinia
-    Paf
-    SpeedyBet
-    Snabbare
-    NoAccountBet
-    Sportium
-  */
-
-  /*
-    UNITED KINGDOM
-    SBK
-    QuinnBet
-    Midnite
-    Planet Sport Bet
-    BetUK
-    Spreadex
-    Sporting Index
-    Betdaq
-  */
-
-  /*
-    UNITED STATES
-    ESPN BET
-    Fanatics Sportsbook
-    WynnBET
-    SuperBook
-    SI Sportsbook
-    TwinSpires
-    Betfred US
-    PointsBet US
-    Unibet US
-  */
-
-  /*
-    GLOBAL
-    AsianConnect
-    Orbit Exchange
-    BetInAsia
-    Sportmarket
-    Premium Tradings
-    Sharpbook
-    ISN
-  */
 ];
+
+export const bookmakerMarginData: RegionalBookmakerRow[] = rawBookmakerMarginData.map((row) => {
+  const meta = BOOKMAKER_META[row.bookmaker_id] ?? FALLBACK_META;
+
+  return {
+    ...row,
+    logo: meta.logo,
+    url: meta.url,
+  };
+});
