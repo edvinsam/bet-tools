@@ -35,7 +35,6 @@ export const bookmakerMarginData: RegionalBookmakerRow[] = [
   { bookmaker_id: "nordicbet", bookmaker_key: "nordicbet", bookmaker_title: "NordicBet", market: "eu", samples: 6, average_margin_percent: 4.123 },
   { bookmaker_id: "leovegas", bookmaker_key: "leovegas_se", bookmaker_title: "LeoVegas", market: "eu", samples: 6, average_margin_percent: 4.257 },
   { bookmaker_id: "codere", bookmaker_key: "codere_it", bookmaker_title: "Codere", market: "eu", samples: 6, average_margin_percent: 5.073 },
-  { bookmaker_id: "gtbets", bookmaker_key: "gtbets", bookmaker_title: "GTbets", market: "eu", samples: 6, average_margin_percent: 5.151 },
   { bookmaker_id: "tipico", bookmaker_key: "tipico", bookmaker_title: "Tipico", market: "eu", samples: 6, average_margin_percent: 6.060 },
   { bookmaker_id: "winamax", bookmaker_key: "winamax_de", bookmaker_title: "Winamax", market: "eu", samples: 6, average_margin_percent: 6.749 },
   { bookmaker_id: "betclic", bookmaker_key: "betclic_fr_eu", bookmaker_title: "Betclic", market: "eu", samples: 6, average_margin_percent: 6.927 },

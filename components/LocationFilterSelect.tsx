@@ -20,6 +20,28 @@ type LocationFilterSelectProps = {
   selectedCountry?: CountrySlug;
 };
 
+type CountryRouteMatch = {
+  region: RegionSlug;
+  country: CountrySlug;
+};
+
+const COUNTRY_CODE_TO_ROUTE: Partial<Record<string, CountryRouteMatch>> = {
+  SE: { region: "europe", country: "sweden" },
+  GB: { region: "europe", country: "united-kingdom" },
+  FR: { region: "europe", country: "france" },
+  DE: { region: "europe", country: "germany" },
+  IT: { region: "europe", country: "italy" },
+  NL: { region: "europe", country: "netherlands" },
+  AU: { region: "oceania", country: "australia" },
+  US: { region: "north-america", country: "united-states" },
+  MX: { region: "north-america", country: "mexico" },
+  BR: { region: "south-america", country: "brazil" },
+  IN: { region: "asia", country: "india" },
+  NG: { region: "africa", country: "nigeria" },
+  KE: { region: "africa", country: "kenya" },
+  ZA: { region: "africa", country: "south-africa" },
+};
+
 function matchesSearch(
   value: string,
   labelCandidates: string[],
@@ -45,8 +67,11 @@ export default function LocationFilterSelect({
 }: LocationFilterSelectProps) {
   const router = useRouter();
   const containerRef = useRef<HTMLDivElement | null>(null);
+
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState("");
+  const [isLocating, setIsLocating] = useState(false);
+  const [locationError, setLocationError] = useState("");
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
@@ -65,11 +90,11 @@ export default function LocationFilterSelect({
     if (!normalized) return COUNTRY_OPTIONS;
 
     return COUNTRY_OPTIONS.filter((country) =>
-        matchesSearch(
+      matchesSearch(
         normalized,
         [country.label, country.slug],
         COUNTRY_SEARCH_ALIASES[country.slug] ?? []
-        )
+      )
     );
   }, [query]);
 
@@ -78,12 +103,12 @@ export default function LocationFilterSelect({
     if (!normalized) return REGION_OPTIONS;
 
     return REGION_OPTIONS.filter((region) =>
-        matchesSearch(
+      matchesSearch(
         normalized,
         [region.label, region.slug],
         REGION_SEARCH_ALIASES[region.slug] ?? []
-        )
-    ); 
+      )
+    );
   }, [query]);
 
   function getSelectedLabel() {
@@ -95,7 +120,45 @@ export default function LocationFilterSelect({
   function navigateTo(region?: RegionSlug, country?: CountrySlug) {
     setOpen(false);
     setQuery("");
+    setLocationError("");
     router.push(getLocationHref(region, country));
+  }
+
+  async function handleUseMyLocation() {
+    setLocationError("");
+    setIsLocating(true);
+
+    try {
+      const module = await import("@/lib/bigdatacloud_reverse_geocode.mjs");
+      const BDCReverseGeocode = module.default;
+
+      const geo = new BDCReverseGeocode();
+      const location = (await geo.detect()) as {
+        countryCode?: string;
+      };
+
+      setIsLocating(false);
+
+      const countryCode = location?.countryCode?.toUpperCase?.();
+
+      if (!countryCode) {
+        setLocationError("Could not determine your country.");
+        return;
+      }
+
+      const match = COUNTRY_CODE_TO_ROUTE[countryCode];
+
+      if (!match) {
+        setLocationError("Your country is not supported yet.");
+        return;
+      }
+
+      navigateTo(match.region, match.country);
+    } catch (error) {
+      console.error("Location detection failed:", error);
+      setIsLocating(false);
+      setLocationError("Could not get your location.");
+    }
   }
 
   return (
@@ -130,11 +193,26 @@ export default function LocationFilterSelect({
             <div className="mb-2">
               <button
                 type="button"
-                onClick={() => navigateTo()}
-                className="flex w-full items-center rounded-xl px-3 py-2 text-left text-sm text-slate-700 hover:bg-slate-50"
+                onClick={handleUseMyLocation}
+                disabled={isLocating}
+                className="flex w-full items-center rounded-xl px-3 py-2 text-left text-sm text-slate-700 hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-60"
               >
-                <span className="font-medium">My location</span>
+                <span className="font-medium">
+                  {isLocating ? "Detecting your location..." : "Use my location"}
+                </span>
               </button>
+
+              <button
+                type="button"
+                onClick={() => navigateTo()}
+                className="mt-1 flex w-full items-center rounded-xl px-3 py-2 text-left text-sm text-slate-700 hover:bg-slate-50"
+              >
+              <span className="font-medium">All locations</span>
+              </button>
+
+              {locationError && (
+                <div className="px-3 pt-1 text-xs text-rose-600">{locationError}</div>
+              )}
             </div>
 
             {filteredRegions.length > 0 && (

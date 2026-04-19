@@ -1,5 +1,12 @@
 import type { MetadataRoute } from "next";
+
 import { oddsTypes, makeSlug } from "@/lib/oddsRoutes";
+
+import {
+  REGION_OPTIONS,
+  COUNTRY_OPTIONS,
+  getLocationHref,
+} from "@/lib/bookmaker-locations";
 
 const baseUrl = "https://bet-tools.com";
 
@@ -78,5 +85,34 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }
   }
 
-  return [...staticPages, ...converterPages];
+  const locationPages: MetadataRoute.Sitemap = [];
+
+  // Regions
+  for (const region of REGION_OPTIONS) {
+    locationPages.push({
+      url: `${baseUrl}${getLocationHref(region.slug)}`,
+      lastModified: now,
+      changeFrequency: "weekly",
+      priority: 0.7,
+    });
+  }
+
+  // Countries
+  for (const country of COUNTRY_OPTIONS) {
+    locationPages.push({
+      url: `${baseUrl}${getLocationHref(
+        country.region,
+        country.slug
+      )}`,
+      lastModified: now,
+      changeFrequency: "weekly",
+      priority: 0.75,
+    });
+  }
+
+  return [
+    ...staticPages,
+    ...converterPages,
+    ...locationPages,
+  ];
 }
