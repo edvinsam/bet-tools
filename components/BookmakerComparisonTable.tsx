@@ -135,7 +135,7 @@ export default function BookmakerComparisonTable({
                             src={row.logo}
                             alt={`${row.bookmaker_title} logo`}
                             loading="lazy"
-                            className="block h-8 w-auto max-w-[96px] rounded-md object-contain sm:h-9 sm:max-w-[120px]"
+                            className="block h-8 w-auto max-w-24 rounded-md object-contain sm:h-9 sm:max-w-30"
                             style={
                               row.backgroundColor
                                 ? {

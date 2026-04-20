@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import { Info } from "lucide-react";
 import Breadcrumbs from "@/components/Breadcrumbs";
+import type { Metadata } from "next";
 import {
   bookmakerMarginData,
   type Market,
@@ -44,6 +45,65 @@ type ComparisonPageProps = {
 
 function formatMargin(value: number) {
   return `${value.toFixed(2)}%`;
+}
+
+export async function generateMetadata({
+  params,
+}: ComparisonPageProps): Promise<Metadata> {
+  const resolvedParams = await params;
+  const { selectedRegion, selectedCountry } = parseLocation(resolvedParams.location);
+
+  const title = selectedCountry
+    ? `Best Bookmakers in ${COUNTRY_LABELS[selectedCountry]} by Margin`
+    : selectedRegion
+      ? `Best Bookmakers in ${REGION_LABELS[selectedRegion]} by Margin`
+      : "Bookmaker Margin Comparison by Region and Country";
+
+  const description = selectedCountry
+    ? `Compare bookmaker margins for sportsbooks available in ${COUNTRY_LABELS[selectedCountry]}. See which bookmakers offer the lowest average margin and more competitive odds.`
+    : selectedRegion
+      ? `Compare bookmaker margins across ${REGION_LABELS[selectedRegion]}. Rank sportsbooks by average margin and identify which operators offer sharper prices.`
+      : `Compare bookmaker margins across regions and countries. Rank bookmakers by average margin and identify sportsbooks with more competitive odds.`;
+
+  const canonical = selectedCountry && selectedRegion
+    ? `https://bet-tools.com/compare-bookmakers/${selectedRegion}/${selectedCountry}`
+    : selectedRegion
+      ? `https://bet-tools.com/compare-bookmakers/${selectedRegion}`
+      : `https://bet-tools.com/compare-bookmakers`;
+
+  const mergedRows = mergeRows(bookmakerMarginData);
+
+  const filteredRows = mergedRows
+    .filter((row) => {
+      if (!selectedRegion) return true;
+      return row.regions.includes(selectedRegion);
+    })
+    .filter((row) => {
+      if (!selectedCountry) return true;
+      return row.availableCountries.includes(selectedCountry);
+    });
+
+  const shouldNoindex = selectedCountry && filteredRows.length < 5;
+
+  return {
+    title,
+    description,
+    alternates: {
+      canonical,
+    },
+    openGraph: {
+      title,
+      description,
+      url: canonical,
+    },
+    twitter: {
+      title,
+      description,
+    },
+    robots: shouldNoindex
+      ? { index: false, follow: true }
+      : { index: true, follow: true },
+  };
 }
 
 function mergeRows(rows: RegionalBookmakerRow[]): ComparisonRow[] {
@@ -159,6 +219,71 @@ export function generateStaticParams() {
   return params;
 }
 
+function getLocationSummary({
+  selectedRegion,
+  selectedCountry,
+  stats,
+  filteredRows,
+}: {
+  selectedRegion?: RegionSlug;
+  selectedCountry?: CountrySlug;
+  stats: {
+    best: ComparisonRow | null;
+    average: number | null;
+    count: number;
+  };
+  filteredRows: ComparisonRow[];
+}) {
+  if (!stats.count || !stats.best || typeof stats.average !== "number") {
+    return null;
+  }
+
+  const bestTitle = stats.best.bookmaker_title;
+  const bestMargin = formatMargin(stats.best.average_margin_percent);
+  const averageMargin = formatMargin(stats.average);
+
+  if (selectedCountry) {
+    return [
+      `${COUNTRY_LABELS[selectedCountry]} currently shows ${stats.count} bookmakers in this comparison.`,
+      `${bestTitle} has the lowest average margin on this page at ${bestMargin}, while the average across all listed bookmakers is ${averageMargin}.`,
+      `Lower bookmaker margins generally mean more competitive odds, which is why comparing margin is a useful shortcut when evaluating sportsbook pricing in ${COUNTRY_LABELS[selectedCountry]}.`,
+    ];
+  }
+
+  if (selectedRegion) {
+    return [
+      `${REGION_LABELS[selectedRegion]} currently shows ${stats.count} bookmakers in this comparison.`,
+      `${bestTitle} has the lowest average margin on this page at ${bestMargin}, while the average across all listed bookmakers is ${averageMargin}.`,
+      `This regional comparison helps show which bookmakers tend to offer sharper pricing across ${REGION_LABELS[selectedRegion]}.`,
+    ];
+  }
+
+  return [
+    `This page compares ${stats.count} bookmakers across all supported locations.`,
+    `${bestTitle} currently has the lowest average margin at ${bestMargin}, while the average across all listed bookmakers is ${averageMargin}.`,
+    `Bookmaker margin is one of the simplest ways to compare odds quality, because lower overround usually means less value lost to the house.`,
+  ];
+}
+
+function getTopBookmakersText(rows: ComparisonRow[]) {
+  if (!rows.length) return null;
+
+  const topRows = rows.slice(0, 3);
+  const names = topRows.map(
+    (row) => `${row.bookmaker_title} (${formatMargin(row.average_margin_percent)})`
+  );
+
+  if (names.length === 1) {
+    return `${names[0]} is currently the only bookmaker shown in this filtered comparison.`;
+  }
+
+  if (names.length === 2) {
+    return `The top bookmakers by lowest average margin are ${names[0]} and ${names[1]}.`;
+  }
+
+  return `The top bookmakers by lowest average margin are ${names[0]}, ${names[1]}, and ${names[2]}.`;
+}
+
 export default async function BookmakerComparisonPage({
   data = bookmakerMarginData,
   params,
@@ -199,6 +324,15 @@ export default async function BookmakerComparisonPage({
       count: filteredRows.length,
     };
   })();
+
+  const summaryParagraphs = getLocationSummary({
+    selectedRegion,
+    selectedCountry,
+    stats,
+    filteredRows,
+  });
+
+  const topBookmakersText = getTopBookmakersText(filteredRows);
 
   const heading = selectedCountry
     ? `Bookmaker Margin Comparison in ${COUNTRY_LABELS[selectedCountry]}`
@@ -294,6 +428,28 @@ export default async function BookmakerComparisonPage({
           </div>
         </div>
       </section>
+
+      {summaryParagraphs && (
+        <section className="mx-auto max-w-6xl px-4 pt-8 sm:px-6 lg:px-8">
+          <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
+            <h2 className="text-xl font-semibold text-slate-900">
+              {selectedCountry
+                ? `Bookmaker overview for ${COUNTRY_LABELS[selectedCountry]}`
+                : selectedRegion
+                  ? `Bookmaker overview for ${REGION_LABELS[selectedRegion]}`
+                  : "Bookmaker overview"}
+            </h2>
+
+            <div className="mt-4 space-y-4 text-sm leading-6 text-slate-600">
+              {summaryParagraphs.map((paragraph, index) => (
+                <p key={index}>{paragraph}</p>
+              ))}
+
+              {topBookmakersText && <p>{topBookmakersText}</p>}
+            </div>
+          </div>
+        </section>
+      )}
 
       <section className="mx-auto max-w-6xl px-4 py-8 sm:px-6 lg:px-8">
         <BookmakerComparisonTable

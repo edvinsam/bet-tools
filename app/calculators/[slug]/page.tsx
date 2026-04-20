@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import OddsConverter from "@/components/OddsConverter";
 import { oddsTypes, makeSlug, parseSlug } from "@/lib/oddsRoutes";
 import { oddsContent, type ConversionContent } from "@/lib/oddsContent";
@@ -9,9 +10,9 @@ import Link from "next/link";
 import AllOddsConversions from "@/components/AllOddsConversions";
 
 type PageProps = {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 };
 
 function getDefaultContent(from: string, to: string): ConversionContent {
@@ -22,8 +23,32 @@ function getDefaultContent(from: string, to: string): ConversionContent {
     formulaTitle: `How ${from} odds are converted to ${to} odds`,
     formulaText:
       "This converter first converts the value to decimal odds, then converts it into the target format.",
-    fromDescription: "sample description",
-    toDescription: "sample description",
+    fromDescription: `${from} odds are one of the supported betting formats in this calculator.`,
+    toDescription: `${to} odds are one of the supported betting formats in this calculator.`,
+    supportedFormatsText:
+      "This converter supports the main betting odds formats used worldwide.",
+    whyUseText:
+      "An odds converter helps you compare bookmaker prices more easily across different formats.",
+    commonMistake:
+      "A common mistake is mixing up profit-only formats with total-return formats.",
+    pairNote:
+      "This converter is designed to help you switch between two betting odds formats quickly.",
+    faq: [
+      {
+        question: `How do you convert ${from} odds to ${to} odds?`,
+        answer:
+          "Use the calculator to convert the value automatically and avoid manual mistakes.",
+      },
+    ],
+    workedExample: {
+      heading: "Worked example",
+      input: `Convert ${from} to ${to}`,
+      explanation: [
+        `Start with the ${from} value.`,
+        `Apply the relevant conversion formula.`,
+      ],
+      result: `Equivalent ${to} value`,
+    },
   };
 }
 
@@ -43,7 +68,9 @@ export async function generateStaticParams() {
   return params;
 }
 
-export async function generateMetadata({ params }: PageProps) {
+export async function generateMetadata({
+  params,
+}: PageProps): Promise<Metadata> {
   const { slug } = await params;
   const parsed = parseSlug(slug);
 
@@ -58,14 +85,22 @@ export async function generateMetadata({ params }: PageProps) {
   }
 
   const key = `${parsed.from}-to-${parsed.to}` as const;
-  const content =
-    oddsContent[key] ?? getDefaultContent(parsed.from, parsed.to);
+  const content = oddsContent[key] ?? getDefaultContent(parsed.from, parsed.to);
 
   return {
     title: content.title,
     description: content.intro,
     alternates: {
       canonical: `https://bet-tools.com/calculators/${slug}`,
+    },
+    openGraph: {
+      title: content.title,
+      description: content.intro,
+      url: `https://bet-tools.com/calculators/${slug}`,
+    },
+    twitter: {
+      title: content.title,
+      description: content.intro,
     },
   };
 }
@@ -79,8 +114,20 @@ export default async function CalculatorPage({ params }: PageProps) {
   }
 
   const key = `${parsed.from}-to-${parsed.to}` as const;
-  const content =
-    oddsContent[key] ?? getDefaultContent(parsed.from, parsed.to);
+  const content = oddsContent[key] ?? getDefaultContent(parsed.from, parsed.to);
+
+  const faqJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: content.faq.map((item) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: item.answer,
+      },
+    })),
+  };
 
   const fromLabel =
     parsed.from.charAt(0).toUpperCase() + parsed.from.slice(1);
@@ -105,9 +152,10 @@ export default async function CalculatorPage({ params }: PageProps) {
           items={[
             { label: "Home", href: "/" },
             { label: "Calculators", href: "/calculators" },
-            { label: "Odds Converter" }
+            { label: content.title },
           ]}
         />
+
         <h1
           style={{
             textAlign: "center",
@@ -135,18 +183,69 @@ export default async function CalculatorPage({ params }: PageProps) {
           <p>{content.intro}</p>
 
           <h3 style={{ textAlign: "center", paddingTop: "0.5rem" }}>
-            Formula used for converting {parsed.from} odds to {parsed.to} odds
+            {content.formulaTitle}
           </h3>
 
           <p>{content.formulaText}</p>
           <p>{content.example}</p>
 
-          <h2 style={{ textAlign: "center", paddingTop: "0.5rem" }}>
+                    <h2
+            style={{
+              textAlign: "center",
+              paddingTop: "0.75rem",
+            }}
+          >
+            {content.workedExample.heading}
+          </h2>
+
+          <div
+            style={{
+              marginTop: "0.75rem",
+              padding: "1rem",
+              border: "1px solid #e5e7eb",
+              borderRadius: "0.75rem",
+              background: "#f9fafb",
+            }}
+          >
+            <p style={{ marginTop: 0 }}>
+              <strong>{content.workedExample.input}</strong>
+            </p>
+
+            {content.workedExample.explanation.map((step, index) => (
+              <p key={index}>{step}</p>
+            ))}
+
+            <p style={{ marginBottom: 0 }}>
+              <strong>{content.workedExample.result}</strong>
+            </p>
+          </div>
+
+          <h2
+            style={{
+              textAlign: "center",
+              paddingTop: "0.75rem",
+            }}
+          >
+            Important note for this conversion
+          </h2>
+          <p>{content.pairNote}</p>
+
+          <h2
+            style={{
+              textAlign: "center",
+              paddingTop: "0.75rem",
+            }}
+          >
+            Common conversion mistake
+          </h2>
+          <p>{content.commonMistake}</p>
+
+          <h2 style={{ textAlign: "center", paddingTop: "0.75rem" }}>
             {fromLabel} odds explained
           </h2>
           <p>{content.fromDescription}</p>
 
-          <h2 style={{ textAlign: "center", paddingTop: "0.5rem" }}>
+          <h2 style={{ textAlign: "center", paddingTop: "0.75rem" }}>
             {toLabel} odds explained
           </h2>
           <p>{content.toDescription}</p>
@@ -154,33 +253,54 @@ export default async function CalculatorPage({ params }: PageProps) {
           <h2
             style={{
               textAlign: "center",
-              paddingTop: "0.5rem",
+              paddingTop: "0.75rem",
             }}
           >
             Supported odds formats
           </h2>
-
-          <p>
-            This converter supports decimal odds, fractional odds, American
-            odds, Hong Kong odds, Malay odds, Indonesian odds, and implied
-            probability percentage.
-          </p>
+          <p>{content.supportedFormatsText}</p>
 
           <h2
             style={{
               textAlign: "center",
-              paddingTop: "0.5rem",
+              paddingTop: "0.75rem",
             }}
           >
             Why use an odds converter?
           </h2>
+          <p>{content.whyUseText}</p>
 
-          <p>
-            Bookmakers and betting exchanges use different odds formats
-            depending on region and market. An odds converter makes it easier to
-            compare prices, understand implied probability, and analyze bets
-            more accurately across different sportsbooks.
-          </p>
+          {content.faq.length > 0 && (
+            <>
+              <h2
+                style={{
+                  textAlign: "center",
+                  paddingTop: "0.75rem",
+                }}
+              >
+                Frequently asked questions
+              </h2>
+
+              <div style={{ marginTop: "1rem" }}>
+                {content.faq.map((item, index) => (
+                  <div
+                    key={`${item.question}-${index}`}
+                    style={{ marginBottom: "1.25rem" }}
+                  >
+                    <h3
+                      style={{
+                        fontSize: "1.05rem",
+                        marginBottom: "0.4rem",
+                      }}
+                    >
+                      {item.question}
+                    </h3>
+                    <p>{item.answer}</p>
+                  </div>
+                ))}
+              </div>
+            </>
+          )}
         </section>
 
         <section
@@ -248,6 +368,16 @@ export default async function CalculatorPage({ params }: PageProps) {
             </Link>
           </div>
         </section>
+
+        {content.faq.length > 0 && (
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify(faqJsonLd),
+            }}
+          />
+        )}
+
         <AllOddsConversions />
       </div>
     </main>
