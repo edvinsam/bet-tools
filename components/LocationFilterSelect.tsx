@@ -1,6 +1,8 @@
 "use client";
 
 import { useMemo, useRef, useState, useEffect } from "react";
+import Image from "next/image";
+import "flag-icons/css/flag-icons.min.css";
 import { useRouter } from "next/navigation";
 import { ChevronDown, MapPin, Search } from "lucide-react";
 import {
@@ -41,6 +43,68 @@ const COUNTRY_CODE_TO_ROUTE: Partial<Record<string, CountryRouteMatch>> = {
   KE: { region: "africa", country: "kenya" },
   ZA: { region: "africa", country: "south-africa" },
 };
+
+function FlagIcon({
+  src,
+  alt,
+}: {
+  src?: string;
+  alt: string;
+}) {
+  if (!src) {
+    return (
+      <span className="inline-block h-3.5 w-5 rounded-sm bg-slate-200" />
+    );
+  }
+
+  return (
+    <span className="relative inline-block h-3.5 w-5 overflow-hidden rounded-sm bg-slate-100">
+      <Image
+        src={src}
+        alt={alt}
+        fill
+        sizes="20px"
+        className="object-cover"
+      />
+    </span>
+  );
+}
+
+function LocationFlag({
+  countryCode,
+  regionSrc,
+  label,
+}: {
+  countryCode?: string;
+  regionSrc?: string;
+  label: string;
+}) {
+  if (countryCode) {
+    return (
+      <span
+        className={`fi fi-${countryCode.toLowerCase()} inline-block h-[12px] w-[16px] rounded-sm overflow-hidden`}
+        aria-hidden="true"
+        title={label}
+      />
+    );
+  }
+
+  if (regionSrc) {
+    return (
+      <span className="relative inline-block h-[12px] w-[16px] overflow-hidden rounded-sm bg-slate-100">
+        <Image
+          src={regionSrc}
+          alt=""
+          fill
+          sizes="16px"
+          className="object-contain"
+        />
+      </span>
+    );
+  }
+
+  return <span className="inline-block h-[12px] w-[16px] rounded-sm bg-slate-200" />;
+}
 
 function matchesSearch(
   value: string,
@@ -111,11 +175,33 @@ export default function LocationFilterSelect({
     );
   }, [query]);
 
-  function getSelectedLabel() {
-    if (selectedCountry) return COUNTRY_LABELS[selectedCountry];
-    if (selectedRegion) return REGION_LABELS[selectedRegion];
-    return "All locations";
+  function getSelectedLocation() {
+    if (selectedCountry) {
+      const country = COUNTRY_OPTIONS.find((c) => c.slug === selectedCountry);
+      return {
+        label: COUNTRY_LABELS[selectedCountry],
+        countryCode: country?.flagCode,
+        regionSrc: undefined,
+      };
+    }
+
+    if (selectedRegion) {
+      const region = REGION_OPTIONS.find((r) => r.slug === selectedRegion);
+      return {
+        label: REGION_LABELS[selectedRegion],
+        countryCode: undefined,
+        regionSrc: region?.flagSrc,
+      };
+    }
+
+    return {
+      label: "All locations",
+      countryCode: undefined,
+      regionSrc: undefined,
+    };
   }
+
+  const selectedLocation = getSelectedLocation();
 
   function navigateTo(region?: RegionSlug, country?: CountrySlug) {
     setOpen(false);
@@ -170,7 +256,12 @@ export default function LocationFilterSelect({
       >
         <span className="flex items-center gap-2">
           <MapPin className="h-4 w-4 text-slate-400" />
-          {getSelectedLabel()}
+          <LocationFlag
+            countryCode={selectedLocation.countryCode}
+            regionSrc={selectedLocation.regionSrc}
+            label={selectedLocation.label}
+          />
+          <span>{selectedLocation.label}</span>
         </span>
         <ChevronDown className="h-4 w-4 text-slate-400" />
       </button>
@@ -215,23 +306,17 @@ export default function LocationFilterSelect({
               )}
             </div>
 
-            {filteredRegions.length > 0 && (
-              <div className="mb-2">
-                <div className="px-3 py-2 text-xs font-semibold uppercase tracking-wide text-slate-500">
-                  Regions
-                </div>
-                {filteredRegions.map((region) => (
-                  <button
-                    key={region.slug}
-                    type="button"
-                    onClick={() => navigateTo(region.slug)}
-                    className="flex w-full items-center rounded-xl px-3 py-2 text-left text-sm text-slate-700 hover:bg-slate-50"
-                  >
-                    {region.label}
-                  </button>
-                ))}
-              </div>
-            )}
+            {filteredRegions.map((region) => (
+              <button
+                key={region.slug}
+                type="button"
+                onClick={() => navigateTo(region.slug)}
+                className="flex w-full items-center gap-2 rounded-xl px-3 py-2 text-left text-sm text-slate-700 hover:bg-slate-50"
+              >
+                <LocationFlag regionSrc={region.flagSrc} label={region.label} />
+                <span>{region.label}</span>
+              </button>
+            ))}
 
             {filteredCountries.length > 0 && (
               <div>
@@ -245,7 +330,11 @@ export default function LocationFilterSelect({
                     onClick={() => navigateTo(country.region, country.slug)}
                     className="flex w-full items-center justify-between rounded-xl px-3 py-2 text-left text-sm text-slate-700 hover:bg-slate-50"
                   >
+                    <span className="flex items-center gap-2">
+                      <LocationFlag countryCode={country.flagCode} label={country.label} /> 
                     <span>{country.label}</span>
+                    </span>
+
                     <span className="text-xs text-slate-400">
                       {REGION_LABELS[country.region]}
                     </span>
