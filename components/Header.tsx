@@ -44,6 +44,12 @@ export default function Header() {
           >
             Compare Bookmakers
           </Link>
+          <Link
+            href="/arbitrage-bets"
+            className="text-[#111827] no-underline hover:underline"
+          >
+            Live Arbitrage Bets
+          </Link>
         </nav>
       </div>
 

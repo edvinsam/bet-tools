@@ -102,7 +102,6 @@ export default function BookmakerComparisonTable({
               </tr>
             ) : (
               filteredRows.map((row) => {
-                console.log(row.bookmaker_id, row.backgroundColor);
                 const isTopThree = (row.rank ?? 0) <= 3;
 
                 return (

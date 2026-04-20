@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import { formatMoney, currencyOptions, type CurrencyCode } from "@/lib/currency";
 import type { StylesConfig } from "react-select";
 import Select from "react-select";
@@ -178,23 +179,43 @@ export default function ArbitrageCalculator({
   const [showCommissions, setShowCommissions] = useState<boolean>(false);
   const [inputType, setInputType] = useState<OddsType>("decimal");
 
-  useEffect(() => {
-    setRows((prev) => {
-      if (prev.length === outcomeCount) return prev;
+  const searchParams = useSearchParams();
 
-      if (prev.length < outcomeCount) {
-        return [
-          ...prev,
-          ...Array.from({ length: outcomeCount - prev.length }, () => ({
-            odds: "",
-            commission: "0",
-          })),
-        ];
+  useEffect(() => {
+    const outcomesParam = searchParams.get("outcomes");
+    const oddsFormatParam = searchParams.get("oddsFormat");
+    const oddsParam = searchParams.get("odds");
+
+    let nextOutcomeCount = safeDefaultCount;
+
+    if (outcomesParam) {
+      const parsedOutcomes = Number(outcomesParam);
+      if (!Number.isNaN(parsedOutcomes) && parsedOutcomes >= 2 && parsedOutcomes <= 6) {
+        nextOutcomeCount = parsedOutcomes;
+        setOutcomeCount(parsedOutcomes);
+      }
+    }
+
+    if (oddsFormatParam) {
+      setInputType(oddsFormatParam as OddsType);
+    }
+
+    if (oddsParam) {
+      const parsedOdds = oddsParam.split(",").map((value) => value.trim());
+
+      if (!outcomesParam) {
+        nextOutcomeCount = Math.min(6, Math.max(2, parsedOdds.length));
+        setOutcomeCount(nextOutcomeCount);
       }
 
-      return prev.slice(0, outcomeCount);
-    });
-  }, [outcomeCount]);
+      setRows(
+        Array.from({ length: nextOutcomeCount }, (_, index) => ({
+          odds: convertFromDecimal(Number(parsedOdds[index]), oddsFormatParam as OddsType) ?? "",
+          commission: "0",
+        }))
+      );
+    }
+  }, [searchParams, safeDefaultCount]);
 
   function updateRow(index: number, field: keyof OutcomeRow, value: string) {
     setRows((prev) =>

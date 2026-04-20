@@ -34,12 +34,24 @@ const calculators = [
 ];
 
 export const metadata = {
-  title: "Free Betting Calculators and Odds Tools",
+  title:
+    "Free Betting Calculators, Live Arbitrage Bets & Odds Tools",
+
   description:
-    "Free betting calculators for odds conversion, fair probability, arbitrage, expected value, and bankroll strategy.",
+    "Free betting calculators, live arbitrage bets, bookmaker comparison tools, and odds conversion utilities. Find surebets, remove bookmaker margin, calculate fair probability, and analyze betting value instantly.",
+
   alternates: {
     canonical: "https://bet-tools.com",
   },
+  keywords: [
+    "betting calculators",
+    "arbitrage bets",
+    "surebets",
+    "odds converter",
+    "fair probability",
+    "value betting",
+    "bookmaker comparison"
+  ],
 };
 
 export default function HomePage() {
@@ -110,6 +122,90 @@ export default function HomePage() {
             >
               Explore Arbitrage Calculator
             </Link>
+            <Link
+              href="/arbitrage-bets"
+              style={{
+                display: "inline-block",
+                padding: "0.7rem 1rem",
+                borderRadius: "0.5rem",
+                border: "2px solid #d2d2d3",
+                background: "white",
+                color: "#111827",
+                textDecoration: "none",
+                fontWeight: 600,
+              }}
+            >
+              View Live Arbitrage Bets
+            </Link>
+          </div>
+        </section>
+
+        <section style={{ marginBottom: "2.5rem" }}>
+          <div
+            style={{
+              border: "2px solid #d2d2d3",
+              borderRadius: "0.75rem",
+              padding: "1.25rem",
+              background: "#f9fafb",
+              boxSizing: "border-box",
+            }}
+          >
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                gap: "1rem",
+              }}
+            >
+              <div style={{ maxWidth: "48rem" }}>
+                <h2 style={{ marginBottom: "0.625rem" }}>
+                  Live Arbitrage Bets
+                </h2>
+
+                <p style={{ margin: 0 }}>
+                  Browse free live arbitrage betting opportunities across major bookmakers.
+                  These surebets are updated automatically and show where price differences
+                  create guaranteed profit opportunities.
+                </p>
+              </div>
+
+              <div
+                style={{
+                  display: "flex",
+                  gap: "0.75rem",
+                  flexWrap: "wrap",
+                  alignItems: "center",
+                  justifyContent: "space-between",
+                }}
+              >
+                <p
+                  style={{
+                    margin: 0,
+                    color: "#4b5563",
+                    maxWidth: "40rem",
+                  }}
+                >
+                  No signup required — simply open the bookmaker links and use the built-in
+                  calculator to split your stakes instantly.
+                </p>
+
+                <Link
+                  href="/arbitrage-bets"
+                  style={{
+                    display: "inline-block",
+                    padding: "0.7rem 1rem",
+                    borderRadius: "0.5rem",
+                    background: "#2563eb",
+                    color: "white",
+                    textDecoration: "none",
+                    fontWeight: 600,
+                    whiteSpace: "nowrap",
+                  }}
+                >
+                  View live arbitrage bets
+                </Link>
+              </div>
+            </div>
           </div>
         </section>
 

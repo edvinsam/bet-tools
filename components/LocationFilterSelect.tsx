@@ -82,7 +82,7 @@ function LocationFlag({
   if (countryCode) {
     return (
       <span
-        className={`fi fi-${countryCode.toLowerCase()} inline-block h-[12px] w-[16px] rounded-sm overflow-hidden`}
+        className={`fi fi-${countryCode.toLowerCase()} inline-block h-3 w-4 rounded-sm overflow-hidden`}
         aria-hidden="true"
         title={label}
       />
@@ -91,7 +91,7 @@ function LocationFlag({
 
   if (regionSrc) {
     return (
-      <span className="relative inline-block h-[12px] w-[16px] overflow-hidden rounded-sm bg-slate-100">
+      <span className="relative inline-block h-3 w-4 overflow-hidden rounded-sm bg-slate-100">
         <Image
           src={regionSrc}
           alt=""
@@ -103,7 +103,7 @@ function LocationFlag({
     );
   }
 
-  return <span className="inline-block h-[12px] w-[16px] rounded-sm bg-slate-200" />;
+  return <span className="inline-block h-3 w-4 rounded-sm bg-slate-200" />;
 }
 
 function matchesSearch(
