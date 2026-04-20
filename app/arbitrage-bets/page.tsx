@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import ArbitrageBetsTable from "@/components/ArbitrageBetsTable";
 
 type ApiResponse = {

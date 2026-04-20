@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import ArbitrageCalculatorPageContent from "@/components/ArbitrageCalculatorPageContent";
 
 export const metadata = {
@@ -10,5 +11,9 @@ export const metadata = {
 };
 
 export default function ArbitrageCalculatorPage() {
-  return <ArbitrageCalculatorPageContent />;
+  return (
+    <Suspense fallback={<div>Loading calculator...</div>}>
+      <ArbitrageCalculatorPageContent />
+    </Suspense>
+  );
 }
