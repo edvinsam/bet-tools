@@ -51,13 +51,6 @@ export default function BookmakerReviewsPage() {
           Review pages give a broader overview of each bookmaker, while our
           bookmaker comparison page focuses on measurable margin and odds data.
         </p>
-
-        <Link
-          href="/compare-bookmakers"
-          className="mt-4 inline-flex font-semibold text-slate-950 underline"
-        >
-          View bookmaker comparison
-        </Link>
       </section>
     </main>
   );
