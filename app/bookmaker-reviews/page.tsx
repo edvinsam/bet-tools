@@ -41,17 +41,6 @@ export default function BookmakerReviewsPage() {
       </section>
 
       <BookmakerReviewsGrid bookmakers={enrichedBookmakerReviews} />
-
-      <section className="mt-10 rounded-2xl border border-slate-200 bg-slate-50 p-6">
-        <h2 className="text-2xl font-bold text-slate-950">
-          Compare bookmaker margins
-        </h2>
-
-        <p className="mt-3 max-w-3xl text-slate-700">
-          Review pages give a broader overview of each bookmaker, while our
-          bookmaker comparison page focuses on measurable margin and odds data.
-        </p>
-      </section>
     </main>
   );
 }
