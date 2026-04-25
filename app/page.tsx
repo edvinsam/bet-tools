@@ -227,10 +227,9 @@ export default function HomePage() {
               }}
             >
               <div style={{ maxWidth: "48rem" }}>
-                <h2 style={{ marginBottom: "0.625rem" }}>Compare Bookmaker Margins</h2>
+                <h2 style={{ marginBottom: "0.625rem" }}>Compare Bookmakers</h2>
                 <p style={{ margin: 0 }}>
-                  See which bookmakers offer the lowest average margins across major football
-                  markets. Lower margins generally mean better prices and less expected value
+                  See which bookmakers offer the lowest average margins and which have the best customer ratings. Lower margins generally mean better prices and less expected value
                   lost to the house over time.
                 </p>
               </div>
@@ -256,7 +255,7 @@ export default function HomePage() {
                 </p>
 
                 <Link
-                  href="/compare-bookmakers"
+                  href="/bookmaker-reviews"
                   style={{
                     display: "inline-block",
                     padding: "0.7rem 1rem",

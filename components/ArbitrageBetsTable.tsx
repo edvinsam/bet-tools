@@ -2,8 +2,9 @@
 
 import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
-import { BOOKMAKER_META } from "@/lib/bookmakerMeta";
+import { BOOKMAKER_META } from "@/lib/bookmaker-meta";
 import { convertFromDecimal, type OddsType } from "@/lib/oddsConverter";
+import { BOOKMAKER_KEY_MAP } from "@/lib/bookmaker-key-map";
 
 type ArbLeg = {
   side: string;
@@ -71,6 +72,23 @@ function buildCalculatorHref(legs: ArbLeg[], oddsFormat: OddsType) {
   return `/calculators/arbitrage-calculator?outcomes=${validOdds.length}&oddsFormat=${oddsFormat}&odds=${validOdds.join(",")}`;
 }
 
+export function resolveBookmakerKey(raw: string): string | null {
+  if (!raw) return null;
+
+  const direct = BOOKMAKER_KEY_MAP[raw];
+  if (direct) return direct;
+
+  // strict fallback — normalized lookup
+  const normalized = raw.toLowerCase().replace(/[^a-z0-9]/g, "");
+
+  const match = Object.entries(BOOKMAKER_KEY_MAP).find(
+    ([key]) =>
+      key.toLowerCase().replace(/[^a-z0-9]/g, "") === normalized
+  );
+
+  return match?.[1] ?? null;
+}
+
 function BookmakerLogo({
   bookmaker,
   href,
@@ -78,7 +96,15 @@ function BookmakerLogo({
   bookmaker: string;
   href: string | null;
 }) {
-  const meta = BOOKMAKER_META[bookmaker];
+  const resolvedKey = resolveBookmakerKey(bookmaker);
+
+  const meta = resolvedKey
+    ? BOOKMAKER_META[resolvedKey]
+    : undefined;
+
+  if (!meta) {
+    console.log("Missing bookmaker meta:", bookmaker);
+  }
 
   const content = meta?.logo ? (
     <img

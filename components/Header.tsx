@@ -37,18 +37,17 @@ export default function Header() {
           >
             Calculators
           </Link>
-
-          <Link
-            href="/compare-bookmakers"
-            className="text-[#111827] no-underline hover:underline"
-          >
-            Compare Bookmakers
-          </Link>
           <Link
             href="/arbitrage-bets"
             className="text-[#111827] no-underline hover:underline"
           >
             Live Arbitrage Bets
+          </Link>
+          <Link
+            href="/bookmaker-reviews"
+            className="text-[#111827] no-underline hover:underline"
+          >
+            Bookmaker Reviews
           </Link>
         </nav>
       </div>
@@ -86,6 +85,21 @@ export default function Header() {
               className="text-[#111827] no-underline hover:underline"
             >
               Arbitrage Calculator
+            </Link>
+
+            <Link
+              href="/arbitrage-bets"
+              onClick={() => setMenuOpen(false)}
+              className="text-[#111827] no-underline hover:underline"
+            >
+              Live Arbitrage Bets
+            </Link>
+            <Link
+              href="/bookmaker-reviews"
+              onClick={() => setMenuOpen(false)}
+              className="text-[#111827] no-underline hover:underline"
+            >
+              Bookmaker Reviews
             </Link>
           </div>
         </nav>

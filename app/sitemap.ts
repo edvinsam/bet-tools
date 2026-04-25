@@ -8,6 +8,8 @@ import {
   getLocationHref,
 } from "@/lib/bookmaker-locations";
 
+import { bookmakerReviews } from "@/lib/bookmaker-reviews";
+
 const baseUrl = "https://bet-tools.com";
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -63,17 +65,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     {
-      url: `${baseUrl}/compare-bookmakers`,
-      lastModified: now,
-      changeFrequency: "weekly",
-      priority: 0.8,
-    },
-    {
       url: `${baseUrl}/arbitrage-bets`,
       lastModified: now,
       changeFrequency: "daily",
       priority: 0.9
     },
+    {
+      url: `${baseUrl}/bookmaker-reviews`,
+      lastModified: now,
+      changeFrequency: "weekly",
+      priority: 0.7
+    }
   ];
 
   const converterPages: MetadataRoute.Sitemap = [];
@@ -91,34 +93,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }
   }
 
-  const locationPages: MetadataRoute.Sitemap = [];
-
-  // Regions
-  for (const region of REGION_OPTIONS) {
-    locationPages.push({
-      url: `${baseUrl}${getLocationHref(region.slug)}`,
-      lastModified: now,
-      changeFrequency: "weekly",
-      priority: 0.7,
-    });
-  }
-
-  // Countries
-  for (const country of COUNTRY_OPTIONS) {
-    locationPages.push({
-      url: `${baseUrl}${getLocationHref(
-        country.region,
-        country.slug
-      )}`,
-      lastModified: now,
-      changeFrequency: "weekly",
-      priority: 0.75,
-    });
-  }
+  const bookmakerReviewUrls = bookmakerReviews.map((bookmaker) => ({
+    url: `${baseUrl}/bookmaker-reviews/${bookmaker.slug}`,
+    lastModified: new Date(),
+  }));
 
   return [
     ...staticPages,
     ...converterPages,
-    ...locationPages,
+    ...bookmakerReviewUrls,
   ];
 }

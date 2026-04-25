@@ -2,14 +2,11 @@ export type Market = "all" | "us" | "uk" | "eu" | "fr" | "se" | "au";
 
 export type RegionalBookmakerRow = {
   bookmaker_id: string;
-  bookmaker_key: string;
+  bookmaker_key?: string;
   bookmaker_title: string;
-  market: Exclude<Market, "all">;
+  market?: Exclude<Market, "all">;
   samples: number;
   average_margin_percent: number;
-  logo: string;
-  url: string;
-  backgroundColor?: string;
 };
 
 type RawRegionalBookmakerRow = Omit<RegionalBookmakerRow, "logo" | "url" | "backgroundColor">;
@@ -79,7 +76,7 @@ const BOOKMAKER_META: Record<string, BookmakerMeta> = {
   tipico: { logo: "/logos/tipico.svg", url: "https://www.tipico.com", backgroundColor: "#ffffff" },
   unibet: { logo: "/logos/unibet.png", url: "https://www.unibet.com", backgroundColor: "#147a45" },
   virginbet: { logo: "/logos/virginbet.jpeg", url: "https://www.virginbet.com", backgroundColor: "#cc080f" },
-  williamhill: { logo: "/logos/williamhill.png", url: "https://www.williamhill.com", backgroundColor: "#060a29" },
+  "william-hill": { logo: "/logos/williamhill.png", url: "https://www.williamhill.com", backgroundColor: "#060a29" },
   winamax: { logo: "/logos/winamax.png", url: "https://www.winamax.fr", backgroundColor: "#e6e6e6" },
 };
 
@@ -89,103 +86,71 @@ const FALLBACK_META: BookmakerMeta = {
 };
 
 const rawBookmakerMarginData: RawRegionalBookmakerRow[] = [
-  { bookmaker_id: "betfair", bookmaker_key: "betfair_ex_au", bookmaker_title: "Betfair (Exchange)", market: "au", samples: 6, average_margin_percent: 1.059 },
-  { bookmaker_id: "unibet", bookmaker_key: "unibet_au", bookmaker_title: "Unibet", market: "au", samples: 6, average_margin_percent: 5.332 },
-  { bookmaker_id: "tabtouch", bookmaker_key: "tabtouch", bookmaker_title: "TABtouch", market: "au", samples: 6, average_margin_percent: 5.332 },
-  { bookmaker_id: "pointsbet", bookmaker_key: "pointsbetau", bookmaker_title: "PointsBet", market: "au", samples: 6, average_margin_percent: 5.754 },
-  { bookmaker_id: "betright", bookmaker_key: "betright", bookmaker_title: "Bet Right", market: "au", samples: 6, average_margin_percent: 6.207 },
-  { bookmaker_id: "sportsbet", bookmaker_key: "sportsbet", bookmaker_title: "Sportsbet", market: "au", samples: 6, average_margin_percent: 6.211 },
-  { bookmaker_id: "neds", bookmaker_key: "neds", bookmaker_title: "Neds", market: "au", samples: 6, average_margin_percent: 6.651 },
-  { bookmaker_id: "ladbrokes", bookmaker_key: "ladbrokes_au", bookmaker_title: "Ladbrokes", market: "au", samples: 6, average_margin_percent: 6.651 },
-  { bookmaker_id: "betr", bookmaker_key: "betr_au", bookmaker_title: "Betr", market: "au", samples: 6, average_margin_percent: 7.104 },
-  { bookmaker_id: "tab", bookmaker_key: "tab", bookmaker_title: "TAB", market: "au", samples: 6, average_margin_percent: 7.281 },
-  { bookmaker_id: "playup", bookmaker_key: "playup", bookmaker_title: "PlayUp", market: "au", samples: 6, average_margin_percent: 7.404 },
-
-  { bookmaker_id: "matchbook", bookmaker_key: "matchbook_eu", bookmaker_title: "Matchbook (Exchange)", market: "eu", samples: 6, average_margin_percent: 0.992 },
-  { bookmaker_id: "betfair", bookmaker_key: "betfair_ex_eu", bookmaker_title: "Betfair (Exchange)", market: "eu", samples: 6, average_margin_percent: 1.059 },
-  { bookmaker_id: "1xbet", bookmaker_key: "1xbet", bookmaker_title: "1xBet", market: "eu", samples: 6, average_margin_percent: 1.499 },
-  { bookmaker_id: "unibet", bookmaker_key: "unibet_nl", bookmaker_title: "Unibet", market: "eu", samples: 6, average_margin_percent: 2.221 },
-  { bookmaker_id: "unibet", bookmaker_key: "unibet_se_eu", bookmaker_title: "Unibet", market: "eu", samples: 6, average_margin_percent: 2.636 },
-  { bookmaker_id: "marathonbet", bookmaker_key: "marathonbet", bookmaker_title: "Marathonbet", market: "eu", samples: 6, average_margin_percent: 3.177 },
-  { bookmaker_id: "pinnacle", bookmaker_key: "pinnacle_eu", bookmaker_title: "Pinnacle", market: "eu", samples: 6, average_margin_percent: 3.480 },
-  { bookmaker_id: "betonline", bookmaker_key: "betonlineag_eu", bookmaker_title: "BetOnline", market: "eu", samples: 6, average_margin_percent: 3.499 },
-  { bookmaker_id: "coolbet", bookmaker_key: "coolbet_eu", bookmaker_title: "Coolbet", market: "eu", samples: 6, average_margin_percent: 3.902 },
-  { bookmaker_id: "betsson", bookmaker_key: "betsson_eu", bookmaker_title: "Betsson", market: "eu", samples: 6, average_margin_percent: 4.123 },
-  { bookmaker_id: "nordicbet", bookmaker_key: "nordicbet", bookmaker_title: "NordicBet", market: "eu", samples: 6, average_margin_percent: 4.123 },
-  { bookmaker_id: "leovegas", bookmaker_key: "leovegas_se", bookmaker_title: "LeoVegas", market: "eu", samples: 6, average_margin_percent: 4.257 },
-  { bookmaker_id: "codere", bookmaker_key: "codere_it", bookmaker_title: "Codere", market: "eu", samples: 6, average_margin_percent: 5.073 },
-  { bookmaker_id: "tipico", bookmaker_key: "tipico", bookmaker_title: "Tipico", market: "eu", samples: 6, average_margin_percent: 6.060 },
-  { bookmaker_id: "winamax", bookmaker_key: "winamax_de", bookmaker_title: "Winamax", market: "eu", samples: 6, average_margin_percent: 6.749 },
-  { bookmaker_id: "betclic", bookmaker_key: "betclic_fr_eu", bookmaker_title: "Betclic", market: "eu", samples: 6, average_margin_percent: 6.927 },
-  { bookmaker_id: "mybookie", bookmaker_key: "mybookieag_eu", bookmaker_title: "MyBookie", market: "eu", samples: 6, average_margin_percent: 6.999 },
-  { bookmaker_id: "pmu", bookmaker_key: "pmu_fr_eu", bookmaker_title: "PMU", market: "eu", samples: 6, average_margin_percent: 7.491 },
-  { bookmaker_id: "winamax", bookmaker_key: "winamax_fr_eu", bookmaker_title: "Winamax", market: "eu", samples: 6, average_margin_percent: 7.881 },
-  { bookmaker_id: "unibet", bookmaker_key: "unibet_fr_eu", bookmaker_title: "Unibet", market: "eu", samples: 6, average_margin_percent: 7.967 },
-  { bookmaker_id: "888sport", bookmaker_key: "888sport_eu", bookmaker_title: "888sport", market: "eu", samples: 6, average_margin_percent: 8.778 },
-  { bookmaker_id: "williamhill", bookmaker_key: "williamhill_eu", bookmaker_title: "William Hill", market: "eu", samples: 6, average_margin_percent: 8.778 },
-  { bookmaker_id: "everygame", bookmaker_key: "everygame", bookmaker_title: "Everygame", market: "eu", samples: 6, average_margin_percent: 9.629 },
-
-  { bookmaker_id: "betclic", bookmaker_key: "betclic_fr", bookmaker_title: "Betclic", market: "fr", samples: 6, average_margin_percent: 6.927 },
-  { bookmaker_id: "pmu", bookmaker_key: "pmu_fr", bookmaker_title: "PMU", market: "fr", samples: 6, average_margin_percent: 7.491 },
-  { bookmaker_id: "winamax", bookmaker_key: "winamax_fr", bookmaker_title: "Winamax", market: "fr", samples: 6, average_margin_percent: 7.881 },
-  { bookmaker_id: "unibet", bookmaker_key: "unibet_fr", bookmaker_title: "Unibet", market: "fr", samples: 6, average_margin_percent: 7.967 },
-  { bookmaker_id: "netbet", bookmaker_key: "netbet", bookmaker_title: "NetBet", market: "fr", samples: 6, average_margin_percent: 11.177 },
-
-  { bookmaker_id: "atg", bookmaker_key: "atg_se", bookmaker_title: "ATG", market: "se", samples: 6, average_margin_percent: 2.636 },
-  { bookmaker_id: "svenskaspel", bookmaker_key: "svenska_spel", bookmaker_title: "Svenska Spel", market: "se", samples: 6, average_margin_percent: 2.636 },
-  { bookmaker_id: "unibet", bookmaker_key: "unibet_se", bookmaker_title: "Unibet", market: "se", samples: 6, average_margin_percent: 2.636 },
-  { bookmaker_id: "pinnacle", bookmaker_key: "pinnacle_se", bookmaker_title: "Pinnacle", market: "se", samples: 6, average_margin_percent: 3.480 },
-  { bookmaker_id: "coolbet", bookmaker_key: "coolbet_se", bookmaker_title: "Coolbet", market: "se", samples: 6, average_margin_percent: 3.902 },
-  { bookmaker_id: "betsson", bookmaker_key: "betsson_se", bookmaker_title: "Betsson", market: "se", samples: 6, average_margin_percent: 4.123 },
-  { bookmaker_id: "nordicbet", bookmaker_key: "nordicbet_se", bookmaker_title: "NordicBet", market: "se", samples: 6, average_margin_percent: 4.123 },
-  { bookmaker_id: "leovegas", bookmaker_key: "leovegas_se_domestic", bookmaker_title: "LeoVegas", market: "se", samples: 6, average_margin_percent: 4.257 },
-  { bookmaker_id: "campobet", bookmaker_key: "campobet_se", bookmaker_title: "CampoBet", market: "se", samples: 6, average_margin_percent: 4.977 },
-  { bookmaker_id: "hajper", bookmaker_key: "hajper_se", bookmaker_title: "Hajper", market: "se", samples: 6, average_margin_percent: 6.109 },
-  { bookmaker_id: "mrgreen", bookmaker_key: "mrgreen_se", bookmaker_title: "Mr Green", market: "se", samples: 6, average_margin_percent: 8.778 },
-  { bookmaker_id: "888sport", bookmaker_key: "888sport_se", bookmaker_title: "888sport", market: "se", samples: 6, average_margin_percent: 8.778 },
-
-  { bookmaker_id: "matchbook", bookmaker_key: "matchbook_uk", bookmaker_title: "Matchbook (Exchange)", market: "uk", samples: 6, average_margin_percent: 0.905 },
-  { bookmaker_id: "betfair", bookmaker_key: "betfair_ex_uk", bookmaker_title: "Betfair (Exchange)", market: "uk", samples: 6, average_margin_percent: 0.972 },
-  { bookmaker_id: "smarkets", bookmaker_key: "smarkets", bookmaker_title: "Smarkets (Exchange)", market: "uk", samples: 6, average_margin_percent: 1.576 },
-  { bookmaker_id: "casumo", bookmaker_key: "casumo", bookmaker_title: "Casumo", market: "uk", samples: 6, average_margin_percent: 5.346 },
-  { bookmaker_id: "grosvenor", bookmaker_key: "grosvenor", bookmaker_title: "Grosvenor", market: "uk", samples: 6, average_margin_percent: 5.346 },
-  { bookmaker_id: "betfred", bookmaker_key: "betfred_uk", bookmaker_title: "Betfred", market: "uk", samples: 6, average_margin_percent: 5.903 },
-  { bookmaker_id: "coral", bookmaker_key: "coral", bookmaker_title: "Coral", market: "uk", samples: 6, average_margin_percent: 6.084 },
-  { bookmaker_id: "betway", bookmaker_key: "betway", bookmaker_title: "Betway", market: "uk", samples: 6, average_margin_percent: 6.370 },
-  { bookmaker_id: "leovegas", bookmaker_key: "leovegas_uk", bookmaker_title: "LeoVegas", market: "uk", samples: 6, average_margin_percent: 6.458 },
-  { bookmaker_id: "ladbrokes", bookmaker_key: "ladbrokes_uk", bookmaker_title: "Ladbrokes", market: "uk", samples: 6, average_margin_percent: 6.840 },
-  { bookmaker_id: "paddypower", bookmaker_key: "paddypower", bookmaker_title: "Paddy Power", market: "uk", samples: 6, average_margin_percent: 6.872 },
-  { bookmaker_id: "betvictor", bookmaker_key: "betvictor", bookmaker_title: "BetVictor", market: "uk", samples: 6, average_margin_percent: 7.524 },
-  { bookmaker_id: "skybet", bookmaker_key: "skybet", bookmaker_title: "Sky Bet", market: "uk", samples: 6, average_margin_percent: 7.723 },
-  { bookmaker_id: "boylesports", bookmaker_key: "boylesports", bookmaker_title: "BoyleSports", market: "uk", samples: 6, average_margin_percent: 7.764 },
-  { bookmaker_id: "888sport", bookmaker_key: "888sport_uk", bookmaker_title: "888sport", market: "uk", samples: 6, average_margin_percent: 8.511 },
-  { bookmaker_id: "williamhill", bookmaker_key: "williamhill_uk", bookmaker_title: "William Hill", market: "uk", samples: 6, average_margin_percent: 8.511 },
-  { bookmaker_id: "virginbet", bookmaker_key: "virginbet", bookmaker_title: "Virgin Bet", market: "uk", samples: 6, average_margin_percent: 11.053 },
-  { bookmaker_id: "livescorebet", bookmaker_key: "livescorebet", bookmaker_title: "LiveScore Bet", market: "uk", samples: 6, average_margin_percent: 11.053 },
-  { bookmaker_id: "betfair_sportsbook", bookmaker_key: "betfair_sb_uk", bookmaker_title: "Betfair Sportsbook", market: "uk", samples: 6, average_margin_percent: 14.383 },
-
-  { bookmaker_id: "lowvig", bookmaker_key: "lowvig", bookmaker_title: "LowVig", market: "us", samples: 5, average_margin_percent: 3.503 },
-  { bookmaker_id: "betonline", bookmaker_key: "betonlineag_us", bookmaker_title: "BetOnline", market: "us", samples: 5, average_margin_percent: 3.503 },
-  { bookmaker_id: "draftkings", bookmaker_key: "draftkings", bookmaker_title: "DraftKings", market: "us", samples: 5, average_margin_percent: 4.719 },
-  { bookmaker_id: "bovada", bookmaker_key: "bovada", bookmaker_title: "Bovada", market: "us", samples: 5, average_margin_percent: 5.394 },
-  { bookmaker_id: "betus", bookmaker_key: "betus", bookmaker_title: "BetUS", market: "us", samples: 5, average_margin_percent: 5.394 },
-  { bookmaker_id: "betrivers", bookmaker_key: "betrivers", bookmaker_title: "BetRivers", market: "us", samples: 5, average_margin_percent: 5.762 },
-  { bookmaker_id: "betmgm", bookmaker_key: "betmgm", bookmaker_title: "BetMGM", market: "us", samples: 5, average_margin_percent: 6.152 },
-  { bookmaker_id: "fanduel", bookmaker_key: "fanduel", bookmaker_title: "FanDuel", market: "us", samples: 5, average_margin_percent: 6.419 },
-  { bookmaker_id: "mybookie", bookmaker_key: "mybookieag_us", bookmaker_title: "MyBookie", market: "us", samples: 5, average_margin_percent: 7.007 },
-  { bookmaker_id: "hardrockbet", bookmaker_key: "hardrockbet", bookmaker_title: "Hard Rock Bet", market: "us", samples: 6, average_margin_percent: 4.957 },
-  { bookmaker_id: "ballybet", bookmaker_key: "ballybet", bookmaker_title: "Bally Bet", market: "us", samples: 6, average_margin_percent: 5.346 },
-  { bookmaker_id: "betparx", bookmaker_key: "betparx", bookmaker_title: "betPARX", market: "us", samples: 6, average_margin_percent: 5.346 },
-  { bookmaker_id: "thescorebet", bookmaker_key: "thescorebet", bookmaker_title: "theScore Bet", market: "us", samples: 6, average_margin_percent: 6.896 },
+  { bookmaker_id: "betfair", bookmaker_key: "betfair_ex", bookmaker_title: "Betfair (Exchange)", market: "au", samples: 250, average_margin_percent: 2.05 },
+  { bookmaker_id: "unibet", bookmaker_key: "unibet_au", bookmaker_title: "Unibet", market: "au", samples: 250, average_margin_percent: 7.27 },
+  { bookmaker_id: "tabtouch", bookmaker_key: "tabtouch", bookmaker_title: "TABtouch", market: "au", samples: 250, average_margin_percent: 7.99 },
+  { bookmaker_id: "pointsbet", bookmaker_key: "pointsbetau", bookmaker_title: "PointsBet", market: "au", samples: 250, average_margin_percent: 5.86 },
+  { bookmaker_id: "betright", bookmaker_key: "betright", bookmaker_title: "Bet Right", market: "au", samples: 250, average_margin_percent: 7.25 },
+  { bookmaker_id: "sportsbet", bookmaker_key: "sportsbet", bookmaker_title: "Sportsbet", market: "au", samples: 250, average_margin_percent: 6.79 },
+  { bookmaker_id: "neds", bookmaker_key: "neds", bookmaker_title: "Neds", market: "au", samples: 250, average_margin_percent: 8.57 },
+  { bookmaker_id: "ladbrokes", bookmaker_key: "ladbrokes_au", bookmaker_title: "Ladbrokes", market: "au", samples: 250, average_margin_percent: 8.27 },
+  { bookmaker_id: "betr", bookmaker_key: "betr_au", bookmaker_title: "Betr", market: "au", samples: 250, average_margin_percent: 7.13 },
+  { bookmaker_id: "tab", bookmaker_key: "tab", bookmaker_title: "TAB", market: "au", samples: 250, average_margin_percent: 7.08 },
+  { bookmaker_id: "playup", bookmaker_key: "playup", bookmaker_title: "PlayUp", market: "au", samples: 250, average_margin_percent: 7.68 },
+  { bookmaker_id: "matchbook", bookmaker_key: "matchbook_eu", bookmaker_title: "Matchbook (Exchange)", market: "eu", samples: 250, average_margin_percent: 2.56 },
+  { bookmaker_id: "1xbet", bookmaker_key: "1xbet", bookmaker_title: "1xBet", market: "eu", samples: 250, average_margin_percent: 3.8 },
+  { bookmaker_id: "marathonbet", bookmaker_key: "marathonbet", bookmaker_title: "Marathonbet", market: "eu", samples: 250, average_margin_percent: 6.37 },
+  { bookmaker_id: "pinnacle", bookmaker_key: "pinnacle_eu", bookmaker_title: "Pinnacle", market: "eu", samples: 250, average_margin_percent: 3.8 },
+  { bookmaker_id: "betonline", bookmaker_key: "betonlineag_eu", bookmaker_title: "BetOnline", market: "eu", samples: 250, average_margin_percent: 4.44 },
+  { bookmaker_id: "coolbet", bookmaker_key: "coolbet_eu", bookmaker_title: "Coolbet", market: "eu", samples: 250, average_margin_percent: 5.2 },
+  { bookmaker_id: "betsson", bookmaker_key: "betsson_eu", bookmaker_title: "Betsson", market: "eu", samples: 250, average_margin_percent: 6.72 },
+  { bookmaker_id: "nordicbet", bookmaker_key: "nordicbet", bookmaker_title: "NordicBet", market: "eu", samples: 250, average_margin_percent: 6.9 },
+  { bookmaker_id: "leovegas", bookmaker_key: "leovegas_se", bookmaker_title: "LeoVegas", market: "eu", samples: 250, average_margin_percent: 8.24 },
+  { bookmaker_id: "codere", bookmaker_key: "codere_it", bookmaker_title: "Codere", market: "eu", samples: 250, average_margin_percent: 8.09 },
+  { bookmaker_id: "tipico", bookmaker_key: "tipico", bookmaker_title: "Tipico", market: "eu", samples: 250, average_margin_percent: 7.67 },
+  { bookmaker_id: "winamax", bookmaker_key: "winamax_de", bookmaker_title: "Winamax", market: "eu", samples: 250, average_margin_percent: 13.72 },
+  { bookmaker_id: "betclic", bookmaker_key: "betclic_fr_eu", bookmaker_title: "Betclic", market: "eu", samples: 250, average_margin_percent: 10.18 },
+  { bookmaker_id: "mybookie", bookmaker_key: "mybookieag_eu", bookmaker_title: "MyBookie", market: "eu", samples: 250, average_margin_percent: 6.82 },
+  { bookmaker_id: "pmu", bookmaker_key: "pmu_fr_eu", bookmaker_title: "PMU", market: "eu", samples: 250, average_margin_percent: 11.47 },
+  { bookmaker_id: "888sport", bookmaker_key: "888sport_eu", bookmaker_title: "888sport", market: "eu", samples: 250, average_margin_percent: 9.16 },
+  { bookmaker_id: "william-hill", bookmaker_key: "williamhill_eu", bookmaker_title: "William Hill", market: "eu", samples: 250, average_margin_percent: 8.59 },
+  { bookmaker_id: "everygame", bookmaker_key: "everygame", bookmaker_title: "Everygame", market: "eu", samples: 250, average_margin_percent: 8.02 },
+  { bookmaker_id: "netbet", bookmaker_key: "netbet", bookmaker_title: "NetBet", market: "fr", samples: 250, average_margin_percent: 16.77 },
+  { bookmaker_id: "atg", bookmaker_key: "atg_se", bookmaker_title: "ATG", market: "se", samples: 250, average_margin_percent: 5.27 },
+  { bookmaker_id: "svenska-spel", bookmaker_key: "svenska_spel", bookmaker_title: "Svenska Spel", market: "se", samples: 250, average_margin_percent: 5.98 },
+  { bookmaker_id: "campobet", bookmaker_key: "campobet_se", bookmaker_title: "CampoBet", market: "se", samples: 250, average_margin_percent: 6.39 },
+  { bookmaker_id: "hajper", bookmaker_key: "hajper_se", bookmaker_title: "Hajper", market: "se", samples: 250, average_margin_percent: 7.48 },
+  { bookmaker_id: "mr-green", bookmaker_key: "mrgreen_se", bookmaker_title: "Mr Green", market: "se", samples: 250, average_margin_percent: 8.74 },
+  { bookmaker_id: "smarkets", bookmaker_key: "smarkets", bookmaker_title: "Smarkets (Exchange)", market: "uk", samples: 217, average_margin_percent: 1.58 },
+  { bookmaker_id: "casumo", bookmaker_key: "casumo", bookmaker_title: "Casumo", market: "uk", samples: 250, average_margin_percent: 6.79 },
+  { bookmaker_id: "grosvenor-casinos", bookmaker_key: "grosvenor", bookmaker_title: "Grosvenor", market: "uk", samples: 250, average_margin_percent: 6.88 },
+  { bookmaker_id: "betfred", bookmaker_key: "betfred_uk", bookmaker_title: "Betfred", market: "uk", samples: 250, average_margin_percent: 8.51 },
+  { bookmaker_id: "coral", bookmaker_key: "coral", bookmaker_title: "Coral", market: "uk", samples: 250, average_margin_percent: 7.45 },
+  { bookmaker_id: "betway", bookmaker_key: "betway", bookmaker_title: "Betway", market: "uk", samples: 250, average_margin_percent: 7.86 },
+  { bookmaker_id: "paddy-power", bookmaker_key: "paddypower", bookmaker_title: "Paddy Power", market: "uk", samples: 250, average_margin_percent: 8.88 },
+  { bookmaker_id: "betvictor", bookmaker_key: "betvictor", bookmaker_title: "BetVictor", market: "uk", samples: 250, average_margin_percent: 8.14 },
+  { bookmaker_id: "skybet", bookmaker_key: "skybet", bookmaker_title: "Sky Bet", market: "uk", samples: 250, average_margin_percent: 10.8 },
+  { bookmaker_id: "boylesports", bookmaker_key: "boylesports", bookmaker_title: "BoyleSports", market: "uk", samples: 250, average_margin_percent: 10.87 },
+  { bookmaker_id: "virgin-bet", bookmaker_key: "virginbet", bookmaker_title: "Virgin Bet", market: "uk", samples: 250, average_margin_percent: 9.61 },
+  { bookmaker_id: "livescorebet", bookmaker_key: "livescorebet", bookmaker_title: "LiveScore Bet", market: "uk", samples: 250, average_margin_percent: 10.17 },
+  { bookmaker_id: "betfair-sportsbook", bookmaker_key: "betfair_sb_uk", bookmaker_title: "Betfair Sportsbook", market: "uk", samples: 250, average_margin_percent: 14.63 },
+  { bookmaker_id: "lowvig", bookmaker_key: "lowvig", bookmaker_title: "LowVig", market: "us", samples: 250, average_margin_percent: 4.93 },
+  { bookmaker_id: "draftkings", bookmaker_key: "draftkings", bookmaker_title: "DraftKings", market: "us", samples: 250, average_margin_percent: 6.24 },
+  { bookmaker_id: "bovada", bookmaker_key: "bovada", bookmaker_title: "Bovada", market: "us", samples: 250, average_margin_percent: 5.92 },
+  { bookmaker_id: "betus", bookmaker_key: "betus", bookmaker_title: "BetUS", market: "us", samples: 250, average_margin_percent: 6.22 },
+  { bookmaker_id: "betrivers", bookmaker_key: "betrivers", bookmaker_title: "BetRivers", market: "us", samples: 250, average_margin_percent: 6.92 },
+  { bookmaker_id: "betmgm", bookmaker_key: "betmgm", bookmaker_title: "BetMGM", market: "us", samples: 250, average_margin_percent: 7.17 },
+  { bookmaker_id: "fanduel", bookmaker_key: "fanduel", bookmaker_title: "FanDuel", market: "us", samples: 250, average_margin_percent: 5.9 },
+  { bookmaker_id: "hard-rock-bet", bookmaker_key: "hardrockbet", bookmaker_title: "Hard Rock Bet", market: "us", samples: 250, average_margin_percent: 5.36 },
+  { bookmaker_id: "bally-bet", bookmaker_key: "ballybet", bookmaker_title: "Bally Bet", market: "us", samples: 250, average_margin_percent: 5.97 },
+  { bookmaker_id: "betparx", bookmaker_key: "betparx", bookmaker_title: "betPARX", market: "us", samples: 250, average_margin_percent: 6.74 },
+  { bookmaker_id: "thescore", bookmaker_key: "thescorebet", bookmaker_title: "theScore Bet", market: "us", samples: 250, average_margin_percent: 6.34 },
+  { bookmaker_id: "bet365", bookmaker_title: "Bet365", samples: 238, average_margin_percent: 9.08 },
+  { bookmaker_id: "betano", bookmaker_title: "Betano", samples: 91, average_margin_percent: 7.44 },
+  { bookmaker_id: "bwin", bookmaker_title: "bwin", samples: 104, average_margin_percent: 7.86 },
+  { bookmaker_id: "10bet", bookmaker_title: "10bet", samples: 187, average_margin_percent: 8.62 },
+  { bookmaker_id: "gtbets", bookmaker_title: "GTBets", samples: 142, average_margin_percent: 6.94 }
 ];
 
-export const bookmakerMarginData: RegionalBookmakerRow[] = rawBookmakerMarginData.map((row) => {
-  const meta = BOOKMAKER_META[row.bookmaker_id] ?? FALLBACK_META;
-
-  return {
-    ...row,
-    logo: meta.logo,
-    url: meta.url,
-    backgroundColor: meta.backgroundColor,
-  };
-});
+export const bookmakerMarginData: RegionalBookmakerRow[] =
+  rawBookmakerMarginData;
