@@ -350,17 +350,20 @@ export default function HomePage() {
 
           <p>
             New users usually start with the{" "}
-            <Link href="/calculators/odds-converter">Odds Converter</Link> to
+            <Link href="/calculators/odds-converter" className="text-slate-600 underline hover:text-slate-950">Odds Converter</Link> to
             translate between betting formats, then move on to the{" "}
-            <Link href="/calculators/fair-probability">
+            <Link href="/calculators/fair-probability" className="text-slate-600 underline hover:text-slate-950">
               Fair Probability Calculator
             </Link>{" "}
             to remove bookmaker margin, and finally use the{" "}
-            <Link href="/calculators/arbitrage-calculator">
+            <Link href="/calculators/arbitrage-calculator" className="text-slate-600 underline hover:text-slate-950">
               Arbitrage Calculator
             </Link>{" "}
-            or <Link href="/calculators/ev-calculator">EV Calculator</Link> to
-            evaluate betting opportunities more deeply.
+            to calculate your edge or {" "}
+            <Link href="/bookmaker-reviews/best-low-margin-bookmakers" className="text-slate-600 underline hover:text-slate-950">
+              our Best Low-Margin Bookmakers list
+            </Link> to
+              find the bookmaker which is best for you.
           </p>
         </section>
       </div>

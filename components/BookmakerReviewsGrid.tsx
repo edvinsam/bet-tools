@@ -12,18 +12,31 @@ type SortDirection = "asc" | "desc";
 
 type Props = {
   bookmakers: EnrichedBookmakerReview[];
+
+  defaultSortKey?: SortKey;
+  defaultSortDirection?: SortDirection;
+
   selectedRegion?: RegionSlug;
   selectedCountry?: CountrySlug;
 };
 
 export default function BookmakerReviewsGrid({
   bookmakers,
+  defaultSortKey,
+  defaultSortDirection,
   selectedRegion,
   selectedCountry,
 }: Props) {
   const [searchQuery, setSearchQuery] = useState("");
-  const [sortKey, setSortKey] = useState<SortKey>("alphabetical");
-  const [sortDirection, setSortDirection] = useState<SortDirection>("asc");
+  const [sortKey, setSortKey] =
+    useState<SortKey>(
+      defaultSortKey ?? "alphabetical"
+    );
+
+  const [sortDirection, setSortDirection] =
+    useState<SortDirection>(
+      defaultSortDirection ?? "asc"
+    );
 
   function handleSortClick(nextSortKey: SortKey) {
     if (sortKey === nextSortKey) {

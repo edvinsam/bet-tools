@@ -113,6 +113,12 @@ export default async function BookmakerReviewPage({ params }: PageProps) {
               <p className="mt-1 text-xl font-semibold text-slate-950">
                 {bookmaker.averageMargin.toFixed(2)}%
               </p>
+              <Link
+                href="/bookmaker-reviews/best-low-margin-bookmakers"
+                className="text-slate-600 underline hover:text-slate-950 text-xs"
+              >
+                Compare the best low-margin bookmakers
+              </Link>
 
               {typeof bookmaker.marginSamples === "number" && (
                 <p className="mt-1 text-xs text-slate-500">

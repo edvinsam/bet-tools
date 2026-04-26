@@ -38,6 +38,14 @@ export default function BookmakerReviewsPage() {
           margin analysis, user reputation summaries and practical betting
           experience factors such as registration, deposits and withdrawals.
         </p>
+        <div className="mt-5 flex flex-wrap gap-2">
+          <Link
+            href="/bookmaker-reviews/best-low-margin-bookmakers"
+            className="rounded-xl bg-slate-950 px-4 py-2 text-sm font-semibold text-white hover:bg-slate-800"
+          >
+            Best low-margin bookmakers
+          </Link>
+        </div>
       </section>
 
       <BookmakerReviewsGrid bookmakers={enrichedBookmakerReviews} />
