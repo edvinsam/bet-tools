@@ -75,10 +75,22 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     {
-      url: `${baseUrl}`,
+      url: `${baseUrl}/bookmaker-reviews/best-low-margin-bookmakers`,
       lastModified: now,
       changeFrequency: "weekly",
-      priority: 0.7,
+      priority: 0.75,
+    },
+    {
+      url: `${baseUrl}/bookmaker-reviews/best-bookmakers-for-arbitrage-betting`,
+      lastModified: now,
+      changeFrequency: "weekly",
+      priority: 0.75,
+    },
+    {
+      url: `${baseUrl}/bookmaker-reviews/best-betting-exchanges`,
+      lastModified: now,
+      changeFrequency: "weekly",
+      priority: 0.75,
     }
   ];
 

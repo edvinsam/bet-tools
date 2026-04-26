@@ -1,6 +1,7 @@
 export const dynamic = "force-dynamic";
 
 import ArbitrageBetsTable from "@/components/ArbitrageBetsTable";
+import Link from "next/link";
 
 type ApiResponse = {
   bookmakers: string[];
@@ -105,6 +106,40 @@ export default async function ArbitrageBetsPage() {
       </div>
 
       <ArbitrageBetsTable rows={data.rows} generatedAt={data.generatedAt} />
+
+      <section className="mt-8 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+        <h2 className="text-xl font-semibold text-slate-950">
+          Useful arbitrage tools
+        </h2>
+
+        <div className="mt-5 grid gap-4 md:grid-cols-2">
+          <Link
+            href="/calculators/arbitrage-calculator"
+            className="rounded-xl border border-slate-200 p-4 hover:bg-slate-50"
+          >
+            <h3 className="font-semibold text-slate-950">
+              Arbitrage Calculator
+            </h3>
+
+            <p className="mt-2 text-sm text-slate-600">
+              Calculate optimal stake distribution instantly.
+            </p>
+          </Link>
+
+          <Link
+            href="/bookmaker-reviews/best-bookmakers-for-arbitrage-betting"
+            className="rounded-xl border border-slate-200 p-4 hover:bg-slate-50"
+          >
+            <h3 className="font-semibold text-slate-950">
+              Best Bookmakers for Arbitrage
+            </h3>
+
+            <p className="mt-2 text-sm text-slate-600">
+              Compare reliable bookmakers for arbitrage betting.
+            </p>
+          </Link>
+        </div>
+      </section>
     </main>
   );
 }

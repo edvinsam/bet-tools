@@ -105,23 +105,38 @@ export default function BestLowMarginBookmakersPage() {
         defaultSortKey="margin"
         defaultSortDirection="asc"
       />
-      <section className="mt-12 max-w-3xl">
-        <h2 className="text-xl font-bold text-slate-950">
-          Why does bookmaker margin matter?
+      <section className="mt-8 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+        <h2 className="text-xl font-semibold text-slate-950">
+            Related bookmaker comparisons
         </h2>
 
-        <p className="mt-3 text-slate-700">
-          The main reason for analyzing bookmaker margins is in 
-          order to minimize the effect of the bookmaker edge on 
-          the expected value of a bet. This is applicable both in 
-          EV Betting and Arbitrage Betting. Here's our list of the {" "}
-          <Link
+        <div className="mt-5 grid gap-4 md:grid-cols-2">
+            <Link
             href="/bookmaker-reviews/best-bookmakers-for-arbitrage-betting"
-            className="text-slate-600 underline hover:text-slate-950"
-          >
-            Best bookmakers for arbitrage
-          </Link>
-        </p>
+            className="rounded-xl border border-slate-200 p-4 hover:bg-slate-50"
+            >
+            <h3 className="font-semibold text-slate-950">
+                Best Bookmakers for Arbitrage
+            </h3>
+
+            <p className="mt-2 text-sm text-slate-600">
+                Low margins are essential for arbitrage betting strategies.
+            </p>
+            </Link>
+
+            <Link
+            href="/bookmaker-reviews/best-betting-exchanges"
+            className="rounded-xl border border-slate-200 p-4 hover:bg-slate-50"
+            >
+            <h3 className="font-semibold text-slate-950">
+                Best Betting Exchanges
+            </h3>
+
+            <p className="mt-2 text-sm text-slate-600">
+                Exchanges often offer lower margins than traditional bookmakers.
+            </p>
+            </Link>
+        </div>
       </section>
     </main>
   );

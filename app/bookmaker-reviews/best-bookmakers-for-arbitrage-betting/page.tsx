@@ -88,26 +88,38 @@ export default function BestArbitrageBookmakersPage() {
         defaultSortDirection="asc"
       />
 
-      <section className="mt-12 max-w-3xl">
-        <h2 className="text-xl font-bold text-slate-950">
-          What Makes a Bookmaker Good for Arbitrage Betting?
+      <section className="mt-8 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+        <h2 className="text-xl font-semibold text-slate-950">
+            Tools for arbitrage betting
         </h2>
 
-        <p className="mt-3 text-slate-700">
-          The most important factors for
-          arbitrage betting are low margins,
-          high liquidity and reliable payouts.
-          Bookmakers with slow withdrawals or
-          restrictive betting limits can make
-          arbitrage strategies difficult to
-          execute consistently. 
-        </p>
-        <Link
-            href="/bookmaker-reviews/best-low-margin-bookmakers"
-            className="rounded-xl bg-slate-950 px-4 py-2 text-sm font-semibold text-white hover:bg-slate-800"
-        >
-            Best low-margin bookmakers
-        </Link>
+        <div className="mt-5 grid gap-4 md:grid-cols-2">
+            <Link
+            href="/calculators/arbitrage-calculator"
+            className="rounded-xl border border-slate-200 p-4 hover:bg-slate-50"
+            >
+            <h3 className="font-semibold text-slate-950">
+                Arbitrage Calculator
+            </h3>
+
+            <p className="mt-2 text-sm text-slate-600">
+                Calculate optimal stake splits and guaranteed profit.
+            </p>
+            </Link>
+
+            <Link
+            href="/arbitrage-bets"
+            className="rounded-xl border border-slate-200 p-4 hover:bg-slate-50"
+            >
+            <h3 className="font-semibold text-slate-950">
+                Live Arbitrage Opportunities
+            </h3>
+
+            <p className="mt-2 text-sm text-slate-600">
+                Browse real-time arbitrage betting opportunities.
+            </p>
+            </Link>
+        </div>
       </section>
     </main>
   );
