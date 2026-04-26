@@ -3,27 +3,27 @@
 import { useMemo, useState } from "react";
 import Link from "next/link";
 import StarRating from "@/components/StarRating";
-import BookmakerLocationFilterSelect, {
-  type BookmakerLocationFilter,
-} from "@/components/BookmakerLocationFilterSelect";
+import LocationFilterSelect from "@/components/LocationFilterSelect";
 import type { EnrichedBookmakerReview } from "@/lib/enriched-bookmaker-reviews";
+import type { CountrySlug, RegionSlug } from "@/lib/bookmaker-locations";
 
 type SortKey = "alphabetical" | "rating" | "margin";
 type SortDirection = "asc" | "desc";
 
 type Props = {
   bookmakers: EnrichedBookmakerReview[];
+  selectedRegion?: RegionSlug;
+  selectedCountry?: CountrySlug;
 };
 
-export default function BookmakerReviewsGrid({ bookmakers }: Props) {
+export default function BookmakerReviewsGrid({
+  bookmakers,
+  selectedRegion,
+  selectedCountry,
+}: Props) {
   const [searchQuery, setSearchQuery] = useState("");
   const [sortKey, setSortKey] = useState<SortKey>("alphabetical");
   const [sortDirection, setSortDirection] = useState<SortDirection>("asc");
-
-  const [locationFilter, setLocationFilter] =
-    useState<BookmakerLocationFilter>({
-      type: "all",
-    });
 
   function handleSortClick(nextSortKey: SortKey) {
     if (sortKey === nextSortKey) {
@@ -32,19 +32,15 @@ export default function BookmakerReviewsGrid({ bookmakers }: Props) {
     }
 
     setSortKey(nextSortKey);
-
-    if (nextSortKey === "rating") {
-      setSortDirection("desc");
-      return;
-    }
-
-    setSortDirection("asc");
+    setSortDirection(nextSortKey === "rating" ? "desc" : "asc");
   }
 
   const filteredAndSortedBookmakers = useMemo(() => {
     const normalizedQuery = searchQuery.trim().toLowerCase();
 
     const filtered = bookmakers.filter((bookmaker) => {
+      if (!normalizedQuery) return true;
+
       const searchableText = [
         bookmaker.name,
         bookmaker.intro,
@@ -57,16 +53,7 @@ export default function BookmakerReviewsGrid({ bookmakers }: Props) {
         .join(" ")
         .toLowerCase();
 
-      const matchesSearch = searchableText.includes(normalizedQuery);
-
-      const matchesLocation =
-        locationFilter.type === "all"
-          ? true
-          : locationFilter.type === "region"
-            ? bookmaker.regions.includes(locationFilter.region)
-            : bookmaker.availableCountries.includes(locationFilter.country);
-
-      return matchesSearch && matchesLocation;
+      return searchableText.includes(normalizedQuery);
     });
 
     return [...filtered].sort((a, b) => {
@@ -79,7 +66,6 @@ export default function BookmakerReviewsGrid({ bookmakers }: Props) {
       if (sortKey === "rating") {
         const aRating = typeof a.rating === "number" ? a.rating : -1;
         const bRating = typeof b.rating === "number" ? b.rating : -1;
-
         comparison = aRating - bRating;
       }
 
@@ -99,7 +85,7 @@ export default function BookmakerReviewsGrid({ bookmakers }: Props) {
 
       return sortDirection === "asc" ? comparison : -comparison;
     });
-  }, [bookmakers, searchQuery, sortKey, sortDirection, locationFilter]);
+  }, [bookmakers, searchQuery, sortKey, sortDirection]);
 
   return (
     <>
@@ -127,9 +113,9 @@ export default function BookmakerReviewsGrid({ bookmakers }: Props) {
             <p className="text-sm font-medium text-slate-700">Location</p>
 
             <div className="mt-2">
-              <BookmakerLocationFilterSelect
-                value={locationFilter}
-                onChange={setLocationFilter}
+              <LocationFilterSelect
+                selectedRegion={selectedRegion}
+                selectedCountry={selectedCountry}
               />
             </div>
           </div>
@@ -292,7 +278,7 @@ export default function BookmakerReviewsGrid({ bookmakers }: Props) {
           </h2>
 
           <p className="mt-2 text-slate-600">
-            Try changing the search, location filter or sort option.
+            Try changing the search or sort option.
           </p>
         </section>
       )}

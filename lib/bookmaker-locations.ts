@@ -504,7 +504,7 @@ export const COUNTRY_LABELS: Record<CountrySlug, string> = {
   guam: "Guam", 
   "guinea-bissau": "Guinea Bissau", 
   martinique: "Martinique", 
-  myanmar: "myanmar", 
+  myanmar: "Myanmar", 
   "norfolk-island": "Norfolk Island", 
   "papua-new-guinea": "Papua New Guinea", 
   reunion: "Reunion", 
@@ -1148,9 +1148,9 @@ export function getCountryRegion(country: CountrySlug): RegionSlug | null {
 }
 
 export function getLocationHref(region?: RegionSlug, country?: CountrySlug) {
-  if (region && country) return `/compare-bookmakers/${region}/${country}`;
-  if (region) return `/compare-bookmakers/${region}`;
-  return `/compare-bookmakers`;
+  if (country) return `/bookmaker-reviews/country/${country}`;
+  if (region) return `/bookmaker-reviews/region/${region}`;
+  return `/bookmaker-reviews`;
 }
 
 export const REGION_SEARCH_ALIASES: Record<RegionSlug, string[]> = {

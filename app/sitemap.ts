@@ -1,14 +1,12 @@
 import type { MetadataRoute } from "next";
 
 import { oddsTypes, makeSlug } from "@/lib/oddsRoutes";
+import { bookmakerReviews } from "@/lib/bookmaker-reviews";
 
 import {
-  REGION_OPTIONS,
-  COUNTRY_OPTIONS,
-  getLocationHref,
+  COUNTRY_LABELS,
+  REGION_LABELS,
 } from "@/lib/bookmaker-locations";
-
-import { bookmakerReviews } from "@/lib/bookmaker-reviews";
 
 const baseUrl = "https://bet-tools.com";
 
@@ -68,14 +66,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: `${baseUrl}/arbitrage-bets`,
       lastModified: now,
       changeFrequency: "daily",
-      priority: 0.9
+      priority: 0.9,
     },
     {
       url: `${baseUrl}/bookmaker-reviews`,
       lastModified: now,
       changeFrequency: "weekly",
-      priority: 0.7
-    }
+      priority: 0.8,
+    },
   ];
 
   const converterPages: MetadataRoute.Sitemap = [];
@@ -93,14 +91,38 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }
   }
 
-  const bookmakerReviewUrls = bookmakerReviews.map((bookmaker) => ({
-    url: `${baseUrl}/bookmaker-reviews/${bookmaker.slug}`,
-    lastModified: new Date(),
-  }));
+  const bookmakerReviewUrls: MetadataRoute.Sitemap = bookmakerReviews.map(
+    (bookmaker) => ({
+      url: `${baseUrl}/bookmaker-reviews/${bookmaker.slug}`,
+      lastModified: now,
+      changeFrequency: "weekly",
+      priority: 0.75,
+    })
+  );
+
+  const countryPages: MetadataRoute.Sitemap = Object.keys(COUNTRY_LABELS).map(
+    (country) => ({
+      url: `${baseUrl}/bookmaker-reviews/country/${country}`,
+      lastModified: now,
+      changeFrequency: "weekly",
+      priority: 0.7,
+    })
+  );
+
+  const regionPages: MetadataRoute.Sitemap = Object.keys(REGION_LABELS).map(
+    (region) => ({
+      url: `${baseUrl}/bookmaker-reviews/region/${region}`,
+      lastModified: now,
+      changeFrequency: "weekly",
+      priority: 0.65,
+    })
+  );
 
   return [
     ...staticPages,
     ...converterPages,
     ...bookmakerReviewUrls,
+    ...countryPages,
+    ...regionPages,
   ];
 }
