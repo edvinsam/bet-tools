@@ -74,9 +74,10 @@ export default async function RegionBookmakerReviewsPage({
     <main className="mx-auto max-w-6xl px-4 py-8">
       <Breadcrumbs
         items={[
-          { label: "Home", href: "/" },
-          { label: "Bookmaker Reviews", href: "/bookmaker-reviews" },
-          { label: regionLabel },
+            { label: "Home", href: "/" },
+            { label: "Bookmaker Reviews", href: "/bookmaker-reviews" },
+            { label: "Regions", href: "/bookmaker-reviews/region" },
+            { label: regionLabel },
         ]}
       />
 

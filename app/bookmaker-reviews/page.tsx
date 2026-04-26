@@ -81,6 +81,23 @@ export default function BookmakerReviewsPage() {
       </section>
 
       <BookmakerReviewsGrid bookmakers={enrichedBookmakerReviews} />
+
+      <div className="mt-8 text-sm text-slate-500">
+        Browse all bookmaker reviews by{" "}
+        <Link
+          href="/bookmaker-reviews/country"
+          className="underline hover:text-slate-700"
+        >
+          country
+        </Link>{" "}
+        or{" "}
+        <Link
+          href="/bookmaker-reviews/region"
+          className="underline hover:text-slate-700"
+        >
+          region
+        </Link>.
+      </div>
     </main>
   );
 }
