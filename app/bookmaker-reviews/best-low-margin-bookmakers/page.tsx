@@ -1,6 +1,7 @@
 import Breadcrumbs from "@/components/Breadcrumbs";
 import BookmakerReviewsGrid from "@/components/BookmakerReviewsGrid";
 import { enrichedBookmakerReviews } from "@/lib/enriched-bookmaker-reviews";
+import Link from "next/link";
 
 export const metadata = {
   title: "Best Low Margin Bookmakers",
@@ -104,6 +105,24 @@ export default function BestLowMarginBookmakersPage() {
         defaultSortKey="margin"
         defaultSortDirection="asc"
       />
+      <section className="mt-12 max-w-3xl">
+        <h2 className="text-xl font-bold text-slate-950">
+          Why does bookmaker margin matter?
+        </h2>
+
+        <p className="mt-3 text-slate-700">
+          The main reason for analyzing bookmaker margins is in 
+          order to minimize the effect of the bookmaker edge on 
+          the expected value of a bet. This is applicable both in 
+          EV Betting and Arbitrage Betting. Here's our list of the {" "}
+          <Link
+            href="/bookmaker-reviews/best-bookmakers-for-arbitrage-betting"
+            className="text-slate-600 underline hover:text-slate-950"
+          >
+            Best bookmakers for arbitrage
+          </Link>
+        </p>
+      </section>
     </main>
   );
 }

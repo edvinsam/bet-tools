@@ -46,6 +46,14 @@ export default function BookmakerReviewsPage() {
             Best low-margin bookmakers
           </Link>
         </div>
+        <div className="mt-5 flex flex-wrap gap-2">
+          <Link
+            href="/bookmaker-reviews/best-low-margin-bookmakers"
+            className="rounded-xl bg-slate-950 px-4 py-2 text-sm font-semibold text-white hover:bg-slate-800"
+          >
+            Best bookmakers for arbitrage betting
+          </Link>
+        </div>
       </section>
 
       <BookmakerReviewsGrid bookmakers={enrichedBookmakerReviews} />
