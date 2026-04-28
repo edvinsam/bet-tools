@@ -12,8 +12,8 @@ export const BOOKMAKER_KEY_MAP: Record<string, string> = {
   "Betway": "betway",
   "betway": "betway",
 
-  "William Hill": "williamhill",
-  "WilliamHill": "williamhill",
+  "William Hill": "william-hill",
+  "WilliamHill": "william-hill",
 
   "Pinnacle": "pinnacle",
   "pinnacle": "pinnacle",
