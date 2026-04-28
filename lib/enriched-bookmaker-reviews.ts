@@ -6,7 +6,6 @@ import {
 } from "@/lib/bookmaker-reviews";
 import { bookmakerMarginData } from "@/lib/bookmaker-margin-data";
 import {
-  bookmakerLocations,
   type CountrySlug,
   type RegionSlug,
 } from "@/lib/bookmaker-locations";
@@ -20,8 +19,6 @@ import { BOOKMAKER_ID_BY_REVIEW_SLUG } from "@/lib/bookmaker-id-map";
 export type EnrichedBookmakerReview = BookmakerReview &
   BookmakerMeta & {
     bookmakerId: string;
-    regions: RegionSlug[];
-    availableCountries: CountrySlug[];
     averageMargin?: number;
     marginSamples?: number;
   };
@@ -57,15 +54,12 @@ export const enrichedBookmakerReviews: EnrichedBookmakerReview[] =
   bookmakerReviews.map((review) => {
     const bookmakerId = getBookmakerId(review);
     const meta = BOOKMAKER_META[bookmakerId] ?? FALLBACK_BOOKMAKER_META;
-    const locationMeta = bookmakerLocations[bookmakerId];
     const marginMeta = getWeightedMargin(bookmakerId);
 
     return {
       ...review,
       ...meta,
       bookmakerId,
-      regions: locationMeta?.regions ?? [],
-      availableCountries: locationMeta?.availableCountries ?? [],
       averageMargin: marginMeta?.averageMargin,
       marginSamples: marginMeta?.marginSamples,
     };

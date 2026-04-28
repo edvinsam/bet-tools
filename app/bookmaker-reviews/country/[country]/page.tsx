@@ -6,11 +6,11 @@ import BookmakerReviewsGrid from "@/components/BookmakerReviewsGrid";
 import {
   COUNTRY_LABELS,
   REGION_LABELS,
-  bookmakerLocations,
   getCountryRegion,
   isCountrySlug,
   type CountrySlug,
 } from "@/lib/bookmaker-locations";
+import { bookmakerMatchesLocation } from "@/lib/bookmakerFilter";
 import { getCountryBookmakerPageContent } from "@/lib/bookmaker-location-content";
 
 type PageProps = {
@@ -20,24 +20,16 @@ type PageProps = {
 };
 
 function getBookmakersForCountry(country: CountrySlug) {
-  return enrichedBookmakerReviews.filter((bookmaker) => {
-    const location = bookmakerLocations[bookmaker.slug];
-    return location?.availableCountries.includes(country);
-  });
+  return enrichedBookmakerReviews.filter((bookmaker) =>
+    bookmakerMatchesLocation({
+      bookmakerId: bookmaker.slug,
+      country,
+    })
+  );
 }
 
 export function generateStaticParams() {
-  const countries = new Set<CountrySlug>();
-
-  for (const bookmaker of enrichedBookmakerReviews) {
-    const location = bookmakerLocations[bookmaker.slug];
-
-    location?.availableCountries.forEach((country) => {
-      countries.add(country);
-    });
-  }
-
-  return Array.from(countries).map((country) => ({
+  return Object.keys(COUNTRY_LABELS).map((country) => ({
     country,
   }));
 }

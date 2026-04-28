@@ -7,10 +7,10 @@ import {
   COUNTRIES_BY_REGION,
   COUNTRY_LABELS,
   REGION_LABELS,
-  bookmakerLocations,
   isRegionSlug,
   type RegionSlug,
 } from "@/lib/bookmaker-locations";
+import { bookmakerMatchesLocation } from "@/lib/bookmakerFilter";
 import { getRegionBookmakerPageContent } from "@/lib/bookmaker-location-content";
 
 type PageProps = {
@@ -20,10 +20,12 @@ type PageProps = {
 };
 
 function getBookmakersForRegion(region: RegionSlug) {
-  return enrichedBookmakerReviews.filter((bookmaker) => {
-    const location = bookmakerLocations[bookmaker.slug];
-    return location?.regions.includes(region);
-  });
+  return enrichedBookmakerReviews.filter((bookmaker) =>
+    bookmakerMatchesLocation({
+      bookmakerId: bookmaker.slug,
+      region,
+    })
+  );
 }
 
 export function generateStaticParams() {

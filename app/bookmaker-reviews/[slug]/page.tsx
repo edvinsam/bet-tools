@@ -6,6 +6,8 @@ import { bookmakerReviews } from "@/lib/bookmaker-reviews";
 import { enrichedBookmakerReviews } from "@/lib/enriched-bookmaker-reviews";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import StarRating from "@/components/StarRating";
+import { bookmakerAvailability } from "@/lib/bookmaker-availability";
+import BookmakerAvailabilityCard from "@/components/BookmakerAvailabilityCard";
 
 type PageProps = {
   params: Promise<{
@@ -42,7 +44,19 @@ export async function generateMetadata({ params }: PageProps) {
 export default async function BookmakerReviewPage({ params }: PageProps) {
   const { slug } = await params;
 
-  const bookmaker = enrichedBookmakerReviews.find((item) => item.slug === slug);
+  const bookmaker = enrichedBookmakerReviews.find(
+    (item) => item.slug === slug
+  );
+
+  if (!bookmaker) {
+    notFound();
+  }
+
+  const availability = bookmakerAvailability[bookmaker!.slug];
+
+  const listedCountryCount = [
+    ...(availability?.licensedCountries ?? []),
+  ].filter((country, index, array) => array.indexOf(country) === index).length;
 
   if (!bookmaker) {
     notFound();
@@ -128,16 +142,8 @@ export default async function BookmakerReviewPage({ params }: PageProps) {
             </div>
           )}
 
-          {bookmaker.availableCountries.length > 0 && (
-            <div className="rounded-xl bg-slate-50 p-4">
-              <p className="text-sm text-slate-500">Location data</p>
-              <p className="mt-1 text-xl font-semibold text-slate-950">
-                {bookmaker.availableCountries.length}
-              </p>
-              <p className="mt-1 text-xs text-slate-500">
-                listed countries
-              </p>
-            </div>
+          {availability && (
+            <BookmakerAvailabilityCard availability={availability} />
           )}
         </div>
 

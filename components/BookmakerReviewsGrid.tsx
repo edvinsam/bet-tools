@@ -6,6 +6,7 @@ import StarRating from "@/components/StarRating";
 import LocationFilterSelect from "@/components/LocationFilterSelect";
 import type { EnrichedBookmakerReview } from "@/lib/enriched-bookmaker-reviews";
 import type { CountrySlug, RegionSlug } from "@/lib/bookmaker-locations";
+import { bookmakerMatchesLocation } from "@/lib/bookmakerFilter";
 
 type SortKey = "alphabetical" | "rating" | "margin";
 type SortDirection = "asc" | "desc";
@@ -52,6 +53,14 @@ export default function BookmakerReviewsGrid({
     const normalizedQuery = searchQuery.trim().toLowerCase();
 
     const filtered = bookmakers.filter((bookmaker) => {
+      const matchesLocation = bookmakerMatchesLocation({
+        bookmakerId: bookmaker.slug,
+        region: selectedRegion,
+        country: selectedCountry,
+      });
+
+      if (!matchesLocation) return false;
+
       if (!normalizedQuery) return true;
 
       const searchableText = [
@@ -98,7 +107,14 @@ export default function BookmakerReviewsGrid({
 
       return sortDirection === "asc" ? comparison : -comparison;
     });
-  }, [bookmakers, searchQuery, sortKey, sortDirection]);
+  }, [
+    bookmakers,
+    searchQuery,
+    sortKey,
+    sortDirection,
+    selectedRegion,
+    selectedCountry,
+  ]);
 
   return (
     <>
