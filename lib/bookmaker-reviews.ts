@@ -6713,4 +6713,1956 @@ export const bookmakerReviews: BookmakerReview[] = [
         },
     ],
     },
+    {
+    slug: "stake",
+    name: "Stake",
+    title: "Stake Review",
+    metaDescription:
+        "Read our Stake review covering crypto betting, esports markets, deposits, withdrawals, bonuses and platform reputation.",
+    intro:
+        "Stake is a crypto-focused online betting platform known for sports betting, casino games and strong visibility in the cryptocurrency gambling space.",
+    verdict:
+        "Stake is one of the most recognizable crypto gambling brands globally, offering a modern platform and broad sportsbook coverage. It is particularly relevant for users comfortable with cryptocurrency payments, though availability depends on local regulations and users should compare odds across licensed operators.",
+    rating: 3.9,
+    quickFacts: [
+        { label: "Best for", value: "Crypto sports betting and casino" },
+        { label: "Live betting", value: "Yes" },
+        { label: "Mobile experience", value: "Very strong" },
+        { label: "User reputation", value: "Mixed" },
+    ],
+    pros: [
+        "Strong brand presence in crypto gambling",
+        "Modern interface and fast payments",
+        "Wide sportsbook and casino offering",
+    ],
+    cons: [
+        "Limited access in regulated markets",
+        "Crypto-only payments in many regions",
+        "Regulatory restrictions vary by country",
+    ],
+    userReviewSummary: {
+        overallSentiment: "mixed",
+        summary:
+        "Public feedback for Stake often highlights fast withdrawals and a polished platform. Complaints typically relate to account verification or regional restrictions.",
+        commonPraise: [
+        "Fast withdrawals",
+        "Modern design",
+        "Wide betting markets",
+        ],
+        commonComplaints: [
+        "Verification issues",
+        "Regional availability limits",
+        ],
+        sources: [
+        { source: "Trustpilot", rating: 3.9, reviewCount: 16000 },
+        ],
+    },
+    sections: [
+        {
+        title: "Overall bookmaker experience",
+        paragraphs: [
+            "Stake has built a global reputation as a crypto-first gambling platform.",
+            "The brand focuses heavily on digital payments and online entertainment.",
+            "It is widely recognized among cryptocurrency users and esports bettors.",
+        ],
+        },
+        {
+        title: "Odds, margins and market quality",
+        paragraphs: [
+            "Stake offers coverage across major sports including football, basketball and esports.",
+            "Margins vary depending on market liquidity.",
+            "Users should compare odds across multiple bookmakers.",
+        ],
+        },
+        {
+        title: "Registration, verification and account setup",
+        paragraphs: [
+            "Registration is generally quick and designed for online users.",
+            "Verification requirements depend on jurisdiction.",
+            "Completing verification early can reduce withdrawal delays.",
+        ],
+        },
+        {
+        title: "Deposits, withdrawals and payments",
+        paragraphs: [
+            "Stake primarily supports cryptocurrency deposits and withdrawals.",
+            "Processing times are typically fast compared to traditional payment methods.",
+            "Payment options depend on local availability.",
+        ],
+        },
+        {
+        title: "Mobile app and user interface",
+        paragraphs: [
+            "The platform is optimized for mobile and desktop users.",
+            "Navigation is generally smooth and responsive.",
+            "Performance is typically stable even during live betting.",
+        ],
+        },
+        {
+        title: "Bonuses, promotions and limitations",
+        paragraphs: [
+            "Promotions vary depending on region and eligibility.",
+            "Offer value depends on wagering requirements.",
+            "Users should review bonus terms carefully.",
+        ],
+        },
+        {
+        title: "Safety, licensing and reputation",
+        paragraphs: [
+            "Stake operates under offshore licensing frameworks.",
+            "The brand is widely known in the online gambling industry.",
+            "Public reputation varies depending on user expectations and jurisdiction.",
+        ],
+        },
+    ],
+    },
+    {
+    slug: "22bet",
+    name: "22Bet",
+    title: "22Bet Review",
+    metaDescription:
+        "Read our 22Bet review covering sportsbook features, international betting markets, payments, bonuses and platform reputation.",
+    intro:
+        "22Bet is an international online sportsbook offering a wide range of sports markets and casino products to users in many global regions.",
+    verdict:
+        "22Bet is a large offshore bookmaker with extensive sports coverage and flexible payment options. It can be attractive for users seeking broad betting markets, though regulatory status and customer support experiences should be considered before registering.",
+    rating: 3.4,
+    quickFacts: [
+        { label: "Best for", value: "International sports betting" },
+        { label: "Live betting", value: "Yes" },
+        { label: "Mobile experience", value: "Good" },
+        { label: "User reputation", value: "Mixed" },
+    ],
+    pros: [
+        "Very wide sports coverage",
+        "Multiple payment options",
+        "Available in many regions",
+    ],
+    cons: [
+        "Offshore licensing structure",
+        "Customer support complaints reported",
+        "Odds competitiveness varies",
+    ],
+    userReviewSummary: {
+        overallSentiment: "mixed",
+        summary:
+        "User feedback for 22Bet often highlights the range of markets and accessibility. Negative feedback commonly relates to withdrawals or customer service responsiveness.",
+        commonPraise: [
+        "Wide selection of sports",
+        "Accessible platform",
+        "Multiple payment methods",
+        ],
+        commonComplaints: [
+        "Withdrawal delays",
+        "Customer support issues",
+        ],
+        sources: [
+        { source: "Trustpilot", rating: 3.4, reviewCount: 134 },
+        ],
+    },
+    sections: [
+        {
+        title: "Overall bookmaker experience",
+        paragraphs: [
+            "22Bet targets international users with a broad sportsbook and casino platform.",
+            "The brand focuses on accessibility across multiple markets.",
+            "It is commonly used in regions where regulated bookmakers are limited.",
+        ],
+        },
+        {
+        title: "Odds, margins and market quality",
+        paragraphs: [
+            "22Bet covers major and niche sports markets.",
+            "Margins vary depending on sport and event type.",
+            "Users should compare pricing before placing bets.",
+        ],
+        },
+        {
+        title: "Registration, verification and account setup",
+        paragraphs: [
+            "Account registration is generally straightforward.",
+            "Verification requirements depend on payment method and jurisdiction.",
+            "Providing accurate information helps avoid delays.",
+        ],
+        },
+        {
+        title: "Deposits, withdrawals and payments",
+        paragraphs: [
+            "22Bet supports a wide range of payment methods.",
+            "Withdrawal timing depends on verification status.",
+            "Users should review payment limits before depositing.",
+        ],
+        },
+        {
+        title: "Mobile app and user interface",
+        paragraphs: [
+            "The platform is available on mobile and desktop devices.",
+            "Navigation is generally functional.",
+            "Performance is typically stable.",
+        ],
+        },
+        {
+        title: "Bonuses, promotions and limitations",
+        paragraphs: [
+            "Promotions are commonly offered to new users.",
+            "Bonus value depends on wagering requirements.",
+            "Terms should be reviewed carefully.",
+        ],
+        },
+        {
+        title: "Safety, licensing and reputation",
+        paragraphs: [
+            "22Bet operates under offshore licensing.",
+            "The brand has a large international user base.",
+            "Public reputation varies across review platforms.",
+        ],
+        },
+    ],
+    },
+    {
+    slug: "20bet",
+    name: "20Bet",
+    title: "20Bet Review",
+    metaDescription:
+        "Read our 20Bet review covering sports betting markets, casino games, payments, promotions and platform reliability.",
+    intro:
+        "20Bet is an international online sportsbook and casino platform offering betting services across multiple sports and markets worldwide.",
+    verdict:
+        "20Bet provides a standard offshore sportsbook experience with competitive coverage across popular sports. It can be suitable for users seeking a straightforward betting platform, though regulatory protections and payment reliability should always be considered.",
+    rating: 3.2,
+    quickFacts: [
+        { label: "Best for", value: "General sports betting" },
+        { label: "Live betting", value: "Yes" },
+        { label: "Mobile experience", value: "Good" },
+        { label: "User reputation", value: "Mixed" },
+    ],
+    pros: [
+        "Wide sports selection",
+        "Simple interface",
+        "Multiple payment options",
+    ],
+    cons: [
+        "Offshore regulation",
+        "Customer support concerns reported",
+        "Limited transparency compared to licensed operators",
+    ],
+    userReviewSummary: {
+        overallSentiment: "mixed",
+        summary:
+        "User feedback for 20Bet often mentions ease of use and market availability. Complaints typically focus on withdrawals or verification processes.",
+        commonPraise: [
+        "Easy to use platform",
+        "Wide sports coverage",
+        "Accessible interface",
+        ],
+        commonComplaints: [
+        "Withdrawal delays",
+        "Verification issues",
+        ],
+        sources: [
+        { source: "Trustpilot", rating: 3.2, reviewCount: 1000 },
+        ],
+    },
+    sections: [
+        {
+        title: "Overall bookmaker experience",
+        paragraphs: [
+            "20Bet targets international users with a general-purpose sportsbook.",
+            "The platform combines sports betting and casino products.",
+            "It is commonly used in regions with limited regulated alternatives.",
+        ],
+        },
+        {
+        title: "Odds, margins and market quality",
+        paragraphs: [
+            "20Bet covers major sports markets including football and basketball.",
+            "Margins vary depending on competition and liquidity.",
+            "Users should compare odds across bookmakers.",
+        ],
+        },
+        {
+        title: "Registration, verification and account setup",
+        paragraphs: [
+            "Registration is typically completed online.",
+            "Verification requirements depend on payment method.",
+            "Completing verification early can prevent delays.",
+        ],
+        },
+        {
+        title: "Deposits, withdrawals and payments",
+        paragraphs: [
+            "Payment methods vary by region.",
+            "Withdrawal timing depends on account verification.",
+            "Users should review payment conditions carefully.",
+        ],
+        },
+        {
+        title: "Mobile app and user interface",
+        paragraphs: [
+            "20Bet offers a mobile-friendly betting interface.",
+            "Navigation is generally straightforward.",
+            "Performance is typically reliable.",
+        ],
+        },
+        {
+        title: "Bonuses, promotions and limitations",
+        paragraphs: [
+            "Promotions are commonly available to new users.",
+            "Bonus value depends on wagering requirements.",
+            "Terms should be reviewed before accepting offers.",
+        ],
+        },
+        {
+        title: "Safety, licensing and reputation",
+        paragraphs: [
+            "20Bet operates under offshore licensing.",
+            "The brand has an international presence.",
+            "Public reputation varies across platforms.",
+        ],
+        },
+    ],
+    },
+    {
+    slug: "melbet",
+    name: "MelBet",
+    title: "MelBet Review",
+    metaDescription:
+        "Read our MelBet review covering sports betting markets, payments, bonuses, user experience and platform reliability.",
+    intro:
+        "MelBet is an international sportsbook offering betting markets across football, esports and other global sports competitions.",
+    verdict:
+        "MelBet is a widely available offshore bookmaker with extensive sports coverage and competitive promotions. It may appeal to users seeking broad betting access, though payment reliability and regulatory protections should be evaluated before use.",
+    rating: 2.0,
+    quickFacts: [
+        { label: "Best for", value: "International sports betting" },
+        { label: "Live betting", value: "Yes" },
+        { label: "Mobile experience", value: "Good" },
+        { label: "User reputation", value: "Mixed" },
+    ],
+    pros: [
+        "Wide range of sports markets",
+        "Frequent promotions",
+        "Accessible platform",
+    ],
+    cons: [
+        "Offshore licensing",
+        "Customer support complaints",
+        "Withdrawal timing can vary",
+    ],
+    userReviewSummary: {
+        overallSentiment: "mixed",
+        summary:
+        "User feedback for MelBet often highlights market variety and promotions. Negative comments commonly involve payment processing or account verification.",
+        commonPraise: [
+        "Wide betting selection",
+        "Regular promotions",
+        "Accessible platform",
+        ],
+        commonComplaints: [
+        "Withdrawal delays",
+        "Customer support responsiveness",
+        ],
+        sources: [
+        { source: "Trustpilot", rating: 2.0, reviewCount: 1500 },
+        ],
+    },
+    sections: [
+        {
+        title: "Overall bookmaker experience",
+        paragraphs: [
+            "MelBet offers a sportsbook and casino platform targeting international users.",
+            "The brand focuses on accessibility across multiple regions.",
+            "It is commonly used in markets with fewer regulated bookmakers.",
+        ],
+        },
+        {
+        title: "Odds, margins and market quality",
+        paragraphs: [
+            "MelBet covers major sports and esports competitions.",
+            "Margins vary depending on market conditions.",
+            "Users should compare odds across bookmakers.",
+        ],
+        },
+        {
+        title: "Registration, verification and account setup",
+        paragraphs: [
+            "Registration is typically completed online.",
+            "Verification may be required before withdrawals.",
+            "Users should provide accurate information during signup.",
+        ],
+        },
+        {
+        title: "Deposits, withdrawals and payments",
+        paragraphs: [
+            "Payment options vary depending on location.",
+            "Withdrawal timing depends on verification and payment method.",
+            "Users should review payment rules carefully.",
+        ],
+        },
+        {
+        title: "Mobile app and user interface",
+        paragraphs: [
+            "MelBet provides a mobile-friendly betting interface.",
+            "Navigation is generally functional.",
+            "Performance is typically stable.",
+        ],
+        },
+        {
+        title: "Bonuses, promotions and limitations",
+        paragraphs: [
+            "Promotions are frequently available.",
+            "Offer value depends on wagering requirements.",
+            "Users should review bonus terms carefully.",
+        ],
+        },
+        {
+        title: "Safety, licensing and reputation",
+        paragraphs: [
+            "MelBet operates under offshore licensing.",
+            "The brand has a large international user base.",
+            "Public reputation varies across review platforms.",
+        ],
+        },
+    ],
+    },
+    {
+    slug: "betwinner",
+    name: "BetWinner",
+    title: "BetWinner Review",
+    metaDescription:
+        "Read our BetWinner review covering international sports betting markets, payments, promotions and platform reliability.",
+    intro:
+        "BetWinner is a global online sportsbook offering betting markets across football, tennis, esports and other major sports competitions.",
+    verdict:
+        "BetWinner provides a broad sportsbook and casino platform with extensive market coverage. It may be suitable for users seeking flexible betting options, though regulatory protections and customer service experiences should be considered before registering.",
+    rating: 1.2,
+    quickFacts: [
+        { label: "Best for", value: "International sports betting" },
+        { label: "Live betting", value: "Yes" },
+        { label: "Mobile experience", value: "Good" },
+        { label: "User reputation", value: "Mixed" },
+    ],
+    pros: [
+        "Wide global sports coverage",
+        "Frequent promotions",
+        "Multiple payment methods",
+    ],
+    cons: [
+        "Offshore regulation",
+        "Customer support complaints reported",
+        "Withdrawal timing can vary",
+    ],
+    userReviewSummary: {
+        overallSentiment: "mixed",
+        summary:
+        "User feedback for BetWinner often highlights market availability and promotions. Negative feedback commonly relates to withdrawals or account verification.",
+        commonPraise: [
+        "Large selection of sports",
+        "Frequent promotions",
+        "Accessible platform",
+        ],
+        commonComplaints: [
+        "Withdrawal delays",
+        "Verification issues",
+        ],
+        sources: [
+        { source: "Trustpilot", rating: 1.2, reviewCount: 600 },
+        ],
+    },
+    sections: [
+        {
+        title: "Overall bookmaker experience",
+        paragraphs: [
+            "BetWinner operates as an international sportsbook and casino platform.",
+            "The brand targets users across multiple regions.",
+            "It is commonly used in markets with fewer licensed operators.",
+        ],
+        },
+        {
+        title: "Odds, margins and market quality",
+        paragraphs: [
+            "BetWinner offers markets across major global sports.",
+            "Margins vary depending on event type.",
+            "Users should compare odds across bookmakers.",
+        ],
+        },
+        {
+        title: "Registration, verification and account setup",
+        paragraphs: [
+            "Registration is typically completed online.",
+            "Verification requirements depend on payment method.",
+            "Completing verification early helps avoid delays.",
+        ],
+        },
+        {
+        title: "Deposits, withdrawals and payments",
+        paragraphs: [
+            "Payment methods vary depending on location.",
+            "Withdrawal timing depends on verification and payment method.",
+            "Users should review payment limits before depositing.",
+        ],
+        },
+        {
+        title: "Mobile app and user interface",
+        paragraphs: [
+            "BetWinner provides a mobile betting interface suitable for routine use.",
+            "Navigation is generally straightforward.",
+            "Performance is typically stable.",
+        ],
+        },
+        {
+        title: "Bonuses, promotions and limitations",
+        paragraphs: [
+            "Promotions are commonly offered to new users.",
+            "Offer value depends on wagering requirements.",
+            "Users should review bonus terms carefully.",
+        ],
+        },
+        {
+        title: "Safety, licensing and reputation",
+        paragraphs: [
+            "BetWinner operates under offshore licensing.",
+            "The brand has a large international presence.",
+            "Public reputation varies across platforms.",
+        ],
+        },
+    ],
+    },
+    {
+    slug: "parimatch",
+    name: "Parimatch",
+    title: "Parimatch Review",
+    metaDescription:
+        "Read our Parimatch review covering sports betting markets, mobile betting features, payments, promotions and platform reputation.",
+    intro:
+        "Parimatch is an international sportsbook brand known for strong visibility in Eastern Europe, Asia and emerging betting markets.",
+    verdict:
+        "Parimatch is a well-established global betting brand offering competitive sportsbook coverage and a modern user interface. It can be suitable for users seeking a widely accessible platform, though availability and payment reliability may depend on regional regulations.",
+    rating: 1.4,
+    quickFacts: [
+        { label: "Best for", value: "International sports betting" },
+        { label: "Live betting", value: "Yes" },
+        { label: "Mobile experience", value: "Strong" },
+        { label: "User reputation", value: "Mixed" },
+    ],
+    pros: [
+        "Recognizable global betting brand",
+        "Wide sports coverage",
+        "Modern interface design",
+    ],
+    cons: [
+        "Regulatory availability varies",
+        "Customer support complaints reported",
+        "Payment timing can differ by region",
+    ],
+    userReviewSummary: {
+        overallSentiment: "mixed",
+        summary:
+        "Public feedback for Parimatch often highlights the modern platform and sports coverage. Complaints typically involve withdrawals or verification procedures.",
+        commonPraise: [
+        "Modern interface",
+        "Wide sports selection",
+        "Frequent promotions",
+        ],
+        commonComplaints: [
+        "Withdrawal delays",
+        "Account verification issues",
+        ],
+        sources: [
+        { source: "Trustpilot", rating: 1.4, reviewCount: 3000 },
+        ],
+    },
+    sections: [
+        {
+        title: "Overall bookmaker experience",
+        paragraphs: [
+            "Parimatch operates as a global sportsbook brand targeting multiple regions.",
+            "The platform combines sports betting and gaming products.",
+            "It is widely recognized in international betting markets.",
+        ],
+        },
+        {
+        title: "Odds, margins and market quality",
+        paragraphs: [
+            "Parimatch covers major sports including football, basketball and tennis.",
+            "Margins vary depending on sport and market liquidity.",
+            "Users should compare odds across bookmakers.",
+        ],
+        },
+        {
+        title: "Registration, verification and account setup",
+        paragraphs: [
+            "Registration is completed online through a standard account process.",
+            "Verification may be required before withdrawals.",
+            "Providing accurate information reduces delays.",
+        ],
+        },
+        {
+        title: "Deposits, withdrawals and payments",
+        paragraphs: [
+            "Payment options depend on location and regulation.",
+            "Withdrawal timing varies by payment method.",
+            "Users should review payment rules before depositing.",
+        ],
+        },
+        {
+        title: "Mobile app and user interface",
+        paragraphs: [
+            "Parimatch offers a mobile-friendly betting interface.",
+            "Navigation is generally intuitive.",
+            "Performance is typically stable.",
+        ],
+        },
+        {
+        title: "Bonuses, promotions and limitations",
+        paragraphs: [
+            "Promotions are commonly available depending on eligibility.",
+            "Offer value depends on wagering requirements.",
+            "Users should review bonus terms carefully.",
+        ],
+        },
+        {
+        title: "Safety, licensing and reputation",
+        paragraphs: [
+            "Parimatch operates under offshore and regional licenses.",
+            "The brand has significant global visibility.",
+            "Public reputation varies across review platforms.",
+        ],
+        },
+    ],
+    },
+    {
+    slug: "dafabet",
+    name: "Dafabet",
+    title: "Dafabet Review",
+    metaDescription:
+        "Read our Dafabet review covering Asian sportsbook markets, payments, promotions, mobile betting and platform reputation.",
+    intro:
+        "Dafabet is a long-running sportsbook brand with strong presence in Asian betting markets and international sports sponsorship partnerships.",
+    verdict:
+        "Dafabet is an established international bookmaker with a focus on Asian markets and major sporting events. It offers broad sports coverage and stable platform performance, though users should still evaluate payment reliability and licensing status in their jurisdiction.",
+    rating: 1.1,
+    quickFacts: [
+        { label: "Best for", value: "Asian sports betting markets" },
+        { label: "Live betting", value: "Yes" },
+        { label: "Mobile experience", value: "Good" },
+        { label: "User reputation", value: "Mixed" },
+    ],
+    pros: [
+        "Established international brand",
+        "Strong presence in Asian markets",
+        "Wide sports coverage",
+    ],
+    cons: [
+        "Availability varies by country",
+        "Customer support complaints reported",
+        "Odds competitiveness varies by market",
+    ],
+    userReviewSummary: {
+        overallSentiment: "mixed",
+        summary:
+        "User feedback for Dafabet often highlights reliability and sports coverage. Negative feedback commonly relates to withdrawals or customer support response times.",
+        commonPraise: [
+        "Reliable platform",
+        "Wide sports coverage",
+        "Recognizable brand",
+        ],
+        commonComplaints: [
+        "Withdrawal delays",
+        "Customer support issues",
+        ],
+        sources: [
+        { source: "Trustpilot", rating: 1.1, reviewCount: 750 },
+        ],
+    },
+    sections: [
+        {
+        title: "Overall bookmaker experience",
+        paragraphs: [
+            "Dafabet focuses on international sports betting markets.",
+            "The platform is widely used in Asia and other regions.",
+            "It offers sportsbook and casino products in a single account.",
+        ],
+        },
+        {
+        title: "Odds, margins and market quality",
+        paragraphs: [
+            "Dafabet covers major global sports competitions.",
+            "Margins vary depending on sport and market type.",
+            "Users should compare odds before placing bets.",
+        ],
+        },
+        {
+        title: "Registration, verification and account setup",
+        paragraphs: [
+            "Registration is typically completed online.",
+            "Verification may be required before withdrawals.",
+            "Providing accurate information helps avoid delays.",
+        ],
+        },
+        {
+        title: "Deposits, withdrawals and payments",
+        paragraphs: [
+            "Payment options depend on location.",
+            "Withdrawal timing varies by method.",
+            "Users should review payment conditions carefully.",
+        ],
+        },
+        {
+        title: "Mobile app and user interface",
+        paragraphs: [
+            "Dafabet offers mobile betting through apps and browser access.",
+            "Navigation is generally straightforward.",
+            "Performance is typically reliable.",
+        ],
+        },
+        {
+        title: "Bonuses, promotions and limitations",
+        paragraphs: [
+            "Promotions are available depending on eligibility.",
+            "Offer value depends on wagering requirements.",
+            "Users should review terms carefully.",
+        ],
+        },
+        {
+        title: "Safety, licensing and reputation",
+        paragraphs: [
+            "Dafabet operates under international licensing frameworks.",
+            "The brand has long-standing presence in global betting markets.",
+            "Public reputation is generally mixed across review platforms.",
+        ],
+        },
+    ],
+    },
+    {
+    slug: "sportsbet-io",
+    name: "Sportsbet.io",
+    title: "Sportsbet.io Review",
+    metaDescription:
+        "Read our Sportsbet.io review covering crypto sports betting, esports markets, payments, promotions and platform reliability.",
+    intro:
+        "Sportsbet.io is a cryptocurrency-focused sportsbook known for esports coverage and digital payment integration across global betting markets.",
+    verdict:
+        "Sportsbet.io is a prominent crypto betting platform offering competitive markets and strong esports coverage. It may appeal to users comfortable with cryptocurrency payments, though regional availability and regulatory protections vary.",
+    rating: 1.2,
+    quickFacts: [
+        { label: "Best for", value: "Crypto sports betting and esports" },
+        { label: "Live betting", value: "Yes" },
+        { label: "Mobile experience", value: "Strong" },
+        { label: "User reputation", value: "Mixed to positive" },
+    ],
+    pros: [
+        "Strong esports coverage",
+        "Crypto payment integration",
+        "Modern platform design",
+    ],
+    cons: [
+        "Limited availability in regulated markets",
+        "Crypto payments may not suit all users",
+        "Regulatory protections vary",
+    ],
+    userReviewSummary: {
+        overallSentiment: "mixed",
+        summary:
+        "Public feedback for Sportsbet.io often highlights fast transactions and esports markets. Complaints may involve verification requirements or regional restrictions.",
+        commonPraise: [
+        "Fast payments",
+        "Strong esports coverage",
+        "Modern interface",
+        ],
+        commonComplaints: [
+        "Verification delays",
+        "Regional availability limitations",
+        ],
+        sources: [
+        { source: "Trustpilot", rating: 1.2, reviewCount: 300 },
+        ],
+    },
+    sections: [
+        {
+        title: "Overall bookmaker experience",
+        paragraphs: [
+            "Sportsbet.io focuses on cryptocurrency-based betting services.",
+            "The platform is widely used among esports bettors.",
+            "It offers sportsbook and casino products through a digital-first model.",
+        ],
+        },
+        {
+        title: "Odds, margins and market quality",
+        paragraphs: [
+            "Sportsbet.io covers major sports and esports markets.",
+            "Margins vary depending on liquidity.",
+            "Users should compare odds across bookmakers.",
+        ],
+        },
+        {
+        title: "Registration, verification and account setup",
+        paragraphs: [
+            "Registration is typically completed online.",
+            "Verification requirements depend on jurisdiction.",
+            "Completing verification early helps prevent delays.",
+        ],
+        },
+        {
+        title: "Deposits, withdrawals and payments",
+        paragraphs: [
+            "Sportsbet.io primarily supports cryptocurrency payments.",
+            "Withdrawal timing is typically fast compared to traditional methods.",
+            "Payment options vary by region.",
+        ],
+        },
+        {
+        title: "Mobile app and user interface",
+        paragraphs: [
+            "The platform is optimized for mobile and desktop use.",
+            "Navigation is generally intuitive.",
+            "Performance is typically stable.",
+        ],
+        },
+        {
+        title: "Bonuses, promotions and limitations",
+        paragraphs: [
+            "Promotions may be available depending on eligibility.",
+            "Offer value depends on wagering requirements.",
+            "Users should review bonus terms carefully.",
+        ],
+        },
+        {
+        title: "Safety, licensing and reputation",
+        paragraphs: [
+            "Sportsbet.io operates under offshore licensing.",
+            "The brand is widely recognized in crypto betting markets.",
+            "Public reputation is generally mixed.",
+        ],
+        },
+    ],
+    },
+    {
+    slug: "cloudbet",
+    name: "Cloudbet",
+    title: "Cloudbet Review",
+    metaDescription:
+        "Read our Cloudbet review covering crypto sports betting markets, payments, bonuses, user experience and platform reliability.",
+    intro:
+        "Cloudbet is an established cryptocurrency sportsbook offering betting markets across major sports and esports competitions worldwide.",
+    verdict:
+        "Cloudbet is one of the earlier entrants in crypto betting, providing stable sportsbook functionality and fast digital payments. It may be suitable for users seeking cryptocurrency-based betting options, though market depth and availability vary by region.",
+    rating: 3.6,
+    quickFacts: [
+        { label: "Best for", value: "Crypto sports betting" },
+        { label: "Live betting", value: "Yes" },
+        { label: "Mobile experience", value: "Good" },
+        { label: "User reputation", value: "Mixed" },
+    ],
+    pros: [
+        "Established crypto betting platform",
+        "Fast cryptocurrency payments",
+        "Global sports coverage",
+    ],
+    cons: [
+        "Limited regulatory protection",
+        "Smaller brand recognition than major operators",
+        "Availability varies by jurisdiction",
+    ],
+    userReviewSummary: {
+        overallSentiment: "mixed",
+        summary:
+        "User feedback for Cloudbet often highlights fast crypto payments and platform reliability. Complaints typically involve verification or limited market availability.",
+        commonPraise: [
+        "Fast withdrawals",
+        "Stable platform",
+        "Crypto-friendly payments",
+        ],
+        commonComplaints: [
+        "Verification requirements",
+        "Limited market access",
+        ],
+        sources: [
+        { source: "Trustpilot", rating: 3.6, reviewCount: 2500 },
+        ],
+    },
+    sections: [
+        {
+        title: "Overall bookmaker experience",
+        paragraphs: [
+            "Cloudbet operates as a cryptocurrency sportsbook platform.",
+            "The brand focuses on digital payments and global accessibility.",
+            "It has built recognition among crypto betting users.",
+        ],
+        },
+        {
+        title: "Odds, margins and market quality",
+        paragraphs: [
+            "Cloudbet covers major sports and esports markets.",
+            "Margins vary depending on event type.",
+            "Users should compare odds across bookmakers.",
+        ],
+        },
+        {
+        title: "Registration, verification and account setup",
+        paragraphs: [
+            "Registration is completed online through a standard process.",
+            "Verification requirements depend on jurisdiction.",
+            "Providing accurate information helps prevent delays.",
+        ],
+        },
+        {
+        title: "Deposits, withdrawals and payments",
+        paragraphs: [
+            "Cloudbet primarily supports cryptocurrency payments.",
+            "Withdrawal timing is typically fast.",
+            "Payment availability varies by region.",
+        ],
+        },
+        {
+        title: "Mobile app and user interface",
+        paragraphs: [
+            "The platform is accessible via mobile and desktop browsers.",
+            "Navigation is generally straightforward.",
+            "Performance is typically reliable.",
+        ],
+        },
+        {
+        title: "Bonuses, promotions and limitations",
+        paragraphs: [
+            "Promotions may be offered depending on eligibility.",
+            "Offer value depends on wagering requirements.",
+            "Users should review terms carefully.",
+        ],
+        },
+        {
+        title: "Safety, licensing and reputation",
+        paragraphs: [
+            "Cloudbet operates under offshore licensing frameworks.",
+            "The brand has long-standing presence in crypto betting.",
+            "Public reputation is generally mixed.",
+        ],
+        },
+    ],
+    },
+    {
+    slug: "sbotop",
+    name: "SBOTOP",
+    title: "SBOTOP Review",
+    metaDescription:
+        "Read our SBOTOP review covering Asian sportsbook markets, payments, promotions, betting features and platform reputation.",
+    intro:
+        "SBOTOP is an established sportsbook brand known for its strong presence in Asian betting markets and partnerships with major sports organizations.",
+    verdict:
+        "SBOTOP is a long-running international sportsbook with extensive coverage of football and Asian handicap markets. It can be suitable for experienced bettors seeking broad market access, though availability and payment conditions vary by jurisdiction.",
+    rating: undefined,
+    quickFacts: [
+        { label: "Best for", value: "Asian handicap betting" },
+        { label: "Live betting", value: "Yes" },
+        { label: "Mobile experience", value: "Good" },
+        { label: "User reputation", value: "Mixed" },
+    ],
+    pros: [
+        "Strong focus on football betting",
+        "Established international brand",
+        "Wide market coverage",
+    ],
+    cons: [
+        "Availability varies by country",
+        "Customer support complaints reported",
+        "Payment processing times vary",
+    ],
+    userReviewSummary: {
+        overallSentiment: "mixed",
+        summary:
+        "User feedback for SBOTOP often highlights sports coverage and betting features. Complaints typically involve withdrawals or customer service response times.",
+        commonPraise: [
+        "Wide football coverage",
+        "Established brand",
+        "Reliable platform",
+        ],
+        commonComplaints: [
+        "Withdrawal delays",
+        "Customer support issues",
+        ],
+        sources: [
+        ],
+    },
+    sections: [
+        {
+        title: "Overall bookmaker experience",
+        paragraphs: [
+            "SBOTOP focuses on international sports betting markets.",
+            "The platform has long-standing presence in Asian betting regions.",
+            "It offers sportsbook and gaming products in a single account.",
+        ],
+        },
+        {
+        title: "Odds, margins and market quality",
+        paragraphs: [
+            "SBOTOP specializes in football and Asian handicap markets.",
+            "Margins vary depending on sport and competition.",
+            "Users should compare odds across bookmakers.",
+        ],
+        },
+        {
+        title: "Registration, verification and account setup",
+        paragraphs: [
+            "Registration is completed online through a standard process.",
+            "Verification requirements depend on payment method.",
+            "Providing accurate information helps prevent delays.",
+        ],
+        },
+        {
+        title: "Deposits, withdrawals and payments",
+        paragraphs: [
+            "Payment methods vary depending on location.",
+            "Withdrawal timing depends on verification and payment method.",
+            "Users should review payment rules before depositing.",
+        ],
+        },
+        {
+        title: "Mobile app and user interface",
+        paragraphs: [
+            "SBOTOP provides a mobile betting interface suitable for routine use.",
+            "Navigation is generally functional.",
+            "Performance is typically stable.",
+        ],
+        },
+        {
+        title: "Bonuses, promotions and limitations",
+        paragraphs: [
+            "Promotions are available depending on eligibility.",
+            "Offer value depends on wagering requirements.",
+            "Users should review bonus terms carefully.",
+        ],
+        },
+        {
+        title: "Safety, licensing and reputation",
+        paragraphs: [
+            "SBOTOP operates under international licensing frameworks.",
+            "The brand has long-standing presence in global betting markets.",
+            "Public reputation varies across review platforms.",
+        ],
+        },
+    ],
+    },
+    {
+    slug: "m88",
+    name: "M88",
+    title: "M88 Review",
+    metaDescription:
+        "Read our M88 review covering Asian sportsbook markets, football betting, payments, promotions and platform reputation.",
+    intro:
+        "M88 is a long-established sportsbook brand with strong visibility in Asian betting markets, particularly among football bettors and users seeking Asian handicap markets.",
+    verdict:
+        "M88 is an experienced international bookmaker with deep roots in Asian sports betting. It offers solid football coverage and stable platform performance, though availability and payment conditions vary depending on jurisdiction.",
+    rating: 2.2,
+    quickFacts: [
+        { label: "Best for", value: "Football and Asian handicap betting" },
+        { label: "Live betting", value: "Yes" },
+        { label: "Mobile experience", value: "Good" },
+        { label: "User reputation", value: "Mixed" },
+    ],
+    pros: [
+        "Established brand in Asian betting markets",
+        "Strong football coverage",
+        "Wide range of betting markets",
+    ],
+    cons: [
+        "Limited availability in some regulated countries",
+        "Customer support responsiveness varies",
+        "Payment processing times depend on region",
+    ],
+    userReviewSummary: {
+        overallSentiment: "mixed",
+        summary:
+        "Public feedback for M88 often highlights reliable sports coverage and platform stability. Complaints typically involve withdrawals or account verification processes.",
+        commonPraise: [
+        "Reliable betting platform",
+        "Strong football markets",
+        "Established brand reputation",
+        ],
+        commonComplaints: [
+        "Withdrawal delays",
+        "Verification requirements",
+        ],
+        sources: [
+        { source: "Trustpilot", rating: 2.2, reviewCount: 20 },
+        ],
+    },
+    sections: [
+        {
+        title: "Overall bookmaker experience",
+        paragraphs: [
+            "M88 operates as an international sportsbook with focus on football betting.",
+            "The platform has maintained presence in Asian markets for many years.",
+            "It is commonly used by bettors seeking competitive Asian handicap lines.",
+        ],
+        },
+        {
+        title: "Odds, margins and market quality",
+        paragraphs: [
+            "M88 offers extensive football and international sports coverage.",
+            "Margins vary depending on league and market type.",
+            "Users should compare odds across bookmakers.",
+        ],
+        },
+        {
+        title: "Registration, verification and account setup",
+        paragraphs: [
+            "Registration is typically completed online.",
+            "Verification requirements depend on location.",
+            "Completing verification early can prevent delays.",
+        ],
+        },
+        {
+        title: "Deposits, withdrawals and payments",
+        paragraphs: [
+            "Payment methods vary depending on jurisdiction.",
+            "Withdrawal timing depends on verification status.",
+            "Users should review payment limits before depositing.",
+        ],
+        },
+        {
+        title: "Mobile app and user interface",
+        paragraphs: [
+            "M88 provides a mobile-friendly betting interface.",
+            "Navigation is generally straightforward.",
+            "Performance is typically reliable.",
+        ],
+        },
+        {
+        title: "Bonuses, promotions and limitations",
+        paragraphs: [
+            "Promotions may be available depending on eligibility.",
+            "Offer value depends on wagering requirements.",
+            "Users should review bonus terms carefully.",
+        ],
+        },
+        {
+        title: "Safety, licensing and reputation",
+        paragraphs: [
+            "M88 operates under international licensing frameworks.",
+            "The brand has long-standing recognition in betting markets.",
+            "Public reputation is generally mixed.",
+        ],
+        },
+    ],
+    },
+    {
+    slug: "fun88",
+    name: "FUN88",
+    title: "FUN88 Review",
+    metaDescription:
+        "Read our FUN88 review covering international sports betting markets, payments, promotions and platform reliability.",
+    intro:
+        "FUN88 is an international sportsbook brand known for partnerships with major sports organizations and presence in Asian betting markets.",
+    verdict:
+        "FUN88 is a widely recognized bookmaker offering broad sports coverage and a stable betting platform. It may appeal to users seeking international market access, though regulatory availability and payment reliability should be considered.",
+    rating: 1.6,
+    quickFacts: [
+        { label: "Best for", value: "International sports betting" },
+        { label: "Live betting", value: "Yes" },
+        { label: "Mobile experience", value: "Good" },
+        { label: "User reputation", value: "Mixed" },
+    ],
+    pros: [
+        "Recognizable international brand",
+        "Wide sports coverage",
+        "Partnerships with major sports teams",
+    ],
+    cons: [
+        "Availability varies by country",
+        "Customer support complaints reported",
+        "Payment processing can vary",
+    ],
+    userReviewSummary: {
+        overallSentiment: "mixed",
+        summary:
+        "User feedback for FUN88 often highlights sports coverage and platform usability. Negative comments typically relate to withdrawals or customer service response times.",
+        commonPraise: [
+        "Wide sports selection",
+        "Established brand",
+        "Stable platform",
+        ],
+        commonComplaints: [
+        "Withdrawal delays",
+        "Customer support issues",
+        ],
+        sources: [
+        { source: "Trustpilot", rating: 1.6, reviewCount: 200 },
+        ],
+    },
+    sections: [
+        {
+        title: "Overall bookmaker experience",
+        paragraphs: [
+            "FUN88 targets international betting markets with a focus on football.",
+            "The platform combines sportsbook and casino products.",
+            "It has gained recognition through sports sponsorship partnerships.",
+        ],
+        },
+        {
+        title: "Odds, margins and market quality",
+        paragraphs: [
+            "FUN88 covers major global sports competitions.",
+            "Margins vary depending on market type.",
+            "Users should compare odds across bookmakers.",
+        ],
+        },
+        {
+        title: "Registration, verification and account setup",
+        paragraphs: [
+            "Registration is completed through a standard online process.",
+            "Verification may be required before withdrawals.",
+            "Providing accurate information reduces delays.",
+        ],
+        },
+        {
+        title: "Deposits, withdrawals and payments",
+        paragraphs: [
+            "Payment methods depend on location.",
+            "Withdrawal timing varies by method.",
+            "Users should review payment conditions carefully.",
+        ],
+        },
+        {
+        title: "Mobile app and user interface",
+        paragraphs: [
+            "FUN88 offers mobile betting through apps and browser access.",
+            "Navigation is generally functional.",
+            "Performance is typically stable.",
+        ],
+        },
+        {
+        title: "Bonuses, promotions and limitations",
+        paragraphs: [
+            "Promotions are commonly available depending on eligibility.",
+            "Offer value depends on wagering requirements.",
+            "Users should review promotional terms carefully.",
+        ],
+        },
+        {
+        title: "Safety, licensing and reputation",
+        paragraphs: [
+            "FUN88 operates under offshore licensing frameworks.",
+            "The brand has long-standing presence in international betting markets.",
+            "Public reputation varies across review platforms.",
+        ],
+        },
+    ],
+    },
+    {
+    slug: "novibet",
+    name: "Novibet",
+    title: "Novibet Review",
+    metaDescription:
+        "Read our Novibet review covering European sports betting markets, payments, promotions and platform reputation.",
+    intro:
+        "Novibet is a European sportsbook brand with growing presence in regulated markets, offering sports betting and online gaming services.",
+    verdict:
+        "Novibet is a regulated European bookmaker with expanding market coverage and a modern betting platform. It is particularly relevant for users in supported jurisdictions, though odds and payment options should still be compared with other licensed operators.",
+    rating: 1.6,
+    quickFacts: [
+        { label: "Best for", value: "European sports betting" },
+        { label: "Live betting", value: "Yes" },
+        { label: "Mobile experience", value: "Strong" },
+        { label: "User reputation", value: "Mixed to positive" },
+    ],
+    pros: [
+        "Licensed in regulated markets",
+        "Modern user interface",
+        "Growing international presence",
+    ],
+    cons: [
+        "Limited availability outside supported countries",
+        "Smaller brand recognition than major bookmakers",
+    ],
+    userReviewSummary: {
+        overallSentiment: "mixed",
+        summary:
+        "Public feedback for Novibet often highlights the platform design and reliability. Complaints typically involve withdrawals or promotional terms.",
+        commonPraise: [
+        "Modern platform",
+        "Reliable service",
+        "Competitive promotions",
+        ],
+        commonComplaints: [
+        "Withdrawal delays",
+        "Bonus conditions",
+        ],
+        sources: [
+        { source: "Trustpilot", rating: 1.6, reviewCount: 500 },
+        ],
+    },
+    sections: [
+        {
+        title: "Overall bookmaker experience",
+        paragraphs: [
+            "Novibet operates as a regulated sportsbook in several European markets.",
+            "The platform focuses on sports betting and online gaming.",
+            "It has expanded into multiple jurisdictions in recent years.",
+        ],
+        },
+        {
+        title: "Odds, margins and market quality",
+        paragraphs: [
+            "Novibet covers major sports markets including football and basketball.",
+            "Margins vary depending on sport and competition.",
+            "Users should compare odds across bookmakers.",
+        ],
+        },
+        {
+        title: "Registration, verification and account setup",
+        paragraphs: [
+            "Registration requires identity verification in regulated markets.",
+            "Verification may be required before withdrawals.",
+            "Providing accurate information helps avoid delays.",
+        ],
+        },
+        {
+        title: "Deposits, withdrawals and payments",
+        paragraphs: [
+            "Payment methods depend on country and regulation.",
+            "Withdrawal timing varies by payment method.",
+            "Users should review payment rules before depositing.",
+        ],
+        },
+        {
+        title: "Mobile app and user interface",
+        paragraphs: [
+            "Novibet offers a modern mobile betting interface.",
+            "Navigation is generally intuitive.",
+            "Performance is typically reliable.",
+        ],
+        },
+        {
+        title: "Bonuses, promotions and limitations",
+        paragraphs: [
+            "Promotions are available depending on eligibility.",
+            "Offer value depends on wagering requirements.",
+            "Users should review promotional terms carefully.",
+        ],
+        },
+        {
+        title: "Safety, licensing and reputation",
+        paragraphs: [
+            "Novibet operates under European regulatory licenses.",
+            "The brand has growing presence in regulated markets.",
+            "Public reputation is generally stable.",
+        ],
+        },
+    ],
+    },
+    {
+    slug: "stoiximan",
+    name: "Stoiximan",
+    title: "Stoiximan Review",
+    metaDescription:
+        "Read our Stoiximan review covering Greek sports betting markets, payments, promotions and platform reliability.",
+    intro:
+        "Stoiximan is a leading sportsbook brand in Greece and Southeastern Europe, offering sports betting and online gaming products in regulated markets.",
+    verdict:
+        "Stoiximan is a well-established bookmaker in Greece with strong brand recognition and regulated market presence. It is particularly relevant for users in supported European jurisdictions, though odds competitiveness should still be evaluated.",
+    rating: 1.6,
+    quickFacts: [
+        { label: "Best for", value: "Greek and Southeastern European betting" },
+        { label: "Live betting", value: "Yes" },
+        { label: "Mobile experience", value: "Strong" },
+        { label: "User reputation", value: "Mixed to positive" },
+    ],
+    pros: [
+        "Licensed in regulated markets",
+        "Strong regional brand recognition",
+        "Modern platform design",
+    ],
+    cons: [
+        "Limited availability outside specific countries",
+        "Smaller global footprint than major bookmakers",
+    ],
+    userReviewSummary: {
+        overallSentiment: "mixed",
+        summary:
+        "User feedback for Stoiximan often highlights reliability and regulated operations. Complaints typically involve withdrawals or bonus conditions.",
+        commonPraise: [
+        "Trusted local brand",
+        "Reliable platform",
+        "Strong customer service",
+        ],
+        commonComplaints: [
+        "Withdrawal timing",
+        "Bonus requirements",
+        ],
+        sources: [
+        { source: "Trustpilot", rating: 1.6, reviewCount: 30 },
+        ],
+    },
+    sections: [
+        {
+        title: "Overall bookmaker experience",
+        paragraphs: [
+            "Stoiximan operates as a regulated sportsbook in Greece and nearby markets.",
+            "The platform focuses on sports betting and online gaming.",
+            "It has built strong regional brand recognition.",
+        ],
+        },
+        {
+        title: "Odds, margins and market quality",
+        paragraphs: [
+            "Stoiximan covers major sports competitions.",
+            "Margins vary depending on sport and market type.",
+            "Users should compare odds across bookmakers.",
+        ],
+        },
+        {
+        title: "Registration, verification and account setup",
+        paragraphs: [
+            "Registration requires identity verification under local regulations.",
+            "Verification may affect withdrawals.",
+            "Providing accurate information helps avoid delays.",
+        ],
+        },
+        {
+        title: "Deposits, withdrawals and payments",
+        paragraphs: [
+            "Payment methods depend on country and regulation.",
+            "Withdrawal timing varies by method.",
+            "Users should review payment limits carefully.",
+        ],
+        },
+        {
+        title: "Mobile app and user interface",
+        paragraphs: [
+            "Stoiximan offers a modern mobile betting interface.",
+            "Navigation is generally intuitive.",
+            "Performance is typically stable.",
+        ],
+        },
+        {
+        title: "Bonuses, promotions and limitations",
+        paragraphs: [
+            "Promotions are available depending on eligibility.",
+            "Offer value depends on wagering requirements.",
+            "Users should review bonus terms carefully.",
+        ],
+        },
+        {
+        title: "Safety, licensing and reputation",
+        paragraphs: [
+            "Stoiximan operates under regulated European licenses.",
+            "The brand has strong regional presence.",
+            "Public reputation is generally stable.",
+        ],
+        },
+    ],
+    },
+    {
+    slug: "superbet",
+    name: "Superbet",
+    title: "Superbet Review",
+    metaDescription:
+        "Read our Superbet review covering European sports betting markets, payments, promotions and platform reliability.",
+    intro:
+        "Superbet is a European sportsbook brand headquartered in Romania, offering sports betting and gaming products across several regulated markets.",
+    verdict:
+        "Superbet is a rapidly growing bookmaker in Europe with strong investment backing and expanding operations. It is particularly relevant in regulated markets, though users should still compare odds and payment conditions with competing operators.",
+    rating: undefined,
+    quickFacts: [
+        { label: "Best for", value: "European regulated betting markets" },
+        { label: "Live betting", value: "Yes" },
+        { label: "Mobile experience", value: "Strong" },
+        { label: "User reputation", value: "Mixed to positive" },
+    ],
+    pros: [
+        "Growing regulated European bookmaker",
+        "Modern platform and branding",
+        "Wide sports coverage",
+    ],
+    cons: [
+        "Limited availability outside supported countries",
+        "Smaller global footprint than major operators",
+    ],
+    userReviewSummary: {
+        overallSentiment: "mixed",
+        summary:
+        "Public feedback for Superbet often highlights platform reliability and modern design. Complaints typically involve withdrawals or customer support response times.",
+        commonPraise: [
+        "Modern platform",
+        "Reliable service",
+        "Growing brand presence",
+        ],
+        commonComplaints: [
+        "Withdrawal delays",
+        "Customer support responsiveness",
+        ],
+        sources: [
+        ],
+    },
+    sections: [
+        {
+        title: "Overall bookmaker experience",
+        paragraphs: [
+            "Superbet operates as a regulated sportsbook in several European markets.",
+            "The company has expanded operations significantly in recent years.",
+            "It focuses on both online and retail betting services.",
+        ],
+        },
+        {
+        title: "Odds, margins and market quality",
+        paragraphs: [
+            "Superbet covers major sports markets including football and basketball.",
+            "Margins vary depending on sport and competition.",
+            "Users should compare odds across bookmakers.",
+        ],
+        },
+        {
+        title: "Registration, verification and account setup",
+        paragraphs: [
+            "Registration requires identity verification in regulated markets.",
+            "Verification may be required before withdrawals.",
+            "Providing accurate information reduces delays.",
+        ],
+        },
+        {
+        title: "Deposits, withdrawals and payments",
+        paragraphs: [
+            "Payment methods depend on location and regulation.",
+            "Withdrawal timing varies by payment method.",
+            "Users should review payment conditions before depositing.",
+        ],
+        },
+        {
+        title: "Mobile app and user interface",
+        paragraphs: [
+            "Superbet offers a modern mobile betting interface.",
+            "Navigation is generally intuitive.",
+            "Performance is typically reliable.",
+        ],
+        },
+        {
+        title: "Bonuses, promotions and limitations",
+        paragraphs: [
+            "Promotions are available depending on eligibility.",
+            "Offer value depends on wagering requirements.",
+            "Users should review promotional terms carefully.",
+        ],
+        },
+        {
+        title: "Safety, licensing and reputation",
+        paragraphs: [
+            "Superbet operates under European regulatory licenses.",
+            "The brand has growing recognition in the betting industry.",
+            "Public reputation is generally stable.",
+        ],
+        },
+    ],
+    },
+    {
+    slug: "bet-at-home",
+    name: "bet-at-home",
+    title: "bet-at-home Review",
+    metaDescription:
+        "Read our bet-at-home review covering European sports betting markets, payments, promotions, mobile betting and platform reputation.",
+    intro:
+        "bet-at-home is a European sportsbook and gaming brand with long-standing presence in regulated online betting markets.",
+    verdict:
+        "bet-at-home is an established European bookmaker with a straightforward sportsbook and broad coverage of major sports. It is most relevant for users in supported European markets, though odds, limits and payment options should still be compared with competing operators.",
+    rating: 1.3,
+    quickFacts: [
+        { label: "Best for", value: "European sports betting" },
+        { label: "Live betting", value: "Yes" },
+        { label: "Mobile experience", value: "Good" },
+        { label: "User reputation", value: "Mixed" },
+    ],
+    pros: [
+        "Established European betting brand",
+        "Broad coverage of major sports",
+        "Straightforward platform experience",
+    ],
+    cons: [
+        "Limited availability outside supported markets",
+        "Smaller brand presence than top-tier global bookmakers",
+        "Odds should be compared before betting",
+    ],
+    userReviewSummary: {
+        overallSentiment: "mixed",
+        summary:
+        "Public feedback for bet-at-home often highlights its familiar European brand presence and simple betting experience. Complaints may involve account verification, withdrawals or customer support responsiveness.",
+        commonPraise: [
+        "Established bookmaker",
+        "Simple betting interface",
+        "Good sports coverage",
+        ],
+        commonComplaints: [
+        "Withdrawal delays",
+        "Customer support complaints",
+        ],
+        sources: [
+        { source: "Trustpilot", rating: 1.3, reviewCount: 350 },
+        ],
+    },
+    sections: [
+        {
+        title: "Overall bookmaker experience",
+        paragraphs: [
+            "bet-at-home operates as a European sportsbook and gaming platform.",
+            "The brand is best known in regulated European betting markets.",
+            "Its sportsbook is designed for users who want a familiar and relatively simple betting experience.",
+        ],
+        },
+        {
+        title: "Odds, margins and market quality",
+        paragraphs: [
+            "bet-at-home covers major sports including football, tennis and basketball.",
+            "Margins vary depending on league, sport and market type.",
+            "Users should compare odds across multiple bookmakers.",
+        ],
+        },
+        {
+        title: "Registration, verification and account setup",
+        paragraphs: [
+            "Registration follows standard regulated-market requirements.",
+            "Identity verification may be required before withdrawals.",
+            "Completing verification early helps reduce account delays.",
+        ],
+        },
+        {
+        title: "Deposits, withdrawals and payments",
+        paragraphs: [
+            "Payment methods depend on country and regulation.",
+            "Withdrawal timing varies by method and verification status.",
+            "Users should review payment limits and fees before depositing.",
+        ],
+        },
+        {
+        title: "Mobile app and user interface",
+        paragraphs: [
+            "bet-at-home offers a mobile betting experience suitable for routine use.",
+            "Navigation is generally clear and functional.",
+            "The interface is practical, though not as modern as some newer competitors.",
+        ],
+        },
+        {
+        title: "Bonuses, promotions and limitations",
+        paragraphs: [
+            "Promotions may be available depending on user location and eligibility.",
+            "The value of offers depends on wagering requirements.",
+            "Users should review promotional terms carefully before opting in.",
+        ],
+        },
+        {
+        title: "Safety, licensing and reputation",
+        paragraphs: [
+            "bet-at-home operates in regulated European gambling markets.",
+            "The brand has long-standing visibility in online betting.",
+            "Public reputation is mixed across review platforms.",
+        ],
+        },
+    ],
+    },
+    {
+    slug: "interwetten",
+    name: "Interwetten",
+    title: "Interwetten Review",
+    metaDescription:
+        "Read our Interwetten review covering European sportsbook markets, football betting, payments, promotions and platform reputation.",
+    intro:
+        "Interwetten is a long-running European bookmaker offering sports betting and gaming products across selected regulated markets.",
+    verdict:
+        "Interwetten is an established bookmaker with a traditional European sportsbook profile and solid market coverage. It can be suitable for users looking for a regulated betting option, though its interface and pricing should be compared against newer competitors.",
+    rating: 1.6,
+    quickFacts: [
+        { label: "Best for", value: "Traditional European sportsbook users" },
+        { label: "Live betting", value: "Yes" },
+        { label: "Mobile experience", value: "Good" },
+        { label: "User reputation", value: "Mixed" },
+    ],
+    pros: [
+        "Long-running European bookmaker",
+        "Licensed-market presence",
+        "Good football betting coverage",
+    ],
+    cons: [
+        "Less modern feel than newer platforms",
+        "Limited availability in some countries",
+        "Promotional value varies",
+    ],
+    userReviewSummary: {
+        overallSentiment: "mixed",
+        summary:
+        "User feedback for Interwetten is mixed. Positive comments often mention brand longevity and reliability, while complaints may focus on withdrawals, verification or customer support.",
+        commonPraise: [
+        "Established brand",
+        "Reliable sportsbook",
+        "Good football markets",
+        ],
+        commonComplaints: [
+        "Verification delays",
+        "Customer support complaints",
+        ],
+        sources: [
+        { source: "Trustpilot", rating: 1.6, reviewCount: 500 },
+        ],
+    },
+    sections: [
+        {
+        title: "Overall bookmaker experience",
+        paragraphs: [
+            "Interwetten operates as a European sportsbook with a long history in online betting.",
+            "The platform offers sports betting and gaming products in selected markets.",
+            "It is most relevant for users who prefer established bookmaker brands.",
+        ],
+        },
+        {
+        title: "Odds, margins and market quality",
+        paragraphs: [
+            "Interwetten offers coverage across major sports markets.",
+            "Football is one of the platform's most important betting categories.",
+            "Users should compare odds and margins against other bookmakers.",
+        ],
+        },
+        {
+        title: "Registration, verification and account setup",
+        paragraphs: [
+            "Registration follows a standard online account setup process.",
+            "Verification may be required due to local regulation.",
+            "Users should complete identity checks before expecting fast withdrawals.",
+        ],
+        },
+        {
+        title: "Deposits, withdrawals and payments",
+        paragraphs: [
+            "Payment options depend on the user's country.",
+            "Withdrawal speed varies depending on method and account status.",
+            "Reviewing payment conditions before depositing is recommended.",
+        ],
+        },
+        {
+        title: "Mobile app and user interface",
+        paragraphs: [
+            "Interwetten provides mobile betting access through app and browser options.",
+            "The interface is generally functional and easy to understand.",
+            "Some users may find the design more traditional than newer sportsbooks.",
+        ],
+        },
+        {
+        title: "Bonuses, promotions and limitations",
+        paragraphs: [
+            "Promotions vary depending on country and eligibility.",
+            "Offer value depends heavily on the wagering conditions.",
+            "Users should read bonus rules carefully before accepting offers.",
+        ],
+        },
+        {
+        title: "Safety, licensing and reputation",
+        paragraphs: [
+            "Interwetten operates in regulated European betting markets.",
+            "The brand has long-standing industry presence.",
+            "Public reputation is mixed but supported by brand longevity.",
+        ],
+        },
+    ],
+    },
+    {
+    slug: "expekt",
+    name: "Expekt",
+    title: "Expekt Review",
+    metaDescription:
+        "Read our Expekt review covering Nordic and European sports betting markets, odds, payments, promotions and platform reputation.",
+    intro:
+        "Expekt is a European sportsbook brand with historical recognition in Nordic betting markets and selected regulated jurisdictions.",
+    verdict:
+        "Expekt is a recognizable bookmaker in parts of Europe, especially among users familiar with Nordic betting brands. It offers a standard sportsbook experience, though market depth, promotions and user experience should be compared with larger operators.",
+    rating: 1.3,
+    quickFacts: [
+        { label: "Best for", value: "Nordic and European sports betting" },
+        { label: "Live betting", value: "Yes" },
+        { label: "Mobile experience", value: "Good" },
+        { label: "User reputation", value: "Mixed" },
+    ],
+    pros: [
+        "Recognizable European sportsbook brand",
+        "Relevant in Nordic betting markets",
+        "Simple platform structure",
+    ],
+    cons: [
+        "Smaller market share than major bookmakers",
+        "Availability depends on country",
+        "Odds should be compared",
+    ],
+    userReviewSummary: {
+        overallSentiment: "mixed",
+        summary:
+        "Public feedback for Expekt is mixed. Positive comments often mention brand familiarity and ease of use, while complaints may involve withdrawals, verification or promotional conditions.",
+        commonPraise: [
+        "Familiar European brand",
+        "Simple interface",
+        "Good basic sports coverage",
+        ],
+        commonComplaints: [
+        "Withdrawal complaints",
+        "Bonus terms",
+        ],
+        sources: [
+        { source: "Trustpilot", rating: 1.3, reviewCount: 250 },
+        ],
+    },
+    sections: [
+        {
+        title: "Overall bookmaker experience",
+        paragraphs: [
+            "Expekt is a European sportsbook with historical recognition in Nordic markets.",
+            "The platform focuses on standard sports betting and gaming products.",
+            "It is most relevant for users in supported regulated jurisdictions.",
+        ],
+        },
+        {
+        title: "Odds, margins and market quality",
+        paragraphs: [
+            "Expekt covers major sports such as football, tennis and basketball.",
+            "Market depth varies depending on sport and competition.",
+            "Users should compare odds before placing larger bets.",
+        ],
+        },
+        {
+        title: "Registration, verification and account setup",
+        paragraphs: [
+            "Registration requirements depend on country-specific regulation.",
+            "Identity verification may be required before withdrawals.",
+            "Accurate account details help reduce processing delays.",
+        ],
+        },
+        {
+        title: "Deposits, withdrawals and payments",
+        paragraphs: [
+            "Payment methods vary by market.",
+            "Withdrawal timing depends on verification and chosen method.",
+            "Users should review payment rules before depositing.",
+        ],
+        },
+        {
+        title: "Mobile app and user interface",
+        paragraphs: [
+            "Expekt offers a mobile-friendly betting experience.",
+            "The interface is generally simple and easy to navigate.",
+            "Performance is usually stable for standard sportsbook use.",
+        ],
+        },
+        {
+        title: "Bonuses, promotions and limitations",
+        paragraphs: [
+            "Promotions may be available depending on market and eligibility.",
+            "Bonus value depends on wagering requirements and restrictions.",
+            "Users should review terms before claiming offers.",
+        ],
+        },
+        {
+        title: "Safety, licensing and reputation",
+        paragraphs: [
+            "Expekt operates in selected regulated European markets.",
+            "The brand has historical recognition among Nordic bettors.",
+            "Public reputation varies across review platforms.",
+        ],
+        },
+    ],
+    },
+    {
+    slug: "betsafe",
+    name: "Betsafe",
+    title: "Betsafe Review",
+    metaDescription:
+        "Read our Betsafe review covering European sports betting, odds, payments, bonuses, mobile betting and platform reputation.",
+    intro:
+        "Betsafe is a European sportsbook and casino brand associated with the Betsson Group, offering betting services across selected regulated markets.",
+    verdict:
+        "Betsafe is a recognizable European bookmaker with a polished sportsbook and strong group backing. It is a reasonable option for users in supported markets, though odds, promotions and payment terms should still be compared with competing brands.",
+    rating: 1.4,
+    quickFacts: [
+        { label: "Best for", value: "European sports betting and casino" },
+        { label: "Live betting", value: "Yes" },
+        { label: "Mobile experience", value: "Strong" },
+        { label: "User reputation", value: "Mixed" },
+    ],
+    pros: [
+        "Recognizable European betting brand",
+        "Backed by a major gambling group",
+        "Strong mobile betting experience",
+    ],
+    cons: [
+        "Availability varies by country",
+        "Odds competitiveness varies by market",
+        "Promotional terms can be restrictive",
+    ],
+    userReviewSummary: {
+        overallSentiment: "mixed",
+        summary:
+        "Public feedback for Betsafe often highlights the platform design and brand familiarity. Complaints may involve withdrawals, bonus restrictions or customer support response times.",
+        commonPraise: [
+        "Polished platform",
+        "Good mobile experience",
+        "Recognizable brand",
+        ],
+        commonComplaints: [
+        "Withdrawal delays",
+        "Bonus restrictions",
+        ],
+        sources: [
+        { source: "Trustpilot", rating: 1.4, reviewCount: 250 },
+        ],
+    },
+    sections: [
+        {
+        title: "Overall bookmaker experience",
+        paragraphs: [
+            "Betsafe operates as a European sportsbook and casino brand.",
+            "The platform is associated with the wider Betsson Group ecosystem.",
+            "It is best suited to users in supported regulated markets.",
+        ],
+        },
+        {
+        title: "Odds, margins and market quality",
+        paragraphs: [
+            "Betsafe covers major sports including football, tennis and basketball.",
+            "Margins vary by sport, competition and market type.",
+            "Users should compare odds across multiple bookmakers.",
+        ],
+        },
+        {
+        title: "Registration, verification and account setup",
+        paragraphs: [
+            "Registration follows standard regulated-market requirements.",
+            "Identity verification may be required before withdrawals.",
+            "Completing verification early helps prevent account delays.",
+        ],
+        },
+        {
+        title: "Deposits, withdrawals and payments",
+        paragraphs: [
+            "Payment methods depend on user location.",
+            "Withdrawal timing varies by method and verification status.",
+            "Users should review payment limits and processing rules carefully.",
+        ],
+        },
+        {
+        title: "Mobile app and user interface",
+        paragraphs: [
+            "Betsafe offers a strong mobile betting interface.",
+            "Navigation is generally modern and intuitive.",
+            "The platform is suitable for both pre-match and live betting.",
+        ],
+        },
+        {
+        title: "Bonuses, promotions and limitations",
+        paragraphs: [
+            "Promotions vary by market and user eligibility.",
+            "The value of offers depends on wagering requirements.",
+            "Users should review all promotional conditions before claiming bonuses.",
+        ],
+        },
+        {
+        title: "Safety, licensing and reputation",
+        paragraphs: [
+            "Betsafe operates in selected regulated European markets.",
+            "The brand benefits from association with a larger gambling group.",
+            "Public reputation is mixed across review platforms.",
+        ],
+        },
+    ],
+    },
 ];

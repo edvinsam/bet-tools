@@ -71,6 +71,26 @@ export const BOOKMAKER_META: Record<string, BookmakerMeta> = {
   "virgin-bet": { logo: "/logos/virginbet.jpeg", url: "https://www.virginbet.com", backgroundColor: "#cc080f" },
   "william-hill": { logo: "/logos/williamhill.png", url: "https://www.williamhill.com", backgroundColor: "#060a29" },
   winamax: { logo: "/logos/winamax.png", url: "https://www.winamax.fr", backgroundColor: "#e6e6e6" },
+  stake: { logo: "/logos/stake.svg", url: "https://stake.com", backgroundColor: "#1a2d38" },
+  "22bet": { logo: "/logos/22bet.png", url: "https://22bet.com", backgroundColor: "#054247" },
+  "20bet": { logo: "/logos/20bet.png", url: "https://20bet.com", backgroundColor: "#0d1d33" },
+  melbet: { logo: "/logos/melbet.svg", url: "https://melbet.com", backgroundColor: "#212121" },
+  betwinner: { logo: "/logos/betwinner.svg", url: "https://betwinner.com", backgroundColor: "#1a664a" },
+  parimatch: { logo: "/logos/parimatch.svg", url: "https://parimatch.com", backgroundColor: "#141414" },
+  dafabet: { logo: "/logos/dafabet.svg", url: "https://www.dafabet.com", backgroundColor: "#b00000" },
+  "sportsbet-io": { logo: "/logos/sportsbetio.svg", url: "https://sportsbet.io", backgroundColor: "#2d333b" },
+  cloudbet: { logo: "/logos/cloudbet.svg", url: "https://www.cloudbet.com", backgroundColor: "#120f12" },
+  sbotop: { logo: "/logos/sbotop.svg", url: "https://www.sbotop.com", backgroundColor: "#002e6b" },
+  m88: { logo: "/logos/m88.svg", url: "https://www.m88.com", backgroundColor: "#1a202b" },
+  fun88: { logo: "/logos/fun88.png", url: "https://fun88.com/", backgroundColor: "#ffffff" },
+  novibet: { logo: "/logos/novibet.svg", url: "https://www.novibet.com", backgroundColor: "#0a1324" },
+  stoiximan: { logo: "/logos/stoiximan.svg", url: "https://stoiximan.gr", backgroundColor: "#0055ff" },
+  superbet: { logo: "/logos/superbet.svg", url: "https://superbet.com", backgroundColor: "#360103" },
+  "bet-at-home": { logo: "/logos/betathome.svg", url: "https://www.bet-at-home.com/", backgroundColor: "#ffffff" },
+  interwetten: { logo: "/logos/interwetten.svg", url: "https://www.interwetten.com/", backgroundColor: "#ffd000" },
+  expekt: { logo: "/logos/expekt.svg", url: "https://www.expekt.se", backgroundColor: "#ff8000" },
+  betsafe: { logo: "/logos/betsafe.svg", url: "https://www.betsafe.com", backgroundColor: "#121212" },
+  
 };
 
 export const FALLBACK_BOOKMAKER_META: BookmakerMeta = {

@@ -149,7 +149,27 @@ const rawBookmakerMarginData: RawRegionalBookmakerRow[] = [
   { bookmaker_id: "betano", bookmaker_title: "Betano", samples: 91, average_margin_percent: 7.44 },
   { bookmaker_id: "bwin", bookmaker_title: "bwin", samples: 104, average_margin_percent: 7.86 },
   { bookmaker_id: "10bet", bookmaker_title: "10bet", samples: 187, average_margin_percent: 8.62 },
-  { bookmaker_id: "gtbets", bookmaker_title: "GTBets", samples: 142, average_margin_percent: 6.94 }
+  { bookmaker_id: "gtbets", bookmaker_title: "GTBets", samples: 142, average_margin_percent: 6.94 },
+  { bookmaker_id: "stake", bookmaker_title: "Stake", samples: 94, average_margin_percent: 4.87 },
+  { bookmaker_id: "22bet", bookmaker_title: "22Bet", samples: 212, average_margin_percent: 5.21 },
+  { bookmaker_id: "20bet", bookmaker_title: "20Bet", samples: 168, average_margin_percent: 4.62 },
+  { bookmaker_id: "melbet", bookmaker_title: "Melbet", samples: 96, average_margin_percent: 6.18 },
+  { bookmaker_id: "betwinner", bookmaker_title: "BetWinner", samples: 128, average_margin_percent: 5.74 },
+  { bookmaker_id: "parimatch", bookmaker_title: "Parimatch", samples: 182, average_margin_percent: 6.21 },
+  { bookmaker_id: "dafabet", bookmaker_title: "DafaBet", samples: 214, average_margin_percent: 4.92 },
+  { bookmaker_id: "sportsbet-io", bookmaker_title: "Sportsbet.io", samples: 236, average_margin_percent: 3.84 },
+  { bookmaker_id: "cloudbet", bookmaker_title: "CloudBet", samples: 124, average_margin_percent: 5.37 },
+  { bookmaker_id: "sbotop", bookmaker_title: "SBOTOP", samples: 24, average_margin_percent: 7.18 },
+  { bookmaker_id: "m88", bookmaker_title: "M88", samples: 248, average_margin_percent: 3.27 },
+  { bookmaker_id: "fun88", bookmaker_title: "Fun88", samples: 96, average_margin_percent: 4.63 },
+  { bookmaker_id: "novibet", bookmaker_title: "Novibet", samples: 122, average_margin_percent: 4.41 },
+  { bookmaker_id: "stoiximan", bookmaker_title: "Stoiximan", samples: 74, average_margin_percent: 4.72 },
+  { bookmaker_id: "superbet", bookmaker_title: "Superbet", samples: 67, average_margin_percent: 6.08 },
+  { bookmaker_id: "bet-at-home", bookmaker_title: "Bet-at-home", samples: 118, average_margin_percent: 4.36 },
+  { bookmaker_id: "interwetten", bookmaker_title: "Interwetten", samples: 102, average_margin_percent: 6.54 },
+  { bookmaker_id: "expekt", bookmaker_title: "Expekt", samples: 60, average_margin_percent: 6.18 },
+  { bookmaker_id: "betsafe", bookmaker_title: "Betsafe", samples: 70, average_margin_percent: 5.87 },
+  
 ];
 
 export const bookmakerMarginData: RegionalBookmakerRow[] =
