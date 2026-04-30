@@ -124,6 +124,41 @@ export default async function CountryBookmakerReviewsPage({
       </section>
 
       <BookmakerReviewsGrid bookmakers={bookmakers} selectedCountry={country} />
+      <section className="mt-8 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+        <h2 className="text-xl font-semibold text-slate-950">
+          Related bookmaker comparisons for {countryLabel}
+        </h2>
+
+        <div className="mt-5 grid gap-4 md:grid-cols-2">
+          <Link
+            href={`/bookmaker-reviews/low-margin-bookmakers/${country}`}
+            className="rounded-xl border border-slate-200 p-4 hover:bg-slate-50"
+          >
+            <h3 className="font-semibold text-slate-950">
+              Low Margin Bookmakers in {countryLabel}
+            </h3>
+
+            <p className="mt-2 text-sm text-slate-600">
+              Compare bookmakers in {countryLabel} by average margin to find
+              betting sites offering more competitive odds.
+            </p>
+          </Link>
+
+          <Link
+            href="/bookmaker-reviews/best-bookmakers-for-arbitrage-betting"
+            className="rounded-xl border border-slate-200 p-4 hover:bg-slate-50"
+          >
+            <h3 className="font-semibold text-slate-950">
+              Best Bookmakers for Arbitrage Betting
+            </h3>
+
+            <p className="mt-2 text-sm text-slate-600">
+              See which bookmakers are best suited for arbitrage betting,
+              including those with fast payouts and reliable odds.
+            </p>
+          </Link>
+        </div>
+      </section>
     </main>
   );
 }

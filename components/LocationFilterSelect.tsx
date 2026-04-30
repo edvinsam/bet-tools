@@ -17,9 +17,12 @@ import {
   type RegionSlug,
 } from "@/lib/bookmaker-locations";
 
+type LocationHrefMode = "default" | "low-margin";
+
 type LocationFilterSelectProps = {
   selectedRegion?: RegionSlug;
   selectedCountry?: CountrySlug;
+  hrefMode?: LocationHrefMode;
 };
 
 type CountryRouteMatch = {
@@ -128,6 +131,7 @@ function matchesSearch(
 export default function LocationFilterSelect({
   selectedRegion,
   selectedCountry,
+  hrefMode = "default",
 }: LocationFilterSelectProps) {
   const router = useRouter();
   const containerRef = useRef<HTMLDivElement | null>(null);
@@ -148,6 +152,18 @@ export default function LocationFilterSelect({
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
+
+  function getHrefForLocation(region?: RegionSlug, country?: CountrySlug) {
+    if (hrefMode === "low-margin") {
+      if (country) {
+        return `/bookmaker-reviews/low-margin-bookmakers/${country}`;
+      }
+
+      return "/bookmaker-reviews/best-low-margin-bookmakers";
+    }
+
+    return getLocationHref(region, country);
+  }
 
   const filteredCountries = useMemo(() => {
     const normalized = query.trim().toLowerCase();
@@ -207,7 +223,7 @@ export default function LocationFilterSelect({
     setOpen(false);
     setQuery("");
     setLocationError("");
-    router.push(getLocationHref(region, country));
+    router.push(getHrefForLocation(region, country));
   }
 
   async function handleUseMyLocation() {

@@ -139,6 +139,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
     })
   );
 
+  const lowMarginCountryPages: MetadataRoute.Sitemap = Object.keys(
+    COUNTRY_LABELS
+  ).map((country) => ({
+    url: `${baseUrl}/bookmaker-reviews/low-margin-bookmakers/${country}`,
+    lastModified: now,
+    changeFrequency: "weekly",
+    priority: 0.7,
+  }));
+
   const regionPages: MetadataRoute.Sitemap = Object.keys(REGION_LABELS).map(
     (region) => ({
       url: `${baseUrl}/bookmaker-reviews/region/${region}`,
@@ -153,6 +162,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...converterPages,
     ...bookmakerReviewUrls,
     ...countryPages,
+    ...lowMarginCountryPages,
     ...regionPages,
   ];
 }

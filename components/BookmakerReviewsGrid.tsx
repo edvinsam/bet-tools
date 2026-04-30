@@ -11,6 +11,8 @@ import { bookmakerMatchesLocation } from "@/lib/bookmakerFilter";
 type SortKey = "alphabetical" | "rating" | "margin";
 type SortDirection = "asc" | "desc";
 
+type LocationHrefMode = "default" | "low-margin";
+
 type Props = {
   bookmakers: EnrichedBookmakerReview[];
 
@@ -19,6 +21,7 @@ type Props = {
 
   selectedRegion?: RegionSlug;
   selectedCountry?: CountrySlug;
+  locationHrefMode?: LocationHrefMode;
 };
 
 export default function BookmakerReviewsGrid({
@@ -27,6 +30,7 @@ export default function BookmakerReviewsGrid({
   defaultSortDirection,
   selectedRegion,
   selectedCountry,
+  locationHrefMode = "default",
 }: Props) {
   const [searchQuery, setSearchQuery] = useState("");
   const [sortKey, setSortKey] =
@@ -145,6 +149,7 @@ export default function BookmakerReviewsGrid({
               <LocationFilterSelect
                 selectedRegion={selectedRegion}
                 selectedCountry={selectedCountry}
+                hrefMode={locationHrefMode}
               />
             </div>
           </div>
