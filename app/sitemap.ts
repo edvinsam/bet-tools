@@ -104,6 +104,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "weekly",
       priority: 0.7,
     },
+    {
+      url: `${baseUrl}/bookmaker-reviews/low-margin-bookmakers`,
+      lastModified: now,
+      changeFrequency: "weekly",
+      priority: 0.75,
+    },
   ];
 
   const converterPages: MetadataRoute.Sitemap = [];
