@@ -57,6 +57,9 @@ export default function RootLayout({
       lang="en"
       className={`h-full antialiased`}
     >
+      <head>
+        <meta name="apple-mobile-web-app-title" content="Bet Tools" />
+      </head>
       <body
         className={`${openSans.className} min-h-screen flex flex-col`}
         style={{ background: "#ffffff", margin: 0 }}

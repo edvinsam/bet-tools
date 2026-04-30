@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -13,7 +14,13 @@ export default function Header() {
           href="/"
           className="text-xl font-bold leading-none text-[#111827] no-underline"
         >
-          Bet Tools
+          <Image
+            src="/headerlogo.png"
+            alt="Bet Tools"
+            width={160}
+            height={40}
+            priority
+          />
         </Link>
 
         <button
