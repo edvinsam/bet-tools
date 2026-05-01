@@ -1,11 +1,9 @@
 import Link from "next/link";
 import Breadcrumbs from "@/components/Breadcrumbs";
+import CountryRegionHub from "@/components/CountryRegionHub";
 import {
   COUNTRIES_BY_REGION,
   COUNTRY_LABELS,
-  REGION_LABELS,
-  type CountrySlug,
-  type RegionSlug,
 } from "@/lib/bookmaker-locations";
 
 export const metadata = {
@@ -19,7 +17,7 @@ export const metadata = {
 
 export default function LowMarginBookmakersCountryHubPage() {
   return (
-    <main className="mx-auto max-w-6xl px-4 py-8">
+    <main className="mx-auto max-w-6xl px-4 py-8 sm:px-6">
       <Breadcrumbs
         items={[
           { label: "Home", href: "/" },
@@ -32,16 +30,16 @@ export default function LowMarginBookmakersCountryHubPage() {
         ]}
       />
 
-      <section className="mt-6 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-        <p className="text-sm font-medium text-slate-500">
+      <section className="mt-6 rounded-3xl border border-slate-200 bg-linear-to-br from-white to-slate-50 p-6 shadow-sm sm:p-8">
+        <p className="text-sm font-semibold text-blue-600">
           Country margin comparison
         </p>
 
-        <h1 className="mt-2 text-3xl font-bold text-slate-950">
+        <h1 className="mt-2 max-w-3xl text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl">
           Low Margin Bookmakers by Country
         </h1>
 
-        <p className="mt-4 max-w-3xl text-slate-700">
+        <p className="mt-4 max-w-3xl text-base leading-7 text-slate-600">
           Browse low margin bookmaker pages by country. Each page compares
           betting sites available in that location by average bookmaker margin,
           helping you find sportsbooks with more competitive odds and better
@@ -65,46 +63,11 @@ export default function LowMarginBookmakersCountryHubPage() {
         </div>
       </section>
 
-      <section className="mt-8 space-y-6">
-        {(Object.entries(COUNTRIES_BY_REGION) as [
-          RegionSlug,
-          CountrySlug[],
-        ][]).map(([region, countries]) => (
-          <section
-            key={region}
-            className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm"
-          >
-            <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-              <div>
-                <p className="text-sm font-medium text-slate-500">Region</p>
-
-                <h2 className="text-xl font-bold text-slate-950">
-                  {REGION_LABELS[region]}
-                </h2>
-              </div>
-
-              <Link
-                href={`/bookmaker-reviews/region/${region}`}
-                className="text-sm font-semibold text-slate-700 underline hover:text-slate-950"
-              >
-                View {REGION_LABELS[region]} bookmakers
-              </Link>
-            </div>
-
-            <div className="mt-5 flex flex-wrap gap-2">
-              {countries.map((country) => (
-                <Link
-                  key={country}
-                  href={`/bookmaker-reviews/low-margin-bookmakers/${country}`}
-                  className="rounded-full border border-slate-200 px-3 py-1 text-sm text-slate-700 hover:bg-slate-50"
-                >
-                  {COUNTRY_LABELS[country]}
-                </Link>
-              ))}
-            </div>
-          </section>
-        ))}
-      </section>
+      <CountryRegionHub
+        countriesByRegion={COUNTRIES_BY_REGION}
+        countryLabels={COUNTRY_LABELS}
+        basePath="/bookmaker-reviews/low-margin-bookmakers"
+      />
     </main>
   );
 }

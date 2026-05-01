@@ -249,7 +249,7 @@ export default function ArbitrageBetsTable({
             id="odds-format"
             value={oddsFormat}
             onChange={(e) => setOddsFormat(e.target.value as OddsType)}
-            className="rounded-lg border border-gray-300 px-3 py-2 text-sm"
+            className="rounded-lg border border-gray-300 px-3 py-2 text-sm text-gray-600"
           >
             <option value="decimal">Decimal</option>
             <option value="fractional">Fractional</option>

@@ -40,44 +40,26 @@ export default function BookmakerReviewsPage() {
           margin analysis, user reputation summaries and practical betting
           experience factors such as registration, deposits and withdrawals.
         </p>
-        <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-6 flex flex-wrap gap-3">
           <Link
             href="/bookmaker-reviews/best-low-margin-bookmakers"
-            className="rounded-xl border border-slate-200 p-4 hover:bg-slate-50"
+            className="rounded-full border border-slate-200 bg-slate-50 px-4 py-2 text-sm font-semibold text-slate-800 transition hover:border-blue-200 hover:bg-blue-50"
           >
-            <h2 className="font-semibold text-slate-950">
-              Lowest Margin Bookmakers
-            </h2>
-
-            <p className="mt-2 text-sm text-slate-600">
-              Compare bookmakers offering the most competitive odds.
-            </p>
+            Lowest Margin Bookmakers
           </Link>
 
           <Link
             href="/bookmaker-reviews/best-bookmakers-for-arbitrage-betting"
-            className="rounded-xl border border-slate-200 p-4 hover:bg-slate-50"
+            className="rounded-full border border-slate-200 bg-slate-50 px-4 py-2 text-sm font-semibold text-slate-800 transition hover:border-blue-200 hover:bg-blue-50"
           >
-            <h2 className="font-semibold text-slate-950">
-              Best Bookmakers for Arbitrage
-            </h2>
-
-            <p className="mt-2 text-sm text-slate-600">
-              Find reliable bookmakers suitable for arbitrage strategies.
-            </p>
+            Best for Arbitrage
           </Link>
 
           <Link
             href="/bookmaker-reviews/best-betting-exchanges"
-            className="rounded-xl border border-slate-200 p-4 hover:bg-slate-50"
+            className="rounded-full border border-slate-200 bg-slate-50 px-4 py-2 text-sm font-semibold text-slate-800 transition hover:border-blue-200 hover:bg-blue-50"
           >
-            <h2 className="font-semibold text-slate-950">
-              Best Betting Exchanges
-            </h2>
-
-            <p className="mt-2 text-sm text-slate-600">
-              Compare exchange-style platforms based on liquidity and fees.
-            </p>
+            Betting Exchanges
           </Link>
         </div>
       </section>

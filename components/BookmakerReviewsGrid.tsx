@@ -209,99 +209,13 @@ export default function BookmakerReviewsGrid({
         </p>
       </section>
 
-      <section className="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-        {filteredAndSortedBookmakers.map((bookmaker) => (
-          <article
+      <section className="mt-6 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
+        {filteredAndSortedBookmakers.map((bookmaker, index) => (
+          <BookmakerReviewRow
             key={bookmaker.slug}
-            className="flex h-full flex-col rounded-2xl border border-slate-200 bg-white p-6 shadow-sm"
-          >
-            <div className="flex items-center justify-between gap-4">
-              <div>
-                <p className="text-sm font-medium text-slate-500">
-                  Bookmaker
-                </p>
-
-                <h2 className="mt-1 text-xl font-bold text-slate-950">
-                  {bookmaker.name}
-                </h2>
-              </div>
-
-              {bookmaker.logo && (
-                <div
-                  className="flex h-14 w-24 shrink-0 items-center justify-center overflow-hidden rounded-xl border border-slate-200 p-3"
-                  style={
-                    bookmaker.backgroundColor
-                      ? { backgroundColor: bookmaker.backgroundColor }
-                      : undefined
-                  }
-                >
-                  <a
-                    href={bookmaker.url}
-                    target="_blank"
-                    rel="nofollow sponsored noopener noreferrer"
-                    className="flex h-full w-full items-center justify-center"
-                  >
-                    <img
-                      src={bookmaker.logo}
-                      alt={`${bookmaker.name} logo`}
-                      className="h-full w-full object-contain"
-                      loading="lazy"
-                      decoding="async"
-                    />
-                  </a>
-                </div>
-              )}
-            </div>
-
-            <p className="mt-4 line-clamp-4 text-slate-700">
-              {bookmaker.intro}
-            </p>
-
-            <div className="mt-5 grid grid-cols-2 gap-3">
-              <div className="rounded-xl bg-slate-50 p-4">
-                <p className="text-sm text-slate-500">Rating</p>
-
-                <div className="mt-2 whitespace-nowrap">
-                  <StarRating rating={bookmaker.rating} />
-                </div>
-              </div>
-
-              {typeof bookmaker.averageMargin === "number" && (
-                <div className="rounded-xl bg-slate-50 p-3">
-                  <p className="text-xs text-slate-500">Avg. margin</p>
-
-                  <p className="mt-1 font-semibold text-slate-950">
-                    {bookmaker.averageMargin.toFixed(2)}%
-                  </p>
-
-                  {typeof bookmaker.marginSamples === "number" && (
-                    <p className="mt-1 text-xs text-slate-500">
-                      {bookmaker.marginSamples} samples
-                    </p>
-                  )}
-                </div>
-              )}
-            </div>
-
-            {bookmaker.userReviewSummary && (
-              <div className="mt-4 rounded-xl bg-slate-50 p-3">
-                <p className="text-xs text-slate-500">User reputation</p>
-
-                <p className="mt-1 font-semibold capitalize text-slate-950">
-                  {bookmaker.userReviewSummary.overallSentiment}
-                </p>
-              </div>
-            )}
-
-            <div className="mt-6 flex flex-1 items-end">
-              <Link
-                href={`/bookmaker-reviews/${bookmaker.slug}`}
-                className="inline-flex rounded-xl bg-slate-950 px-4 py-2 font-semibold text-white hover:bg-slate-800"
-              >
-                Read review
-              </Link>
-            </div>
-          </article>
+            bookmaker={bookmaker}
+            rank={index + 1}
+          />
         ))}
       </section>
 
@@ -317,5 +231,156 @@ export default function BookmakerReviewsGrid({
         </section>
       )}
     </>
+  );
+}
+
+function BookmakerReviewRow({
+  bookmaker,
+  rank,
+}: {
+  bookmaker: EnrichedBookmakerReview;
+  rank: number;
+}) {
+  const [expanded, setExpanded] = useState(false);
+
+  return (
+    <article className="border-b border-slate-200 p-4 last:border-b-0">
+      {/* Mobile layout */}
+      <div className="sm:hidden">
+        <div className="flex items-start justify-between gap-3">
+          <div>
+            <p className="text-sm font-semibold text-slate-400">#{rank}</p>
+            <h2 className="mt-2 text-base font-bold text-slate-950">
+              {bookmaker.name}
+            </h2>
+          </div>
+
+          {bookmaker.logo && (
+            <div
+              className="flex h-11 w-16 shrink-0 items-center justify-center overflow-hidden rounded-xl border border-slate-200 bg-white p-2"
+              style={
+                bookmaker.backgroundColor
+                  ? { backgroundColor: bookmaker.backgroundColor }
+                  : undefined
+              }
+            >
+              <img
+                src={bookmaker.logo}
+                alt={`${bookmaker.name} logo`}
+                className="h-full w-full object-contain"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+          )}
+        </div>
+
+        <div className="mt-4 flex flex-wrap gap-2">
+          <div className="rounded-full bg-slate-50 px-3 py-1.5 text-xs text-slate-700">
+            <StarRating rating={bookmaker.rating} />
+          </div>
+
+          {typeof bookmaker.averageMargin === "number" && (
+            <div className="rounded-full bg-slate-50 px-3 py-1.5 text-xs text-slate-700">
+              Margin:{" "}
+              <span className="font-semibold text-slate-950">
+                {bookmaker.averageMargin.toFixed(2)}%
+              </span>
+            </div>
+          )}
+        </div>
+
+        <div className="mt-3 flex gap-2">
+          <button
+            type="button"
+            onClick={() => setExpanded((current) => !current)}
+            className="rounded-xl border border-slate-300 bg-white px-3 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-50"
+          >
+            {expanded ? "Hide" : "Show more"}
+          </button>
+
+          <Link
+            href={`/bookmaker-reviews/${bookmaker.slug}`}
+            className="rounded-xl bg-slate-950 px-3 py-2 text-sm font-semibold text-white hover:bg-slate-800"
+          >
+            Review
+          </Link>
+        </div>
+      </div>
+
+      {/* Tablet/desktop layout */}
+      <div className="hidden sm:grid sm:grid-cols-[2.5rem_7rem_minmax(8ch,1fr)_auto_auto] sm:items-center sm:gap-4">
+        <div className="text-sm font-semibold text-slate-400">#{rank}</div>
+
+        {bookmaker.logo && (
+          <div
+            className="flex h-14 w-24 items-center justify-center overflow-hidden rounded-xl border border-slate-200 bg-white p-2"
+            style={
+              bookmaker.backgroundColor
+                ? { backgroundColor: bookmaker.backgroundColor }
+                : undefined
+            }
+          >
+            <img
+              src={bookmaker.logo}
+              alt={`${bookmaker.name} logo`}
+              className="h-full w-full object-contain"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+        )}
+
+        <h2 className="min-w-[8ch] truncate text-lg font-bold text-slate-950">
+          {bookmaker.name}
+        </h2>
+
+        <div className="whitespace-nowrap text-sm">
+          <StarRating rating={bookmaker.rating} />
+          {typeof bookmaker.averageMargin === "number" && (
+            <div className="mt-1 text-sm text-slate-700">
+              Margin:{" "}
+              <span className="font-semibold text-slate-950">
+                {bookmaker.averageMargin.toFixed(2)}%
+              </span>
+            </div>
+          )}
+        </div>
+
+        <div className="flex flex-col gap-2 min-[720px]:flex-row">
+          <button
+            type="button"
+            onClick={() => setExpanded((current) => !current)}
+            className="rounded-xl border border-slate-300 bg-white px-3 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-50"
+          >
+            {expanded ? "Hide" : "Show more"}
+          </button>
+
+          <Link
+            href={`/bookmaker-reviews/${bookmaker.slug}`}
+            className="rounded-xl bg-slate-950 px-3 py-2 text-center text-sm font-semibold text-white hover:bg-slate-800"
+          >
+            Review
+          </Link>
+        </div>
+      </div>
+
+      {expanded && (
+        <div className="mt-4 rounded-2xl bg-slate-50 p-4 text-sm leading-6 text-slate-700">
+          <p>{bookmaker.intro}</p>
+
+          {bookmaker.userReviewSummary && (
+            <p className="mt-3">
+              <span className="font-semibold text-slate-950">
+                User reputation:
+              </span>{" "}
+              <span className="capitalize">
+                {bookmaker.userReviewSummary.overallSentiment}
+              </span>
+            </p>
+          )}
+        </div>
+      )}
+    </article>
   );
 }

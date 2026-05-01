@@ -126,6 +126,14 @@ export default async function LowMarginBookmakersCountryPage({
         </div>
       </section>
 
+      <BookmakerReviewsGrid
+        bookmakers={bookmakers}
+        selectedCountry={country}
+        defaultSortKey="margin"
+        defaultSortDirection="asc"
+        locationHrefMode="low-margin"
+      />
+
       <section className="mt-6 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
         <h2 className="text-xl font-semibold text-slate-950">
           Why bookmaker margin matters in {countryName}
@@ -146,14 +154,6 @@ export default async function LowMarginBookmakersCountryPage({
           </p>
         </div>
       </section>
-
-      <BookmakerReviewsGrid
-        bookmakers={bookmakers}
-        selectedCountry={country}
-        defaultSortKey="margin"
-        defaultSortDirection="asc"
-        locationHrefMode="low-margin"
-      />
 
       <section className="mt-8 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
         <h2 className="text-xl font-semibold text-slate-950">

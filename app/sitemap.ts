@@ -129,6 +129,24 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "weekly",
       priority: 0.75,
     },
+    {
+      url: `${baseUrl}/terms`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.3,
+    },
+    {
+      url: `${baseUrl}/responsible-gambling`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.2,
+    },
+    {
+      url: `${baseUrl}/affiliate-disclosure`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.2,
+    },
   ];
 
   const converterPages: MetadataRoute.Sitemap = [];

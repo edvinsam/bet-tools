@@ -111,6 +111,8 @@ export default async function CountryBookmakerReviewsPage({
         </div>
       </section>
 
+      <BookmakerReviewsGrid bookmakers={bookmakers} selectedCountry={country} />
+
       <section className="mt-6 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
         <h2 className="text-xl font-semibold text-slate-950">
           Compare bookmakers in {countryLabel}
@@ -123,7 +125,6 @@ export default async function CountryBookmakerReviewsPage({
         </div>
       </section>
 
-      <BookmakerReviewsGrid bookmakers={bookmakers} selectedCountry={country} />
       <section className="mt-8 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
         <h2 className="text-xl font-semibold text-slate-950">
           Related bookmaker comparisons for {countryLabel}

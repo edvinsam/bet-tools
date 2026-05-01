@@ -91,7 +91,7 @@ export const casinoReviews: CasinoReview[] = [
     verdict:
       "1xBet Casino can be attractive for players who prioritize game selection and bonuses, but it requires careful use. The platform is feature-rich and widely available, yet user feedback often highlights verification checks, withdrawal delays and support issues. It works best for experienced users who understand bonus terms and manage risk carefully rather than beginners looking for the simplest casino experience.",
 
-    rating: undefined,
+    rating: 2.0,
 
     quickFacts: [
       { label: "Best for", value: "Large game selection and bonuses" },
@@ -158,7 +158,7 @@ export const casinoReviews: CasinoReview[] = [
     verdict:
       "888 Casino is a balanced option for players who want a recognizable brand and a relatively straightforward casino experience. It is not always the most aggressive bonus platform, but usability and brand familiarity make it suitable for casual and moderate users.",
 
-    rating: undefined,
+    rating: 4.1,
 
     quickFacts: [
       { label: "Best for", value: "Beginner-friendly casino experience" },
@@ -225,7 +225,7 @@ export const casinoReviews: CasinoReview[] = [
     verdict:
       "10Bet Casino is a reasonable all-round option for users who prefer convenience and a combined sportsbook and casino platform. It is not a specialist casino brand, but it provides enough variety for casual players.",
 
-    rating: undefined,
+    rating: 3.6,
 
     quickFacts: [
       { label: "Best for", value: "Combined sportsbook and casino use" },
@@ -292,7 +292,7 @@ export const casinoReviews: CasinoReview[] = [
     verdict:
       "ATG Casino is best suited for users who value regulation and responsible gambling features over large bonuses or high-risk promotions. It offers a stable and predictable casino experience within the Swedish licensing system.",
 
-    rating: undefined,
+    rating: 3.5,
 
     quickFacts: [
       { label: "Best for", value: "Regulated Swedish casino gaming" },
@@ -359,7 +359,7 @@ export const casinoReviews: CasinoReview[] = [
     verdict:
       "Bally Bet Casino is a suitable option for users in regulated US markets who want a legal and compliant casino experience. It is less focused on large bonuses and more focused on reliability and regulatory stability.",
 
-    rating: undefined,
+    rating: 4.7,
 
     quickFacts: [
       { label: "Best for", value: "Regulated US casino gaming" },
@@ -425,7 +425,7 @@ export const casinoReviews: CasinoReview[] = [
     verdict:
         "bet365 Casino is a reliable and stable option for users who value brand reputation and usability. It is not typically the most promotion-heavy casino, but the platform’s consistency and polished interface make it a solid choice for casual and regular players.",
 
-    rating: undefined,
+    rating: 4.3,
 
     quickFacts: [
         { label: "Best for", value: "Reliable casino and sportsbook combination" },
@@ -491,7 +491,7 @@ export const casinoReviews: CasinoReview[] = [
   verdict:
     "Betano Casino is a balanced option for users who want a straightforward casino experience from a recognizable betting brand. It offers enough variety for casual players without the complexity of larger bonus-driven casinos.",
 
-  rating: undefined,
+  rating: 2.1,
 
   quickFacts: [
     { label: "Best for", value: "Mainstream casino and sportsbook users" },
@@ -557,7 +557,7 @@ export const casinoReviews: CasinoReview[] = [
   verdict:
     "Betfair Casino is best suited for users who already use the Betfair platform for sports betting or exchange betting. It provides a stable and functional casino experience, but it is not a specialist casino destination.",
 
-  rating: undefined,
+  rating: 3.4,
 
   quickFacts: [
     { label: "Best for", value: "Existing Betfair users" },
@@ -623,7 +623,7 @@ export const casinoReviews: CasinoReview[] = [
   verdict:
     "Betfred Casino is a stable and recognizable option for users who prefer traditional betting brands. It provides a consistent casino experience but does not focus heavily on large promotional offers.",
 
-  rating: undefined,
+  rating: 4.3,
 
   quickFacts: [
     { label: "Best for", value: "Traditional betting brand users" },
@@ -689,7 +689,7 @@ export const casinoReviews: CasinoReview[] = [
   verdict:
     "BetMGM Casino is a strong option for users in regulated markets who want a licensed and well-known casino brand. It combines reliability and brand recognition with a broad selection of games, though availability is limited to specific jurisdictions.",
 
-  rating: undefined,
+  rating: 4.3,
 
   quickFacts: [
     { label: "Best for", value: "Licensed US casino gaming" },
@@ -755,7 +755,7 @@ export const casinoReviews: CasinoReview[] = [
   verdict:
     "BetOnline Casino is a practical option for users who prioritize availability and flexibility, particularly in markets where regulated casino options are limited. It offers a wide selection of games and payment methods, but users should carefully review withdrawal policies and verification requirements before depositing.",
 
-  rating: undefined,
+  rating: 4.1,
 
   quickFacts: [
     { label: "Best for", value: "International and US-facing casino users" },
@@ -887,7 +887,7 @@ export const casinoReviews: CasinoReview[] = [
   verdict:
     "Bet Right Casino is a stable and conservative option for users who prefer straightforward casino gaming in a regulated environment. It is best suited for casual players rather than high-volume bonus seekers.",
 
-  rating: undefined,
+  rating: 4.7,
 
   quickFacts: [
     { label: "Best for", value: "Simple regulated casino gaming" },
@@ -953,7 +953,7 @@ export const casinoReviews: CasinoReview[] = [
   verdict:
     "Betsson Casino is a strong mainstream casino option for users who want a recognizable brand with a wide range of games. It is not always the most aggressive bonus platform, but reliability and usability are consistent strengths.",
 
-  rating: undefined,
+  rating: 3.0,
 
   quickFacts: [
     { label: "Best for", value: "Balanced casino experience" },
@@ -1019,7 +1019,7 @@ export const casinoReviews: CasinoReview[] = [
   verdict:
     "BetUS Casino is a practical option for users who prioritize availability and game variety. It offers a wide selection of casino content, but users should review withdrawal policies and verification requirements carefully.",
 
-  rating: undefined,
+  rating: 4.1,
 
   quickFacts: [
     { label: "Best for", value: "International casino access" },
@@ -1085,7 +1085,7 @@ export const casinoReviews: CasinoReview[] = [
   verdict:
     "Betway Casino is a solid mainstream option for users who want a reliable brand with a balanced mix of casino games. It is not typically the most aggressive bonus platform, but usability and consistency are strong points.",
 
-  rating: undefined,
+  rating: 1.3,
 
   quickFacts: [
     { label: "Best for", value: "Mainstream casino gaming" },
@@ -1151,7 +1151,7 @@ export const casinoReviews: CasinoReview[] = [
   verdict:
     "Betr Casino is best suited for casual users who want a straightforward gaming experience without complex features. It offers simplicity and accessibility, but advanced players may find the product limited.",
 
-  rating: undefined,
+  rating: 4.6,
 
   quickFacts: [
     { label: "Best for", value: "Simple casino gaming" },
@@ -1217,7 +1217,7 @@ export const casinoReviews: CasinoReview[] = [
   verdict:
     "BetRivers Casino is a reliable option for users in regulated jurisdictions who want a licensed and stable gaming platform. It prioritizes security and compliance over aggressive promotions.",
 
-  rating: undefined,
+  rating: 4.8,
 
   quickFacts: [
     { label: "Best for", value: "Licensed casino gaming" },
@@ -1283,7 +1283,7 @@ export const casinoReviews: CasinoReview[] = [
   verdict:
     "Betclic Casino is a balanced option for users who want a simple and reliable casino experience within a licensed environment. It offers consistent performance but is not focused on large promotional offers.",
 
-  rating: undefined,
+  rating: 4.7,
 
   quickFacts: [
     { label: "Best for", value: "European casino users" },
@@ -1349,7 +1349,7 @@ export const casinoReviews: CasinoReview[] = [
   verdict:
     "Bovada Casino is a practical option for users who want a wide range of games and flexible account options. It offers strong accessibility but requires careful attention to verification and withdrawal policies.",
 
-  rating: undefined,
+  rating: 3.7,
 
   quickFacts: [
     { label: "Best for", value: "International casino access" },
@@ -1415,7 +1415,7 @@ export const casinoReviews: CasinoReview[] = [
   verdict:
     "BoyleSports Casino is a reliable option for users who prefer established brands operating in licensed markets. It focuses on usability and regulatory compliance rather than large promotional incentives.",
 
-  rating: undefined,
+  rating: 3.4,
 
   quickFacts: [
     { label: "Best for", value: "Licensed casino gaming" },
@@ -1481,7 +1481,7 @@ export const casinoReviews: CasinoReview[] = [
   verdict:
     "bwin Casino is a balanced option for users who want a stable and recognizable brand. It offers consistent usability and a wide range of games, though promotions may be less aggressive than those offered by bonus-focused casinos.",
 
-  rating: undefined,
+  rating: 3.6,
 
   quickFacts: [
     { label: "Best for", value: "Mainstream casino users" },
@@ -1547,7 +1547,7 @@ export const casinoReviews: CasinoReview[] = [
   verdict:
     "CampoBet Casino is a straightforward option for users who prioritize simplicity and reliability. It provides a stable gaming experience but does not focus heavily on large promotional incentives.",
 
-  rating: undefined,
+  rating: 3.9,
 
   quickFacts: [
     { label: "Best for", value: "Simple casino gaming" },
@@ -1613,7 +1613,7 @@ export const casinoReviews: CasinoReview[] = [
   verdict:
     "Casumo Casino is a strong option for users who want a polished and user-friendly casino platform. It combines a broad selection of games with a modern interface, though bonus terms should always be reviewed carefully.",
 
-  rating: undefined,
+  rating: 3.2,
 
   quickFacts: [
     { label: "Best for", value: "Modern casino experience" },
@@ -1679,7 +1679,7 @@ export const casinoReviews: CasinoReview[] = [
   verdict:
     "Codere Casino is best suited for users who want a licensed and predictable gaming platform in regulated markets. It provides a stable experience but may offer fewer promotions than offshore casinos.",
 
-  rating: undefined,
+  rating: 4.4,
 
   quickFacts: [
     { label: "Best for", value: "Regulated casino gaming" },
@@ -1745,7 +1745,7 @@ export const casinoReviews: CasinoReview[] = [
   verdict:
     "Coolbet Casino is a practical option for users who value usability and straightforward account management. It provides a stable gaming environment with a reasonable selection of games, though it is not primarily positioned as a bonus-heavy casino.",
 
-  rating: undefined,
+  rating: 2.5,
 
   quickFacts: [
     { label: "Best for", value: "Simple and reliable casino experience" },
@@ -1811,7 +1811,7 @@ export const casinoReviews: CasinoReview[] = [
   verdict:
     "Coral Casino is a dependable option for users who prefer established betting brands operating in licensed markets. It provides a consistent experience but does not typically compete on aggressive promotional offers.",
 
-  rating: undefined,
+  rating: 4.5,
 
   quickFacts: [
     { label: "Best for", value: "Traditional casino gaming" },
@@ -1877,7 +1877,7 @@ export const casinoReviews: CasinoReview[] = [
   verdict:
     "DraftKings Casino is a strong option for users in regulated markets who want a licensed and widely recognized platform. It combines reliability with a broad selection of games, though availability is limited to specific jurisdictions.",
 
-  rating: undefined,
+  rating: 4.8,
 
   quickFacts: [
     { label: "Best for", value: "Licensed US casino gaming" },
@@ -1943,7 +1943,7 @@ export const casinoReviews: CasinoReview[] = [
   verdict:
     "Everygame Casino is a practical option for users who want access to casino gaming in markets with limited local options. It offers broad availability but requires careful attention to verification and withdrawal policies.",
 
-  rating: undefined,
+  rating: 3.4,
 
   quickFacts: [
     { label: "Best for", value: "International casino access" },
@@ -2009,7 +2009,7 @@ export const casinoReviews: CasinoReview[] = [
   verdict:
     "FanDuel Casino is a strong option for users in regulated markets who want a licensed and widely recognized platform. It combines reliability with a broad selection of games, though availability is limited to specific jurisdictions.",
 
-  rating: undefined,
+  rating: 4.7,
 
   quickFacts: [
     { label: "Best for", value: "Licensed US casino gaming" },
@@ -2075,7 +2075,7 @@ export const casinoReviews: CasinoReview[] = [
   verdict:
     "Grosvenor Casinos Online is best suited for users who value brand familiarity and a traditional casino experience. It offers a stable and regulated gaming environment, though it is not focused on aggressive promotions or large bonuses.",
 
-  rating: undefined,
+  rating: 3.3,
 
   quickFacts: [
     { label: "Best for", value: "Traditional casino experience" },
@@ -2141,7 +2141,7 @@ export const casinoReviews: CasinoReview[] = [
   verdict:
     "GTbets Casino is a practical option for users who want broad access to casino games and flexible payment options. It offers availability and variety, but users should review withdrawal and verification policies carefully before depositing.",
 
-  rating: undefined,
+  rating: 2.2,
 
   quickFacts: [
     { label: "Best for", value: "International casino access" },
@@ -2207,7 +2207,7 @@ export const casinoReviews: CasinoReview[] = [
   verdict:
     "Hajper Casino is a suitable option for users who want a straightforward and regulated casino experience. It focuses on stability and responsible gaming rather than large promotional incentives.",
 
-  rating: undefined,
+  rating: 4.5,
 
   quickFacts: [
     { label: "Best for", value: "Regulated casino gaming" },
@@ -2273,7 +2273,7 @@ export const casinoReviews: CasinoReview[] = [
   verdict:
     "Hard Rock Bet Casino is a strong option for users in regulated jurisdictions who want a licensed and recognizable casino brand. It prioritizes reliability and compliance over aggressive promotions.",
 
-  rating: undefined,
+  rating: 4.8,
 
   quickFacts: [
     { label: "Best for", value: "Licensed casino gaming" },
@@ -2339,7 +2339,7 @@ export const casinoReviews: CasinoReview[] = [
   verdict:
     "Ladbrokes Casino is a dependable option for users who prefer established betting brands operating in licensed markets. It provides consistent usability but is not typically focused on large promotional incentives.",
 
-  rating: undefined,
+  rating: 4.4,
 
   quickFacts: [
     { label: "Best for", value: "Traditional casino gaming" },
@@ -2405,7 +2405,7 @@ export const casinoReviews: CasinoReview[] = [
   verdict:
     "LeoVegas Casino is a strong option for users who want a modern and user-friendly casino platform from a recognized brand. It combines a broad game selection with a polished interface, though bonus terms and availability may vary by country.",
 
-  rating: undefined,
+  rating: 3.9,
 
   quickFacts: [
     { label: "Best for", value: "Mobile-friendly casino gaming" },
@@ -2471,7 +2471,7 @@ export const casinoReviews: CasinoReview[] = [
   verdict:
     "LiveScore Bet Casino is a straightforward option for users who already use the LiveScore ecosystem. It offers a stable gaming experience but is not positioned as a specialist casino brand.",
 
-  rating: undefined,
+  rating: 4.3,
 
   quickFacts: [
     { label: "Best for", value: "Integrated sportsbook and casino users" },
@@ -2603,7 +2603,7 @@ export const casinoReviews: CasinoReview[] = [
   verdict:
     "Marathonbet Casino provides a functional gaming experience for users who already use the platform for sports betting. It is not positioned as a leading casino brand but offers enough variety for casual players.",
 
-  rating: undefined,
+  rating: 1.5,
 
   quickFacts: [
     { label: "Best for", value: "Sportsbook users seeking basic casino access" },
@@ -2669,7 +2669,7 @@ export const casinoReviews: CasinoReview[] = [
   verdict:
     "Matchbook is best understood as an exchange-focused betting platform rather than a casino destination. Users specifically looking for casino gaming will generally find more comprehensive options elsewhere.",
 
-  rating: undefined,
+  rating: 4.4,
 
   quickFacts: [
     { label: "Best for", value: "Exchange and sportsbook users" },
@@ -2735,7 +2735,7 @@ export const casinoReviews: CasinoReview[] = [
   verdict:
     "Mr Green Casino is a strong option for users who value a clean interface and a regulated gaming environment. It offers a balanced mix of games and features, though promotions may be less aggressive than those offered by bonus-focused casinos.",
 
-  rating: undefined,
+  rating: 1.4,
 
   quickFacts: [
     { label: "Best for", value: "User-friendly regulated casino gaming" },
@@ -2867,7 +2867,7 @@ export const casinoReviews: CasinoReview[] = [
   verdict:
     "Neds Casino is a suitable option for users who already use the platform for sports betting and want convenient access to casino games. It provides a stable experience but is not positioned as a dedicated casino brand.",
 
-  rating: undefined,
+  rating: 4.4,
 
   quickFacts: [
     { label: "Best for", value: "Sportsbook users seeking casino access" },
@@ -2933,7 +2933,7 @@ export const casinoReviews: CasinoReview[] = [
   verdict:
     "NetBet Casino is a solid mainstream option for users who want a reliable casino experience from a licensed operator. It offers a good range of games and consistent performance, though promotions and availability vary by country.",
 
-  rating: undefined,
+  rating: 4.1,
 
   quickFacts: [
     { label: "Best for", value: "Mainstream regulated casino gaming" },
@@ -2999,7 +2999,7 @@ export const casinoReviews: CasinoReview[] = [
   verdict:
     "NordicBet Casino is a dependable option for users who want a recognizable brand and a balanced gaming experience. It combines reliability with a reasonable selection of games, though bonus terms and availability vary by country.",
 
-  rating: undefined,
+  rating: 1.8,
 
   quickFacts: [
     { label: "Best for", value: "Balanced casino experience" },
@@ -3065,7 +3065,7 @@ export const casinoReviews: CasinoReview[] = [
   verdict:
     "Paddy Power Casino is a dependable option for users who prefer established betting brands operating within licensed frameworks. It offers consistent usability and a broad selection of games, though promotions may vary by country.",
 
-  rating: undefined,
+  rating: 4.6,
 
   quickFacts: [
     { label: "Best for", value: "Traditional regulated casino gaming" },
@@ -3131,7 +3131,7 @@ export const casinoReviews: CasinoReview[] = [
   verdict:
     "Pinnacle is best understood as a sportsbook-first platform rather than a dedicated casino destination. Users specifically looking for casino gaming will generally find more comprehensive options elsewhere.",
 
-  rating: undefined,
+  rating: 2.3,
 
   quickFacts: [
     { label: "Best for", value: "Sports betting-focused users" },
@@ -3197,7 +3197,7 @@ export const casinoReviews: CasinoReview[] = [
   verdict:
     "PlayUp Casino is a suitable option for users in regulated markets who want a licensed and stable gaming platform. It prioritizes compliance and reliability over aggressive promotional offers.",
 
-  rating: undefined,
+  rating: 1.8,
 
   quickFacts: [
     { label: "Best for", value: "Licensed casino gaming" },
@@ -3263,7 +3263,7 @@ export const casinoReviews: CasinoReview[] = [
   verdict:
     "PMU Casino is best suited for users who already use the platform for betting and want convenient access to casino games. It provides a stable experience but is not positioned as a specialist casino brand.",
 
-  rating: undefined,
+  rating: 4.5,
 
   quickFacts: [
     { label: "Best for", value: "Betting platform users" },
@@ -3329,7 +3329,7 @@ export const casinoReviews: CasinoReview[] = [
   verdict:
     "PointsBet Casino is a reliable option for users in regulated markets who want a combined sportsbook and casino platform. It offers consistent performance but availability depends on jurisdiction.",
 
-  rating: undefined,
+  rating: 3.2,
 
   quickFacts: [
     { label: "Best for", value: "Licensed sportsbook and casino users" },
@@ -3395,7 +3395,7 @@ export const casinoReviews: CasinoReview[] = [
   verdict:
     "Sky Bet Casino is a dependable option for users who prefer established betting brands operating under regulatory oversight. It offers consistent usability and a solid range of games, though promotions may be less aggressive than those offered by specialist casino platforms.",
 
-  rating: undefined,
+  rating: 4.6,
 
   quickFacts: [
     { label: "Best for", value: "Mainstream regulated casino gaming" },
@@ -3461,7 +3461,7 @@ export const casinoReviews: CasinoReview[] = [
   verdict:
     "Smarkets is best understood as an exchange-focused betting platform rather than a dedicated casino destination. Users specifically looking for casino gaming will generally find more comprehensive options elsewhere.",
 
-  rating: undefined,
+  rating: 4.2,
 
   quickFacts: [
     { label: "Best for", value: "Exchange and sportsbook users" },
@@ -3527,7 +3527,7 @@ export const casinoReviews: CasinoReview[] = [
   verdict:
     "Sportsbet Casino is a suitable option for users who want a combined sportsbook and casino platform from a licensed operator. It offers consistent usability and a stable gaming experience, though promotions depend on local regulation.",
 
-  rating: undefined,
+  rating: 4.4,
 
   quickFacts: [
     { label: "Best for", value: "Integrated sportsbook and casino use" },
@@ -3593,7 +3593,7 @@ export const casinoReviews: CasinoReview[] = [
   verdict:
     "Svenska Spel Casino is best suited for users who value regulation and responsible gambling tools. It offers a stable and transparent gaming environment but may provide fewer bonuses than commercial casino operators.",
 
-  rating: undefined,
+  rating: 4.4,
 
   quickFacts: [
     { label: "Best for", value: "Responsible regulated casino gaming" },
@@ -3659,7 +3659,7 @@ export const casinoReviews: CasinoReview[] = [
   verdict:
     "TAB Casino is a suitable option for users who want a regulated and stable casino platform connected to a trusted betting brand. It focuses on reliability and compliance rather than large promotional incentives.",
 
-  rating: undefined,
+  rating: 4.6,
 
   quickFacts: [
     { label: "Best for", value: "Regulated betting and casino users" },
@@ -3725,7 +3725,7 @@ export const casinoReviews: CasinoReview[] = [
   verdict:
     "TABtouch Casino is a suitable option for users who want a regulated and stable gaming platform connected to a trusted betting brand. It prioritizes reliability and compliance over large promotional incentives.",
 
-  rating: undefined,
+  rating: 4.7,
 
   quickFacts: [
     { label: "Best for", value: "Regulated casino gaming" },
@@ -3791,7 +3791,7 @@ export const casinoReviews: CasinoReview[] = [
   verdict:
     "theScore Casino is best suited for users who already use the platform for sports betting and want convenient access to casino games. It provides a stable experience but is not positioned as a dedicated casino destination.",
 
-  rating: undefined,
+  rating: 4.7,
 
   quickFacts: [
     { label: "Best for", value: "Sportsbook users seeking casino access" },
@@ -3857,7 +3857,7 @@ export const casinoReviews: CasinoReview[] = [
   verdict:
     "Tipico Casino is a dependable option for users who want a licensed and recognizable casino brand. It combines consistent usability with a solid range of games, though promotions and availability vary by country.",
 
-  rating: undefined,
+  rating: 4.7,
 
   quickFacts: [
     { label: "Best for", value: "Regulated European casino gaming" },
@@ -3989,7 +3989,7 @@ export const casinoReviews: CasinoReview[] = [
   verdict:
     "William Hill Casino is a dependable option for users who prefer established betting brands operating within licensed frameworks. It offers consistent usability and a wide selection of games, though promotions may vary by jurisdiction.",
 
-  rating: undefined,
+  rating: 4.6,
 
   quickFacts: [
     { label: "Best for", value: "Traditional regulated casino gaming" },
@@ -4055,7 +4055,7 @@ export const casinoReviews: CasinoReview[] = [
   verdict:
     "Winamax Casino is a solid option for users who want a recognizable brand with a balanced mix of casino games. It focuses on usability and product stability rather than aggressive promotional offers.",
 
-  rating: undefined,
+  rating: 4.5,
 
   quickFacts: [
     { label: "Best for", value: "Integrated casino and poker users" },
@@ -4121,7 +4121,7 @@ export const casinoReviews: CasinoReview[] = [
   verdict:
     "Stake Casino is a popular option for users who want fast deposits and withdrawals using cryptocurrency. It offers a wide range of games and flexible payment options, but users should understand the risks associated with offshore and crypto-based gambling platforms.",
 
-  rating: undefined,
+  rating: 3.9,
 
   quickFacts: [
     { label: "Best for", value: "Crypto casino gaming" },
@@ -4187,7 +4187,7 @@ export const casinoReviews: CasinoReview[] = [
   verdict:
     "22Bet Casino is a practical option for users who want access to a wide range of games and promotions. It offers flexibility and availability, but users should carefully review payment and verification policies before depositing.",
 
-  rating: undefined,
+  rating: 3.4,
 
   quickFacts: [
     { label: "Best for", value: "International casino access" },
@@ -4253,7 +4253,7 @@ export const casinoReviews: CasinoReview[] = [
   verdict:
     "20Bet Casino is suitable for users who want flexible access to casino games and frequent promotions. It provides a broad selection of games, though users should review payment and verification policies carefully.",
 
-  rating: undefined,
+  rating: 3.2,
 
   quickFacts: [
     { label: "Best for", value: "International casino gaming" },
@@ -4319,7 +4319,7 @@ export const casinoReviews: CasinoReview[] = [
   verdict:
     "Melbet Casino is a practical option for users who want a large selection of games and frequent promotions. It offers flexibility and availability, though users should carefully review payment policies and account verification requirements.",
 
-  rating: undefined,
+  rating: 2.0,
 
   quickFacts: [
     { label: "Best for", value: "High bonus and international access" },
@@ -4385,7 +4385,7 @@ export const casinoReviews: CasinoReview[] = [
   verdict:
     "BetWinner Casino is a practical option for users who want access to a wide range of games and promotional offers. It provides flexibility and availability, though users should carefully review payment policies and account verification requirements.",
 
-  rating: undefined,
+  rating: 1.2,
 
   quickFacts: [
     { label: "Best for", value: "International casino access" },
@@ -4451,7 +4451,7 @@ export const casinoReviews: CasinoReview[] = [
   verdict:
     "Parimatch Casino is a suitable option for users who want a recognizable brand with a broad range of games. It offers consistent usability and promotional offers, though availability and regulation vary by country.",
 
-  rating: undefined,
+  rating: 1.4,
 
   quickFacts: [
     { label: "Best for", value: "International casino gaming" },
@@ -4517,7 +4517,7 @@ export const casinoReviews: CasinoReview[] = [
   verdict:
     "Dafabet Casino is a practical option for users who want broad access to casino games and flexible account options. It offers consistent availability, though users should carefully review payment and withdrawal policies.",
 
-  rating: undefined,
+  rating: 1.1,
 
   quickFacts: [
     { label: "Best for", value: "International casino access" },
@@ -4583,7 +4583,7 @@ export const casinoReviews: CasinoReview[] = [
   verdict:
     "Sportsbet.io Casino is a strong option for users who prefer cryptocurrency payments and fast transactions. It offers a wide range of games and flexible access, though users should understand the operational differences between regulated and offshore platforms.",
 
-  rating: undefined,
+  rating: 1.2,
 
   quickFacts: [
     { label: "Best for", value: "Crypto casino gaming" },
@@ -4649,7 +4649,7 @@ export const casinoReviews: CasinoReview[] = [
   verdict:
     "Cloudbet Casino is a practical option for users who prioritize cryptocurrency payments and flexible access to casino games. It offers fast transactions and a modern platform, though users should understand the risks associated with offshore gambling services.",
 
-  rating: undefined,
+  rating: 3.6,
 
   quickFacts: [
     { label: "Best for", value: "Crypto casino gaming" },
@@ -4781,7 +4781,7 @@ export const casinoReviews: CasinoReview[] = [
   verdict:
     "M88 Casino is a practical option for users who want broad access to casino games and promotional offers. It provides flexibility and availability, though users should carefully review payment and withdrawal policies before depositing.",
 
-  rating: undefined,
+  rating: 2.2,
 
   quickFacts: [
     { label: "Best for", value: "International casino gaming" },
@@ -4847,7 +4847,7 @@ export const casinoReviews: CasinoReview[] = [
   verdict:
     "Fun88 Casino is a suitable option for users who want access to a wide range of casino games and promotional offers. It offers broad availability, though users should review payment policies and verification requirements carefully.",
 
-  rating: undefined,
+  rating: 1.6,
 
   quickFacts: [
     { label: "Best for", value: "International casino access" },
@@ -4913,7 +4913,7 @@ export const casinoReviews: CasinoReview[] = [
   verdict:
     "Novibet Casino is a dependable option for users who want a licensed and recognizable casino brand. It combines consistent usability with a solid range of games, though promotions and availability vary by country.",
 
-  rating: undefined,
+  rating: 1.6,
 
   quickFacts: [
     { label: "Best for", value: "Regulated European casino gaming" },
@@ -4979,7 +4979,7 @@ export const casinoReviews: CasinoReview[] = [
   verdict:
     "Stoiximan Casino is a reliable option for users who want a licensed and recognizable casino platform. It focuses on stability and compliance rather than aggressive promotional offers.",
 
-  rating: undefined,
+  rating: 1.6,
 
   quickFacts: [
     { label: "Best for", value: "Regulated casino gaming" },
@@ -5111,7 +5111,7 @@ export const casinoReviews: CasinoReview[] = [
   verdict:
     "bet-at-home Casino is a suitable option for users who want a licensed casino platform with a familiar interface and stable performance. It prioritizes usability and compliance over aggressive promotional offers.",
 
-  rating: undefined,
+  rating: 1.3,
 
   quickFacts: [
     { label: "Best for", value: "Traditional regulated casino gaming" },
@@ -5177,7 +5177,7 @@ export const casinoReviews: CasinoReview[] = [
   verdict:
     "Interwetten Casino is a dependable option for users who want a licensed and established casino platform. It focuses on reliability and regulatory compliance rather than high-risk promotional strategies.",
 
-  rating: undefined,
+  rating: 1.6,
 
   quickFacts: [
     { label: "Best for", value: "Licensed European casino gaming" },
@@ -5243,7 +5243,7 @@ export const casinoReviews: CasinoReview[] = [
   verdict:
     "Expekt Casino is a practical option for users who want a licensed casino platform with straightforward usability. It offers a stable experience, though promotions and availability vary by region.",
 
-  rating: undefined,
+  rating: 1.3,
 
   quickFacts: [
     { label: "Best for", value: "Simple regulated casino gaming" },
@@ -5309,7 +5309,7 @@ export const casinoReviews: CasinoReview[] = [
   verdict:
     "Betsafe Casino is a reliable option for users who want a licensed casino platform with a balanced selection of games. It focuses on usability and brand stability rather than aggressive promotional offers.",
 
-  rating: undefined,
+  rating: 1.4,
 
   quickFacts: [
     { label: "Best for", value: "Regulated European casino gaming" },

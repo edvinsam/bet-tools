@@ -6,7 +6,6 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import StarRating from "@/components/StarRating";
 import { casinoReviews } from "@/lib/casino-reviews";
 import { BOOKMAKER_META } from "@/lib/bookmaker-meta";
-import Image from "next/image";
 
 type PageProps = {
   params: Promise<{
@@ -49,7 +48,8 @@ export default async function CasinoReviewPage({ params }: PageProps) {
     notFound();
   }
 
-  const meta = BOOKMAKER_META[casino.slug];
+  const brandSlug = casino.slug.replace(/-casino$/, "");
+  const meta = BOOKMAKER_META[casino.slug] ?? BOOKMAKER_META[brandSlug];
 
   return (
     <main className="mx-auto max-w-5xl px-4 py-8">
@@ -62,41 +62,70 @@ export default async function CasinoReviewPage({ params }: PageProps) {
         ]}
       />
 
-      <section className="mt-6 rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
-        <p className="mb-3 text-sm font-medium text-emerald-700">
-          We may earn a commission if you sign up through links on this page.
-          This does not affect our reviews or rankings.
+      <section className="mt-6 rounded-3xl border border-slate-200 bg-linear-to-br from-white to-slate-50 p-6 shadow-sm sm:p-8">
+        <p className="mb-5 text-sm font-medium text-emerald-700">
+            We may earn a commission if you sign up through links on this page. This
+            does not affect our reviews or rankings.
         </p>
 
-        <div className="flex flex-col gap-5 md:flex-row md:items-start md:justify-between">
-          <div>
-            <h1 className="text-3xl font-bold tracking-tight text-gray-950">
-              {casino.title}
+        <div className="grid gap-8 lg:grid-cols-[1fr_18rem] lg:items-start">
+            <div>
+            <p className="text-sm font-semibold text-blue-600">Casino review</p>
+
+            <h1 className="mt-2 text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl">
+                {casino.title}
             </h1>
 
-            <p className="mt-4 max-w-3xl text-base leading-7 text-gray-700">
-              {casino.intro}
+            <p className="mt-4 max-w-3xl text-base leading-7 text-slate-700">
+                {casino.intro}
             </p>
 
-            {casino.rating !== undefined ? (
-              <div className="mt-4">
-                <StarRating rating={casino.rating} />
-              </div>
-            ) : null}
-          </div>
+            {casino.rating !== undefined && (
+                <div className="mt-6 rounded-2xl bg-white p-4 shadow-sm ring-1 ring-slate-200 sm:max-w-xs">
+                <p className="text-sm text-slate-500">Rating</p>
+                <div className="mt-2">
+                    <StarRating rating={casino.rating} />
+                </div>
+                </div>
+            )}
+            </div>
 
-          {meta?.url ? (
-            <a
-              href={meta.url}
-              target="_blank"
-              rel="nofollow sponsored noopener noreferrer"
-              className="inline-flex shrink-0 rounded-xl bg-gray-950 px-5 py-3 text-sm font-semibold text-white hover:bg-gray-800"
-            >
-              Visit casino
-            </a>
-          ) : null}
+            <aside className="rounded-3xl border border-slate-200 bg-white p-5 shadow-sm">
+            {meta?.logo && (
+                <div
+                className="flex h-24 w-full items-center justify-center rounded-2xl border border-slate-200 p-5"
+                style={
+                    meta.backgroundColor
+                    ? { backgroundColor: meta.backgroundColor }
+                    : undefined
+                }
+                >
+                <img
+                    src={meta.logo}
+                    alt={`${casino.name} logo`}
+                    className="max-h-full max-w-full object-contain"
+                />
+                </div>
+            )}
+
+            {meta?.url && (
+                <a
+                href={meta.url}
+                target="_blank"
+                rel="nofollow sponsored noopener noreferrer"
+                className="mt-4 inline-flex w-full justify-center rounded-xl bg-slate-950 px-5 py-3 text-sm font-semibold text-white hover:bg-slate-800"
+                >
+                Visit casino
+                </a>
+            )}
+
+            <p className="mt-3 text-xs leading-5 text-slate-500">
+                Check local availability, bonus terms and responsible gambling rules
+                before signing up.
+            </p>
+            </aside>
         </div>
-      </section>
+        </section>
 
       <section className="mt-8 grid gap-6 md:grid-cols-3">
         <div className="rounded-2xl border border-gray-200 bg-white p-5 shadow-sm md:col-span-2">

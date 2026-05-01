@@ -69,6 +69,14 @@ export default function BestLowMarginBookmakersPage() {
 
       {/* Explanation */}
 
+      {/* Bookmaker grid */}
+
+      <BookmakerReviewsGrid
+        bookmakers={bookmakers}
+        defaultSortKey="margin"
+        defaultSortDirection="asc"
+      />
+
       <section className="mt-6 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
         <h2 className="text-xl font-semibold text-slate-950">
           What is bookmaker margin?
@@ -98,13 +106,6 @@ export default function BestLowMarginBookmakersPage() {
         </div>
       </section>
 
-      {/* Bookmaker grid */}
-
-      <BookmakerReviewsGrid
-        bookmakers={bookmakers}
-        defaultSortKey="margin"
-        defaultSortDirection="asc"
-      />
       <section className="mt-8 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
         <h2 className="text-xl font-semibold text-slate-950">
             Related bookmaker comparisons

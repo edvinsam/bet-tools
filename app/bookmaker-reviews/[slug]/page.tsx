@@ -52,18 +52,10 @@ export default async function BookmakerReviewPage({ params }: PageProps) {
     notFound();
   }
 
-  const availability = bookmakerAvailability[bookmaker!.slug];
-
-  const listedCountryCount = [
-    ...(availability?.licensedCountries ?? []),
-  ].filter((country, index, array) => array.indexOf(country) === index).length;
-
-  if (!bookmaker) {
-    notFound();
-  }
+  const availability = bookmakerAvailability[bookmaker.slug];
 
   return (
-    <main className="mx-auto max-w-5xl px-4 py-8">
+    <main className="mx-auto max-w-6xl px-4 py-8 sm:px-6">
       <Breadcrumbs
         items={[
           { label: "Home", href: "/" },
@@ -72,93 +64,96 @@ export default async function BookmakerReviewPage({ params }: PageProps) {
         ]}
       />
 
-      <section className="mt-6 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-        <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
+      <section className="mt-6 rounded-3xl border border-slate-200 bg-linear-to-br from-white to-slate-50 p-6 shadow-sm sm:p-8">
+        <div className="grid gap-8 lg:grid-cols-[1fr_18rem] lg:items-start">
           <div>
-            <p className="text-sm font-medium text-slate-500">
+            <p className="text-sm font-semibold text-blue-600">
               Bookmaker review
             </p>
 
-            <h1 className="mt-2 text-3xl font-bold text-slate-950">
+            <h1 className="mt-2 text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl">
               {bookmaker.name} Review
             </h1>
 
-            <p className="mt-4 max-w-3xl text-slate-700">
+            <p className="mt-4 max-w-3xl text-base leading-7 text-slate-700">
               {bookmaker.intro}
             </p>
+
+            <div className="mt-6 grid gap-3 sm:grid-cols-3">
+              {typeof bookmaker.rating === "number" && (
+                <div className="rounded-2xl bg-white p-4 shadow-sm ring-1 ring-slate-200">
+                  <p className="text-sm text-slate-500">Rating</p>
+                  <div className="mt-2">
+                    <StarRating rating={bookmaker.rating} />
+                  </div>
+                </div>
+              )}
+
+              {typeof bookmaker.averageMargin === "number" && (
+                <div className="rounded-2xl bg-white p-4 shadow-sm ring-1 ring-slate-200">
+                  <p className="text-sm text-slate-500">Average margin</p>
+                  <p className="mt-2 text-xl font-semibold text-slate-950">
+                    {bookmaker.averageMargin.toFixed(2)}%
+                  </p>
+
+                  {typeof bookmaker.marginSamples === "number" && (
+                    <p className="mt-1 text-xs text-slate-500">
+                      {bookmaker.marginSamples} sampled markets
+                    </p>
+                  )}
+                </div>
+              )}
+
+              {availability && (
+                <BookmakerAvailabilityCard availability={availability} />
+              )}
+            </div>
+
+            <div className="mt-4">
+              <Link
+                href="/bookmaker-reviews/best-low-margin-bookmakers"
+                className="text-sm font-medium text-blue-600 underline-offset-4 hover:underline"
+              >
+                Compare low-margin bookmakers →
+              </Link>
+            </div>
           </div>
 
-          {bookmaker.logo && (
-            <div
-              className="flex h-20 w-40 shrink-0 items-center justify-center rounded-xl border border-slate-200 bg-slate-50 p-4"
-              style={
-                bookmaker.backgroundColor
-                  ? { backgroundColor: bookmaker.backgroundColor }
-                  : undefined
-              }
-            >
-              <a
-                href={bookmaker.url}
-                target="_blank"
-                rel="nofollow sponsored noopener noreferrer"
-                className="flex h-full w-full items-center justify-center"
+          <aside className="rounded-3xl border border-slate-200 bg-white p-5 shadow-sm">
+            {bookmaker.logo && (
+              <div
+                className="flex h-24 w-full items-center justify-center rounded-2xl border border-slate-200 p-5"
+                style={
+                  bookmaker.backgroundColor
+                    ? { backgroundColor: bookmaker.backgroundColor }
+                    : undefined
+                }
               >
                 <img
                   src={bookmaker.logo}
                   alt={`${bookmaker.name} logo`}
                   className="max-h-full max-w-full object-contain"
                 />
-              </a>
-            </div>
-          )}
-        </div>
+              </div>
+            )}
 
-        <div className="mt-6 grid gap-4 sm:grid-cols-3">
-          {typeof bookmaker.rating === "number" && (
-            <div className="rounded-xl bg-slate-50 p-4">
-              <p className="text-sm text-slate-500">Rating</p>
-              <StarRating rating={bookmaker.rating} />
-            </div>
-          )}
-
-          {typeof bookmaker.averageMargin === "number" && (
-            <div className="rounded-xl bg-slate-50 p-4">
-              <p className="text-sm text-slate-500">Average margin</p>
-              <p className="mt-1 text-xl font-semibold text-slate-950">
-                {bookmaker.averageMargin.toFixed(2)}%
-              </p>
-              <Link
-                href="/bookmaker-reviews/best-low-margin-bookmakers"
-                className="text-slate-600 underline hover:text-slate-950 text-xs"
+            {bookmaker.url && bookmaker.url !== "#" && (
+              <a
+                href={bookmaker.url}
+                rel="nofollow sponsored noopener noreferrer"
+                target="_blank"
+                className="mt-4 inline-flex w-full justify-center rounded-xl bg-slate-950 px-5 py-3 font-semibold text-white hover:bg-slate-800"
               >
-                Compare the best low-margin bookmakers
-              </Link>
+                Visit {bookmaker.name}
+              </a>
+            )}
 
-              {typeof bookmaker.marginSamples === "number" && (
-                <p className="mt-1 text-xs text-slate-500">
-                  Based on {bookmaker.marginSamples} sampled markets
-                </p>
-              )}
-            </div>
-          )}
-
-          {availability && (
-            <BookmakerAvailabilityCard availability={availability} />
-          )}
+            <p className="mt-3 text-xs leading-5 text-slate-500">
+              Always check local availability, terms and responsible gambling rules
+              before signing up.
+            </p>
+          </aside>
         </div>
-
-        {bookmaker.url && bookmaker.url !== "#" && (
-          <div className="mt-6">
-            <a
-              href={bookmaker.url}
-              rel="nofollow sponsored noopener noreferrer"
-              target="_blank"
-              className="inline-flex rounded-xl bg-slate-950 px-5 py-3 font-semibold text-white hover:bg-slate-800"
-            >
-              Visit {bookmaker.name}
-            </a>
-          </div>
-        )}
       </section>
 
       <section className="mt-8 rounded-2xl border border-slate-200 bg-white p-6">

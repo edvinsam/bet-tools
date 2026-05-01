@@ -13,6 +13,9 @@ import {
 import { bookmakerMatchesLocation } from "@/lib/bookmakerFilter";
 import { getRegionBookmakerPageContent } from "@/lib/bookmaker-location-content";
 
+import "flag-icons/css/flag-icons.min.css";
+import { COUNTRY_OPTIONS } from "@/lib/bookmaker-locations";
+
 type PageProps = {
   params: Promise<{
     region: string;
@@ -26,6 +29,10 @@ function getBookmakersForRegion(region: RegionSlug) {
       region,
     })
   );
+}
+
+function getCountryFlagCode(countrySlug: string) {
+  return COUNTRY_OPTIONS.find((country) => country.slug === countrySlug)?.flagCode;
 }
 
 export function generateStaticParams() {
@@ -105,6 +112,8 @@ export default async function RegionBookmakerReviewsPage({
         </div>
       </section>
 
+      <BookmakerReviewsGrid bookmakers={bookmakers} selectedRegion={region} />
+
       <section className="mt-6 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
         <h2 className="text-xl font-semibold text-slate-950">
           Compare bookmakers in {regionLabel}
@@ -117,19 +126,30 @@ export default async function RegionBookmakerReviewsPage({
         </div>
 
         <div className="mt-5 flex flex-wrap gap-2">
-          {countries.map((country) => (
-            <Link
-              key={country}
-              href={`/bookmaker-reviews/country/${country}`}
-              className="rounded-full border border-slate-200 px-3 py-1 text-sm text-slate-700 hover:bg-slate-50"
-            >
-              {COUNTRY_LABELS[country]}
-            </Link>
-          ))}
+          {[...countries]
+            .sort((a, b) => COUNTRY_LABELS[a].localeCompare(COUNTRY_LABELS[b]))
+            .map((country) => {
+              const flagCode = getCountryFlagCode(country);
+
+              return (
+                <Link
+                  key={country}
+                  href={`/bookmaker-reviews/country/${country}`}
+                  className="inline-flex items-center gap-2 rounded-full border border-slate-200 px-3 py-1.5 text-sm text-slate-700 hover:bg-slate-50"
+                >
+                  {flagCode && (
+                    <span
+                      className={`fi fi-${flagCode.toLowerCase()} inline-block h-3 w-4 overflow-hidden rounded-sm`}
+                      aria-hidden="true"
+                    />
+                  )}
+
+                  <span>{COUNTRY_LABELS[country]}</span>
+                </Link>
+              );
+            })}
         </div>
       </section>
-
-      <BookmakerReviewsGrid bookmakers={bookmakers} selectedRegion={region} />
     </main>
   );
 }
