@@ -6,7 +6,9 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import BookmakerReviewsGrid from "@/components/BookmakerReviewsGrid";
 
 export const metadata = {
-  title: "Bookmaker Reviews",
+  title: {
+    absolute: "Best Betting Sites | Which Bookmaker to choose in 2026?"
+  },
   description:
     "Browse bookmaker reviews covering odds, margins, user experience, deposits, withdrawals, reputation and betting features.",
   alternates: {

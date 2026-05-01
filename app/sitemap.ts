@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next";
 
 import { oddsTypes, makeSlug } from "@/lib/oddsRoutes";
 import { bookmakerReviews } from "@/lib/bookmaker-reviews";
+import { casinoReviews } from "@/lib/casino-reviews";
 
 import {
   COUNTRY_LABELS,
@@ -110,6 +111,24 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "weekly",
       priority: 0.75,
     },
+    {
+      url: `${baseUrl}/betting-sites`,
+      lastModified: now,
+      changeFrequency: "weekly",
+      priority: 0.75,
+    },
+    {
+      url: `${baseUrl}/online-casinos`,
+      lastModified: now,
+      changeFrequency: "weekly",
+      priority: 0.75,
+    },
+    {
+      url: `${baseUrl}/casino-reviews`,
+      lastModified: now,
+      changeFrequency: "weekly",
+      priority: 0.75,
+    },
   ];
 
   const converterPages: MetadataRoute.Sitemap = [];
@@ -163,6 +182,31 @@ export default function sitemap(): MetadataRoute.Sitemap {
     })
   );
 
+  const bettingSitePages: MetadataRoute.Sitemap = Object.keys(COUNTRY_LABELS).map(
+    (country) => ({
+      url: `${baseUrl}/betting-sites/${country}`,
+      lastModified: now,
+      changeFrequency: "weekly",
+      priority: 0.7,
+    })
+  );
+
+  const onlineCasinoPages: MetadataRoute.Sitemap = Object.keys(COUNTRY_LABELS).map(
+    (country) => ({
+      url: `${baseUrl}/online-casinos/${country}`,
+      lastModified: now,
+      changeFrequency: "weekly",
+      priority: 0.7,
+    })
+  );
+
+  const casinoReviewPages: MetadataRoute.Sitemap = casinoReviews.map((casino) => ({
+    url: `${baseUrl}/casino-reviews/${casino.slug}`,
+    lastModified: now,
+    changeFrequency: "weekly",
+    priority: 0.75,
+  }));
+
   return [
     ...staticPages,
     ...converterPages,
@@ -170,5 +214,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...countryPages,
     ...lowMarginCountryPages,
     ...regionPages,
+    ...bettingSitePages,
+    ...onlineCasinoPages,
+    ...casinoReviewPages,
   ];
 }
